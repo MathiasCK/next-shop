@@ -20,7 +20,8 @@ const Navbar = () => {
   const router = useRouter();
   const [sideBar, setSideBar] = useState();
   const [visibleNavbar, setVisibleNavbar] = useState(false);
-  const [activeNavar, setActiveNavbar] = useState(false);
+  const [activeNavbar, setActiveNavbar] = useState(false);
+  const [initialBackground, setInitialBackground] = useState(false);
 
   const sideRef = useRef();
   const controls = useAnimation();
@@ -46,6 +47,7 @@ const Navbar = () => {
   const sideBarHandler = () => {
     setSideBar(!sideBar);
     setVisibleNavbar(!visibleNavbar);
+    setInitialBackgroundnav(!initialBackground);
   };
 
   useEffect(() => {
@@ -66,7 +68,9 @@ const Navbar = () => {
 
   return (
     <div>
-      <StyledNavbar className={activeNavar ? "active" : undefined}>
+      <StyledNavbar
+        className={activeNavbar || initialBackground ? "active" : undefined}
+      >
         <Title>
           <Link href="/">
             <img
