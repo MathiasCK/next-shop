@@ -10,7 +10,23 @@ a {
   color: inherit;
   text-decoration: none;
 }
+.logo {
+  cursor: pointer;
+}
 
 * {
   box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+:root {
+  --primary: white;
+  --secondary: #dc3240;
+}
+
+.secondary {
+  color: var(--secondary);
 }

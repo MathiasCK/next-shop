@@ -1,7 +1,17 @@
-import '../styles/globals.css'
+import Cursor from "../components/Cursor";
+import Layout from "../components/layout/layout";
+import { CartProvider } from "../context/CartContext";
+import "../styles/globals.css";
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
+const MyApp = ({ Component, pageProps }) => {
+  return (
+    <CartProvider>
+      <Layout>
+        <Cursor />
+        <Component {...pageProps} />
+      </Layout>
+    </CartProvider>
+  );
+};
 
-export default MyApp
+export default MyApp;
