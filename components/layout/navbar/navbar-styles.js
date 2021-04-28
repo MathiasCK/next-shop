@@ -16,6 +16,7 @@ export const StyledNavbar = styled.nav`
   justify-content: space-between;
   align-items: center;
   z-index: 999;
+  transition: all 0.3s ease;
   &.active {
     background: white;
     backdrop-filter: saturate(180%) blur(5px);
