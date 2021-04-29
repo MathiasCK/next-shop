@@ -14,35 +14,22 @@ const CategoryPage = ({ category, products }) => {
 export default CategoryPage;
 
 export async function getStaticProps({ params }) {
-  try {
-    const { slug } = params;
-    if (!slug)
-      return {
-        props: {},
-      };
+  const { slug } = params;
 
-    console.log(slug);
+  const category = await commerce.categories.retrieve(slug, {
+    type: "slug",
+  });
 
-    const category = await commerce.categories.retrieve(slug, {
-      type: "slug",
-    });
+  const { data: products } = await commerce.products.list({
+    category_slug: slug,
+  });
 
-    const { data: products } = await commerce.products.list({
-      category_slug: "slug",
-    });
-
-    return {
-      props: {
-        category,
-        products,
-      },
-    };
-  } catch (error) {
-    console.log(error.message);
-    return {
-      props: {},
-    };
-  }
+  return {
+    props: {
+      category,
+      products,
+    },
+  };
 }
 
 export async function getStaticPaths() {

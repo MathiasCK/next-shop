@@ -95,7 +95,11 @@ const Navbar = () => {
           <Actions>
             <Link href="/cart">
               <FontAwesomeIcon
-                className="logo secondary"
+                style={
+                  activeNavbar || initialBackground
+                    ? { color: "black" }
+                    : { color: "white" }
+                }
                 icon={faShoppingBag}
                 size="lg"
                 color="black"

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Button from "../components/button/button";
 import CategoryList from "../components/category/category-list";
 
 import { StyledHome, Content } from "../styles/home/home-styles";
@@ -25,7 +26,7 @@ export default function Home({ categories, merchant }) {
 
           <h3>
             <Link href="/products">
-              <a className="secondary">Enter Shop</a>
+              <Button>Enter Shop</Button>
             </Link>
           </h3>
         </Content>

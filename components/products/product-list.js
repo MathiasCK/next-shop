@@ -5,9 +5,7 @@ import React from "react";
 import styled from "styled-components";
 
 const ProductList = ({ products }) => {
-  if (!products) return null;
-
-  console.log(products);
+  if (products.length === 0) return null;
 
   return (
     <StyledProdutList>

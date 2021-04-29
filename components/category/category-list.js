@@ -7,6 +7,7 @@ import { useInView } from "react-intersection-observer";
 import { useEffect, useRef } from "react";
 
 const CategoryList = ({ categories }) => {
+  if (categories.length === 0) return null;
   const controls = useAnimation();
   const { ref, inView } = useInView();
   const animatedRef = useRef(false);

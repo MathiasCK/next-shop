@@ -1,10 +1,12 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
+import { productAnim } from "../../utils/animation";
 
 const Product = ({ name, price, assets, description }) => {
   const image = assets[0].url;
 
   return (
-    <StyledProduct>
+    <StyledProduct variants={productAnim}>
       <Image>
         <img src={image} />
       </Image>
@@ -16,7 +18,7 @@ const Product = ({ name, price, assets, description }) => {
   );
 };
 
-const StyledProduct = styled.div`
+const StyledProduct = styled(motion.div)`
   margin: 1rem;
   height: auto;
   display: flex;
