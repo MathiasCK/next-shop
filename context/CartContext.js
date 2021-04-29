@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import commerce from "../utils/commerce";
 
 const CartContext = createContext({});
@@ -14,6 +14,10 @@ export const CartProvider = ({ children }) => {
     setCart(cart);
     //setCart(await commerce.cart.retrieve())
   };
+
+  useEffect(() => {
+    fetchCart();
+  }, []);
 
   const addToCartHandler = async (productId, quantity) => {
     const { cart } = await commerce.cart.add(productId, quantity);

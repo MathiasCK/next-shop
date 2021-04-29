@@ -24,6 +24,8 @@ const StyledCategory = styled(motion.div)`
       height: 100%;
       object-fit: cover;
       transition: all 0.3s ease-in-out;
+      background-position: center;
+      background-size: cover;
     }
     p {
       background: rgba(255, 255, 255, 0.5);
@@ -39,7 +41,9 @@ const StyledCategory = styled(motion.div)`
     }
     &:hover {
       img {
-        opacity: 0.7;
+        opacity: 0.9;
+        //transform: scale(1.1);
+        //transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
       }
       p {
         background: rgba(255, 255, 255, 1);

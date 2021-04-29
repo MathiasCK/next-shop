@@ -1,18 +1,23 @@
 import { useRouter } from "next/router";
 import React from "react";
 import { Hero } from "../../styles/home/home-styles";
+import RouteTransition from "../../utils/route-transition";
 import Navbar from "./navbar/navbar";
 
-const Layout = (props) => {
+const Layout = ({ children }) => {
   const router = useRouter();
 
   return (
-    <div>
-      {router.pathname === "/" && <Hero />}
+    <div style={{ marginBottom: "70px" }}>
+      {router.pathname === "/" && (
+        <RouteTransition>
+          <Hero />
+        </RouteTransition>
+      )}
 
       <main>
         <Navbar />
-        {props.children}
+        {children}
       </main>
     </div>
   );

@@ -12,9 +12,10 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { BiMenuAltRight } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
-import { AnimatePresence, useAnimation } from "framer-motion";
-import { container, lineAnim, navLinkFade } from "../../../utils/animation";
+import { AnimatePresence, motion, useAnimation } from "framer-motion";
+import { container, navLinkFade, lineAnim } from "../../../utils/animation";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import { useCart } from "../../../context/CartContext";
 
 const Navbar = () => {
   const router = useRouter();
@@ -25,6 +26,9 @@ const Navbar = () => {
 
   const sideRef = useRef();
   const controls = useAnimation();
+
+  const cart = useCart();
+  const totalItems = cart.total_items;
 
   useEffect(() => {
     if (visibleNavbar) {
@@ -47,7 +51,7 @@ const Navbar = () => {
   const sideBarHandler = () => {
     setSideBar(!sideBar);
     setVisibleNavbar(!visibleNavbar);
-    setInitialBackgroundnav(!initialBackground);
+    setInitialBackground(!initialBackground);
   };
 
   useEffect(() => {
@@ -69,6 +73,11 @@ const Navbar = () => {
   return (
     <div>
       <StyledNavbar
+        style={
+          router.asPath !== "/"
+            ? { color: "black", background: "white" }
+            : undefined
+        }
         className={activeNavbar || initialBackground ? "active" : undefined}
       >
         <Title>
@@ -84,12 +93,14 @@ const Navbar = () => {
         </Title>
         {router.asPath !== "/cart" && (
           <Actions>
-            <FontAwesomeIcon
-              className="logo secondary"
-              icon={faShoppingBag}
-              size="lg"
-              color="black"
-            />
+            <Link href="/cart">
+              <FontAwesomeIcon
+                className="logo secondary"
+                icon={faShoppingBag}
+                size="lg"
+                color="black"
+              />
+            </Link>
             {/*<p>Number</p>*/}
             <div onClick={sideBarHandler}>
               {sideBar ? (
@@ -131,7 +142,21 @@ const Navbar = () => {
         variants={container}
       >
         <nav className={sideBar ? "nav-menu active" : "nav-menu"}>
-          <p>Hello</p>
+          <ul>
+            {/*
+            {categories.map((category) => (
+              <motion.li
+                variants={navLinkFade}
+                key={category.id}
+                onClick={sideBarHandler}
+              >
+                <Link href={`/categories/${category.name}`}>
+                  {category.name}
+                </Link>
+                <motion.div variants={lineAnim} className="border"></motion.div>
+              </motion.li>
+            ))}*/}
+          </ul>
         </nav>
       </StyledSideBar>
     </div>

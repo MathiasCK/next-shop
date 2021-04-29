@@ -1,6 +1,7 @@
 import Link from "next/link";
 import CategoryList from "../components/category/category-list";
-import { StyledHome, Content, Hero } from "../styles/home/home-styles";
+
+import { StyledHome, Content } from "../styles/home/home-styles";
 
 import commerce from "../utils/commerce";
 

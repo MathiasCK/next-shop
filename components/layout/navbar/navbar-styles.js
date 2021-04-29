@@ -64,9 +64,10 @@ export const StyledSideBar = styled(motion.div)`
     }
 
     .border {
-      background: white;
+      background: black;
       height: 2px;
       width: 100%;
+      margin: 1rem 0;
     }
 
     &.active {
@@ -82,8 +83,9 @@ export const StyledSideBar = styled(motion.div)`
       li {
         margin: 2rem;
         a {
+          text-transform: uppercase;
           text-decoration: none;
-          color: white;
+          color: black;
           font-size: 2rem;
 
           @media screen and (min-width: 768px) {
