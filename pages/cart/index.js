@@ -4,6 +4,8 @@ import { useCart, useEmptyCartHandler } from "../../context/CartContext";
 import Spinner from "../../utils/Spinner";
 import styled from "styled-components";
 import RouteTransition from "../../utils/route-transition";
+import Button from "../../components/button/button";
+import Link from "next/link";
 
 const Cart = () => {
   const emptyCart = useEmptyCartHandler();
@@ -20,6 +22,10 @@ const Cart = () => {
           </div>
         ))}
       </StyledCart>
+      <Button onClick={emptyCart}>Empty Cart</Button>
+      <Link href="/checkout">
+        <Button>Go To Checkout</Button>
+      </Link>
     </RouteTransition>
   );
 };

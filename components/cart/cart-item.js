@@ -4,6 +4,7 @@ import {
   useRemoveCartHandler,
   useUpdateCartHandler,
 } from "../../context/CartContext";
+import Button from "../button/button";
 
 const CartItem = ({ cartItem }) => {
   const removeItem = useRemoveCartHandler();
@@ -24,17 +25,17 @@ const CartItem = ({ cartItem }) => {
           <p>{cartItem.price.formatted_with_symbol} x</p>
           <p className="qty">{cartItem.quantity}</p>
         </div>
-        <div>
-          <button
+        <div className="buttons">
+          <Button
             onClick={() => updateItemQty(cartItem.id, cartItem.quantity - 1)}
           >
             -
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={() => updateItemQty(cartItem.id, cartItem.quantity + 1)}
           >
             +
-          </button>
+          </Button>
         </div>
       </Information>
     </StyledCartItem>
@@ -65,15 +66,11 @@ const Information = styled.div`
   }
   button {
     margin-right: 1rem;
-    background: transparent;
-    border: 1px solid black;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    color: black;
-    &:hover {
-      color: white;
-      background: black;
-    }
+    padding: 0.25rem 0.5rem !important;
+  }
+
+  .buttons {
+    display: flex;
   }
 `;
 

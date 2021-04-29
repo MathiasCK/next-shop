@@ -84,7 +84,7 @@ const Navbar = () => {
           <Link href="/">
             <img
               className="logo"
-              src={"/commerce.png"}
+              src={"/crown.svg"}
               alt="Commerce.js"
               height="30px"
             />
