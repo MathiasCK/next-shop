@@ -91,8 +91,9 @@ const Navbar = () => {
           </Link>
           <p>Commerce.js</p>
         </Title>
-        {router.asPath !== "/cart" && (
-          <Actions>
+
+        <Actions>
+          {router.asPath !== "/cart" && (
             <Link href="/cart">
               <FontAwesomeIcon
                 style={
@@ -105,20 +106,17 @@ const Navbar = () => {
                 color="black"
               />
             </Link>
-            {/*<p>Number</p>*/}
-            <div onClick={sideBarHandler}>
-              {sideBar ? (
-                <AiOutlineClose
-                  style={{ fontSize: "2rem", cursor: "pointer" }}
-                />
-              ) : (
-                <BiMenuAltRight
-                  style={{ fontSize: "2rem", cursor: "pointer" }}
-                />
-              )}
-            </div>
-          </Actions>
-        )}
+          )}
+
+          {/*<p>Number</p>*/}
+          <div onClick={sideBarHandler}>
+            {sideBar ? (
+              <AiOutlineClose style={{ fontSize: "2rem", cursor: "pointer" }} />
+            ) : (
+              <BiMenuAltRight style={{ fontSize: "2rem", cursor: "pointer" }} />
+            )}
+          </div>
+        </Actions>
       </StyledNavbar>
       <AnimatePresence>
         {sideBar && (
