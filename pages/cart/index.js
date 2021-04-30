@@ -10,6 +10,7 @@ import Link from "next/link";
 const Cart = () => {
   const emptyCart = useEmptyCartHandler();
   const cart = useCart();
+  console.log("CART", cart);
 
   if (!cart.line_items) return <Spinner />;
 
@@ -21,6 +22,7 @@ const Cart = () => {
             <CartItem cartItem={cartItem} />
           </div>
         ))}
+        <p>Your total is: {cart.subtotal.formatted_with_symbol}</p>
       </StyledCart>
       <Button onClick={emptyCart}>Empty Cart</Button>
       <Link href="/checkout">

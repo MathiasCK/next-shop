@@ -48,7 +48,9 @@ const StyledCursor = styled.div`
   left: 0;
   width: 30px;
   z-index: 9999;
-  background-color: black;
+  background-color: white;
+  border-radius: 50%;
+  border: 1px solid black;
   mix-blend-mode: exclusion;
   will-change: transform;
   border-radius: 50%;

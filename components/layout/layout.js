@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
   const router = useRouter();
 
   return (
-    <div style={{ marginBottom: "70px" }}>
+    <div>
       {router.pathname === "/" && (
         <RouteTransition>
           <Hero />
