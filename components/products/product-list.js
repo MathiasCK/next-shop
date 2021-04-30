@@ -24,9 +24,10 @@ const ProductList = ({ products }) => {
 
 const StyledProdutList = styled.div`
   padding-inline-start: 0 !important;
+  list-style: none;
   //grid-gap: 1rem;
   width: 100%;
-  list-style: none;
+
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 `;

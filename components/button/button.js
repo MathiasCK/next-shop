@@ -16,6 +16,7 @@ const StyledButton = styled.button`
   transition: all 0.3s ease;
   color: black;
   padding: 0.5rem;
+  width: auto !important;
   &:hover {
     color: white;
     background: black;

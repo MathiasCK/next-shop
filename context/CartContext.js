@@ -8,6 +8,8 @@ export const CartProvider = ({ children }) => {
   const [order, setOrder] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
 
+  const [categories, setCategories] = useState();
+
   const fetchCart = async () => {
     const cart = await commerce.cart.retrieve();
 
@@ -17,7 +19,13 @@ export const CartProvider = ({ children }) => {
 
   useEffect(() => {
     fetchCart();
+    getCategories();
   }, []);
+
+  const getCategories = async () => {
+    const { data: categories } = await commerce.categories.list();
+    setCategories(categories);
+  };
 
   const addToCartHandler = async (productId, quantity) => {
     const { cart } = await commerce.cart.add(productId, quantity);
@@ -36,13 +44,13 @@ export const CartProvider = ({ children }) => {
 
   const emptyCartHandler = async () => {
     const { cart } = await commerce.cart.empty();
-    console.log("EMPTYING", cart);
+
     setCart(cart);
   };
 
   const refreshCart = async () => {
     const newCart = await commerce.cart.refresh();
-    console.log("REFRESHING", newCart);
+
     setCart(newCart);
   };
 
@@ -64,6 +72,7 @@ export const CartProvider = ({ children }) => {
     <CartContext.Provider
       value={{
         cart,
+        categories,
         order,
         errorMessage,
         handleCaptureCheckout,
@@ -82,6 +91,8 @@ export const CartProvider = ({ children }) => {
 export const useCartContext = () => useContext(CartContext);
 
 export const useCart = () => useCartContext().cart;
+
+export const useCategories = () => useCartContext().categories;
 
 export const useOrder = () => useCartContext().order;
 

@@ -66,7 +66,6 @@ const AddressForm = ({ checkoutToken, next }) => {
 
     setShippingOptions(options);
 
-    console.log("FROM FETCH");
     setShippingOption(options[0].id);
   };
 

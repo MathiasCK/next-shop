@@ -26,6 +26,7 @@ ul {
 :root {
   --primary: white;
   --secondary: #dc3240;
+  --shadow: 0px 8px 30px rgba(0, 0, 0, 0.12);
 }
 
 .secondary {

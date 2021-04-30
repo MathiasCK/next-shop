@@ -1,5 +1,3 @@
-import { faShoppingBag } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useRef, useState, useEffect } from "react";
 import {
   StyledNavbar,
@@ -11,18 +9,21 @@ import {
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { BiMenuAltRight } from "react-icons/bi";
-import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineShopping } from "react-icons/ai";
 import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import { container, navLinkFade, lineAnim } from "../../../utils/animation";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
-import { useCart } from "../../../context/CartContext";
+import { useCart, useCategories } from "../../../context/CartContext";
 
 const Navbar = () => {
   const router = useRouter();
+  const categories = useCategories();
   const [sideBar, setSideBar] = useState();
   const [visibleNavbar, setVisibleNavbar] = useState(false);
   const [activeNavbar, setActiveNavbar] = useState(false);
   const [initialBackground, setInitialBackground] = useState(false);
+
+  console.log("NAV", categories);
 
   const sideRef = useRef();
   const controls = useAnimation();
@@ -94,18 +95,14 @@ const Navbar = () => {
 
         <Actions>
           {router.asPath !== "/cart" && (
-            <Link href="/cart">
-              <FontAwesomeIcon
-                style={
-                  activeNavbar || initialBackground
-                    ? { color: "black" }
-                    : { color: "white" }
-                }
-                icon={faShoppingBag}
-                size="lg"
-                color="black"
-              />
-            </Link>
+            <>
+              <Link href="/cart">
+                <AiOutlineShopping
+                  style={{ fontSize: "2rem", cursor: "pointer" }}
+                />
+              </Link>
+              <p>{totalItems}</p>
+            </>
           )}
 
           {/*<p>Number</p>*/}
