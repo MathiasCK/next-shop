@@ -142,19 +142,22 @@ const Navbar = () => {
       >
         <nav className={sideBar ? "nav-menu active" : "nav-menu"}>
           <ul>
-            {/*
-            {categories.map((category) => (
-              <motion.li
-                variants={navLinkFade}
-                key={category.id}
-                onClick={sideBarHandler}
-              >
-                <Link href={`/categories/${category.name}`}>
-                  {category.name}
-                </Link>
-                <motion.div variants={lineAnim} className="border"></motion.div>
-              </motion.li>
-            ))}*/}
+            {categories &&
+              categories.map((category) => (
+                <motion.li
+                  variants={navLinkFade}
+                  key={category.id}
+                  onClick={sideBarHandler}
+                >
+                  <Link href={`/categories/${category.name}`}>
+                    {category.name}
+                  </Link>
+                  <motion.div
+                    variants={lineAnim}
+                    className="border"
+                  ></motion.div>
+                </motion.li>
+              ))}
           </ul>
         </nav>
       </StyledSideBar>

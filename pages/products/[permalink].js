@@ -86,7 +86,7 @@ const ImageContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-left: 40%;
+    margin: 0 10%;
     img {
       object-fit: cover;
       width: 100%;
