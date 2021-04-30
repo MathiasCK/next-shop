@@ -45,6 +45,7 @@ export const Actions = styled.div`
   width: 70px;
   .relative {
     position: relative;
+
     p {
       user-select: none;
       font-size: smaller;
