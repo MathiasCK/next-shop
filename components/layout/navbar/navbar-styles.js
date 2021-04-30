@@ -43,6 +43,17 @@ export const Actions = styled.div`
   align-items: center;
   font-size: 1rem;
   width: 70px;
+  .relative {
+    position: relative;
+    p {
+      user-select: none;
+      font-size: smaller;
+      position: absolute;
+      top: -10%;
+      right: 30%;
+      transform: translate(-30%, 10%);
+    }
+  }
 `;
 
 export const StyledSideBar = styled(motion.div)`

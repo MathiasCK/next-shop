@@ -95,14 +95,14 @@ const Navbar = () => {
 
         <Actions>
           {router.asPath !== "/cart" && (
-            <>
+            <div className="relative">
               <Link href="/cart">
                 <AiOutlineShopping
                   style={{ fontSize: "2rem", cursor: "pointer" }}
                 />
               </Link>
               <p>{totalItems}</p>
-            </>
+            </div>
           )}
 
           {/*<p>Number</p>*/}
