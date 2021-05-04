@@ -20,10 +20,10 @@ const StyledRelatedProduct = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 25%;
+  max-width: 20%;
   .image {
     width: 100%;
-    height: 70%;
+    height: 80%;
     img {
       object-fit: cover;
       width: 100%;

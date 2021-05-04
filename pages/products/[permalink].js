@@ -43,9 +43,6 @@ const ProductPage = ({ product }) => {
                   required
                   onChange={(e) => setProductSize(e.target.value)}
                 >
-                  <option disabled selected>
-                    Size
-                  </option>
                   {sizes.map((size) => (
                     <option>{size.name}</option>
                   ))}

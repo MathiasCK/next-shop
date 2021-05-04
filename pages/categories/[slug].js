@@ -1,10 +1,15 @@
 import ProductList from "../../components/products/product-list";
 import commerce from "../../utils/commerce";
+import Spinner from "../../utils/Spinner";
 
 const CategoryPage = ({ category, products }) => {
   return (
     <div>
-      <h1>{category.name}</h1>
+      <center>
+        <h1 style={{ fontWeight: "lighter" }}>
+          This is: {category.name.toUpperCase()}
+        </h1>
+      </center>
       <ProductList products={products} />
     </div>
   );
@@ -20,7 +25,7 @@ export async function getStaticProps({ params }) {
   });
 
   const { data: products } = await commerce.products.list({
-    category_slug: slug,
+    //category_slug: slug,
   });
 
   return {

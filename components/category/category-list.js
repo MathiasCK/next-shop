@@ -8,7 +8,7 @@ import { useEffect, useRef } from "react";
 import Spinner from "../../utils/Spinner";
 
 const CategoryList = ({ categories }) => {
-  if (!categories) return <Spinner />;
+  if (categories.length === 0) return <Spinner />;
   const controls = useAnimation();
   const { ref, inView } = useInView();
   const animatedRef = useRef(false);
@@ -45,7 +45,6 @@ const CategoryList = ({ categories }) => {
 
 const StyledCategories = styled(motion.ul)`
   padding-inline-start: 0 !important;
-  //grid-gap: 1rem;
   width: 100%;
   list-style: none;
   display: grid;
