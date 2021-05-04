@@ -12,7 +12,7 @@ export default function Home({ merchant }) {
   return (
     <div>
       <StyledHome>
-        <h1>{merchant.business_name}</h1>
+        <h1 className="header">{merchant.business_name}</h1>
 
         {/*
       <h3>

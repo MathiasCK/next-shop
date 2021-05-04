@@ -149,7 +149,7 @@ const Navbar = () => {
                   onClick={sideBarHandler}
                 >
                   <Link href={`/categories/${category.name}`}>
-                    {category.name}
+                    <p className="sub-header">{category.name}</p>
                   </Link>
                   <motion.div
                     variants={lineAnim}

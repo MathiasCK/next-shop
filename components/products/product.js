@@ -12,8 +12,8 @@ const Product = ({ name, price, assets, description }) => {
         <Image imageUrl={images[0].url} imageUrl2={images[1].url} />
       )}
       <Description>
-        <h4>{name}</h4>
-        <p>{price.formatted_with_symbol}</p>
+        <p className="sub-header product">{name}</p>
+        <p className="sub-header price">{price.formatted_with_symbol}</p>
       </Description>
     </StyledProduct>
   );
@@ -66,13 +66,6 @@ const Description = styled.div`
   padding: 0 0.5rem;
   justify-content: center;
   align-items: center;
-  h4 {
-    font-size: 1.5em;
-    font-weight: lighter;
-    padding: 1rem 0;
-    margin-block-start: 0em !important;
-    margin-block-end: 0em !important;
-  }
 `;
 
 export default Product;

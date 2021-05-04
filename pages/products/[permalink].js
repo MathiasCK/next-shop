@@ -33,7 +33,7 @@ const ProductPage = ({ product }) => {
           ))}
         </ImageContainer>
         <Description>
-          <Title>{product.name}</Title>
+          <Title className="sub-header">{product.name}</Title>
           <p>{product.price.formatted_with_symbol}</p>
 
           <div
@@ -112,7 +112,7 @@ const Description = styled.div`
     width: 50%;
     font-size: calc(10px + 6 * ((100vw - 320px) / 680));
     margin-bottom: 2rem;
-    font-weight: lighter;
+    font-weight: lighter !important;
     line-height: em;
   }
   form {
@@ -154,7 +154,6 @@ const ImageContainer = styled.div`
 
 const Title = styled.h1`
   text-align: center;
-  font-weight: 400;
   color: rgba(0, 0, 0, 0.7);
 `;
 
@@ -162,6 +161,7 @@ const RelatedProducts = styled.div`
   cursor: pointer;
   width: 100%;
   display: flex;
+  min-height: 30vh;
 `;
 
 export default ProductPage;

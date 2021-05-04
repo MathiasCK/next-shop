@@ -7,9 +7,7 @@ const CategoryPage = ({ category, products }) => {
   return (
     <div>
       <center>
-        <h1 style={{ fontWeight: "lighter", fontFamily: "aqua-grotesque" }}>
-          {category.name.toUpperCase()}
-        </h1>
+        <h1 className="header">{category.name.toUpperCase()}</h1>
       </center>
       <ProductList products={products} />
     </div>
