@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   CardElement,
   Elements,
@@ -20,6 +20,7 @@ const PaymentForm = ({
   nextStep,
   timeout,
 }) => {
+  const [stripe, setStripe] = useState();
   const handleSubmit = async (e, elements, stripe) => {
     e.preventDefault();
 
@@ -66,6 +67,7 @@ const PaymentForm = ({
       nextStep();
     }
   };
+
   return (
     <div>
       <Review checkoutToken={checkoutToken} />

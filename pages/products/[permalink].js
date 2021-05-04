@@ -15,7 +15,12 @@ const ProductPage = ({ product }) => {
   const relatedProducts = product.related_products;
 
   if (product.variant_groups.length === 0) return;
-  const sizes = product.variant_groups[0].options;
+  const sizeVariant = product.variant_groups[0];
+  console.log(
+    "🚀 ~ file: [permalink].js ~ line 19 ~ ProductPage ~ sizeVariant",
+    sizeVariant
+  );
+  const sizes = sizeVariant.options;
 
   return (
     <RouteTransition>
@@ -43,8 +48,13 @@ const ProductPage = ({ product }) => {
                   required
                   onChange={(e) => setProductSize(e.target.value)}
                 >
+                  <option disabled selected>
+                    Size
+                  </option>
                   {sizes.map((size) => (
-                    <option>{size.name}</option>
+                    <option key={size.id} value={size.id}>
+                      {size.name}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -52,7 +62,11 @@ const ProductPage = ({ product }) => {
             <center>
               <Button
                 type="submit"
-                onClick={() => addToCart(product.id, 1, productSize)}
+                onClick={() =>
+                  addToCart(product.id, 1, {
+                    [sizeVariant.id]: productSize,
+                  })
+                }
               >
                 Add to cart
               </Button>

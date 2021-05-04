@@ -7,6 +7,7 @@ import {
 import Button from "../button/button";
 
 const CartItem = ({ cartItem }) => {
+  const size = cartItem.selected_options[0].option_name;
   const removeItem = useRemoveCartHandler();
   const updateItemQty = useUpdateCartHandler();
   return (
@@ -19,8 +20,11 @@ const CartItem = ({ cartItem }) => {
       </Image>
       <Information>
         <div className="info">
-          <p>{cartItem.name}</p>
+          <p>
+            {cartItem.name} ({size})
+          </p>
         </div>
+
         <div className="price">
           <p>{cartItem.price.formatted_with_symbol} x</p>
           <p className="qty">{cartItem.quantity}</p>
@@ -38,6 +42,9 @@ const CartItem = ({ cartItem }) => {
           </Button>
         </div>
       </Information>
+      <button className="remove" onClick={() => removeItem(cartItem.id)}>
+        X
+      </button>
     </StyledCartItem>
   );
 };
@@ -48,6 +55,11 @@ const StyledCartItem = styled.div`
   justify-content: center;
   width: 100%;
   margin: 1rem 0;
+  .remove {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
 `;
 
 const Information = styled.div`

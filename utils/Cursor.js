@@ -21,6 +21,7 @@ const Cursor = () => {
     };
 
     const move = () => {
+      if (!cursorRef.current) return;
       cursorRef.current.style.transform = `translate3d(${placeX}px, ${placeY}px, 0)`;
     };
 

@@ -3,11 +3,12 @@ import commerce from "../../utils/commerce";
 import Spinner from "../../utils/Spinner";
 
 const CategoryPage = ({ category, products }) => {
+  console.log(products);
   return (
     <div>
       <center>
-        <h1 style={{ fontWeight: "lighter" }}>
-          This is: {category.name.toUpperCase()}
+        <h1 style={{ fontWeight: "lighter", fontFamily: "aqua-grotesque" }}>
+          {category.name.toUpperCase()}
         </h1>
       </center>
       <ProductList products={products} />
@@ -17,7 +18,7 @@ const CategoryPage = ({ category, products }) => {
 
 export default CategoryPage;
 
-export async function getStaticProps({ params }) {
+export const getStaticProps = async ({ params }) => {
   const { slug } = params;
 
   const category = await commerce.categories.retrieve(slug, {
@@ -25,18 +26,24 @@ export async function getStaticProps({ params }) {
   });
 
   const { data: products } = await commerce.products.list({
-    //category_slug: slug,
+    // category_slug: slug
+  });
+
+  const filterProducts = products.filter((product) => {
+    return product.categories.some((category) => {
+      return category.slug === slug;
+    });
   });
 
   return {
     props: {
       category,
-      products,
+      products: filterProducts,
     },
   };
-}
+};
 
-export async function getStaticPaths() {
+export const getStaticPaths = async () => {
   const { data: categories } = await commerce.categories.list();
 
   return {
@@ -47,4 +54,4 @@ export async function getStaticPaths() {
     })),
     fallback: true,
   };
-}
+};

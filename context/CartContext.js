@@ -34,10 +34,9 @@ export const CartProvider = ({ children }) => {
     setCategories(categories);
   };
 
-  const addToCartHandler = async (productId, quantity) => {
-    const { cart } = await commerce.cart.add(productId, quantity, {
-      options: "hrhgerhreingrei",
-    });
+  const addToCartHandler = async (productId, quantity, variantData) => {
+    console.log(variantData);
+    const { cart } = await commerce.cart.add(productId, quantity, variantData);
     setCart(cart);
   };
 
@@ -73,6 +72,7 @@ export const CartProvider = ({ children }) => {
       await emptyCartHandler();
       await refreshCart();
     } catch (error) {
+      console.log(error.message, "HANDLE");
       setErrorMessage(error.data.error.message);
     }
   };
