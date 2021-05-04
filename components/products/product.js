@@ -20,7 +20,10 @@ const Product = ({ name, price, assets, description }) => {
 };
 
 const StyledProduct = styled(motion.div)`
-  margin: 1rem;
+  @media (min-width: 450px) {
+    margin: 1rem;
+  }
+  margin: 1rem 0;
   height: auto;
   display: flex;
   flex-direction: column;
