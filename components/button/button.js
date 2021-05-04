@@ -21,6 +21,14 @@ const StyledButton = styled.button`
     color: white;
     background: black;
   }
+  &.inverted {
+    border: 1px solid white;
+    color: white;
+    &:hover {
+      cursor: pointer;
+      background: transparent;
+    }
+  }
 `;
 
 export default Button;

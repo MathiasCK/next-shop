@@ -39,6 +39,21 @@ export const Content = styled.div`
 `;
 
 export const Introduction = styled.div`
-  width: 70%;
-  margin: 0 auto;
+  //background-image: url("https://images.unsplash.com/photo-1500907789384-0c3b4c3bdce4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
+  height: 100vh;
+  position: relative;
+  .content {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: saturate(180%) blur(5px);
+    padding: 5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+  }
+  video {
+    min-width: 100%;
+    min-height: 100%;
+  }
 `;

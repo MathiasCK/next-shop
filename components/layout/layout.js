@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
   const router = useRouter();
 
   return (
-    <div style={{ marginBottom: "80px" }}>
+    <div style={router.pathname !== "/" ? { marginBottom: "80px" } : null}>
       {/*
       {router.pathname === "/" && (
         <RouteTransition>

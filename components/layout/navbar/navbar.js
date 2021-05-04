@@ -55,7 +55,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const changeBackground = () => {
-      if (window.scrollY >= 1) {
+      if (window.scrollY >= 735) {
         setActiveNavbar(true);
       } else {
         setActiveNavbar(false);

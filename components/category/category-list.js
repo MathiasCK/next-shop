@@ -46,6 +46,7 @@ const CategoryList = ({ categories }) => {
 const StyledCategories = styled(motion.ul)`
   padding-inline-start: 0 !important;
   width: 100%;
+
   list-style: none;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
