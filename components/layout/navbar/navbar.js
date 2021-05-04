@@ -55,7 +55,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const changeBackground = () => {
-      if (window.scrollY >= 735) {
+      if (window.scrollY >= 1) {
         setActiveNavbar(true);
       } else {
         setActiveNavbar(false);
@@ -149,7 +149,7 @@ const Navbar = () => {
                   onClick={sideBarHandler}
                 >
                   <Link href={`/categories/${category.name}`}>
-                    <p className="sub-header">{category.name}</p>
+                    <p className="sub-header link">{category.name}</p>
                   </Link>
                   <motion.div
                     variants={lineAnim}

@@ -23,8 +23,7 @@ const StyledProduct = styled(motion.div)`
   @media (min-width: 450px) {
     margin: 1rem;
   }
-  margin: 1rem 0;
-  height: auto;
+  margin: 0.5rem 0;
   display: flex;
   flex-direction: column;
   height: 70vh;
@@ -32,7 +31,7 @@ const StyledProduct = styled(motion.div)`
 
 const Image = styled.div`
   width: 100%;
-  min-height: 70%;
+  height: 80%;
   background-size: cover;
   background-position: center;
   background-image: ${({ imageUrl }) => `url(${imageUrl})`};
@@ -62,7 +61,7 @@ const Description = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-height: 30%;
+  height: 20%;
   padding: 0 0.5rem;
   justify-content: center;
   align-items: center;

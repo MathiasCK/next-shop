@@ -1,14 +1,20 @@
+import { motion } from "framer-motion";
 import ProductList from "../../components/products/product-list";
+import { textAnim } from "../../utils/animation";
 import commerce from "../../utils/commerce";
-import Spinner from "../../utils/Spinner";
 
 const CategoryPage = ({ category, products }) => {
   console.log(products);
   return (
     <div>
-      <center>
-        <h1 className="header">{category.name.toUpperCase()}</h1>
-      </center>
+      <motion.h1
+        variants={textAnim}
+        initial="hidden"
+        animate="show"
+        className="background-text"
+      >
+        {category.name.toUpperCase()}
+      </motion.h1>
       <ProductList products={products} />
     </div>
   );

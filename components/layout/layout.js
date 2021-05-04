@@ -8,12 +8,13 @@ const Layout = ({ children }) => {
   const router = useRouter();
 
   return (
-    <div style={router.pathname !== "/" ? { marginBottom: "80px" } : null}>
+    <div style={{ marginBottom: "80px" }}>
+      {/*
       {router.pathname === "/" && (
         <RouteTransition>
           <Hero />
         </RouteTransition>
-      )}
+      )}*/}
 
       <main>
         <Navbar />

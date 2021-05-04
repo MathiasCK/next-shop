@@ -42,7 +42,7 @@ export const sectionAnimation = {
 export const fadeIn = {
   hidden: {
     opacity: 0,
-    y: 20,
+    y: 100,
   },
   show: {
     y: 0,
@@ -101,6 +101,20 @@ export const lineAnim = {
   },
   show: {
     width: "100%",
+    transition: {
+      duration: 0.75,
+    },
+  },
+};
+
+export const textAnim = {
+  hidden: {
+    y: 100,
+    opacity: 0,
+  },
+  show: {
+    y: 0,
+    opacity: 1,
     transition: {
       duration: 0.75,
     },

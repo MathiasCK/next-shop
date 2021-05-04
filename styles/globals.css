@@ -48,6 +48,7 @@ ul {
 
 .sub-header.link {
   text-transform: uppercase;
+  font-size: 2rem;
 }
 
 .sub-header.product {
@@ -56,5 +57,17 @@ ul {
 
 .sub-header.price {
   font-weight: bold;
+}
+
+.background-text {
+  font-size: 15vw;
+  color: rgba(139, 199, 255, 0.2);
+  z-index: -1;
+  -webkit-margin-before: 0 !important;
+          margin-block-start: 0 !important;
+  -webkit-margin-after: 0 !important;
+          margin-block-end: 0 !important;
+  margin-bottom: 30px;
+  height: 100px;
 }
 /*# sourceMappingURL=globals.css.map */

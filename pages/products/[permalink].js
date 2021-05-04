@@ -6,6 +6,7 @@ import styled from "styled-components";
 import Button from "../../components/button/button";
 import RouteTransition from "../../utils/route-transition";
 import { useState } from "react";
+import { media } from "../../utils/media-query";
 
 const ProductPage = ({ product }) => {
   const [productSize, setProductSize] = useState();
@@ -16,10 +17,7 @@ const ProductPage = ({ product }) => {
 
   if (product.variant_groups.length === 0) return;
   const sizeVariant = product.variant_groups[0];
-  console.log(
-    "🚀 ~ file: [permalink].js ~ line 19 ~ ProductPage ~ sizeVariant",
-    sizeVariant
-  );
+
   const sizes = sizeVariant.options;
 
   return (
@@ -34,7 +32,7 @@ const ProductPage = ({ product }) => {
         </ImageContainer>
         <Description>
           <Title className="sub-header">{product.name}</Title>
-          <p>{product.price.formatted_with_symbol}</p>
+          <p className="price">{product.price.formatted_with_symbol}</p>
 
           <div
             className="description"
@@ -74,17 +72,19 @@ const ProductPage = ({ product }) => {
           </form>
         </Description>
       </StyledProductPage>
-      <Title>You might also like</Title>
-      <RelatedProducts>
-        {relatedProducts.map((relatedProduct) => (
-          <Link href={relatedProduct.permalink}>
-            <RelatedProduct
-              key={relatedProduct.id}
-              relatedProduct={relatedProduct}
-            />
-          </Link>
-        ))}
-      </RelatedProducts>
+      <div style={{ marginTop: "auto" }}>
+        <Title>You might also like</Title>
+        <RelatedProducts>
+          {relatedProducts.map((relatedProduct) => (
+            <Link href={relatedProduct.permalink}>
+              <RelatedProduct
+                key={relatedProduct.id}
+                relatedProduct={relatedProduct}
+              />
+            </Link>
+          ))}
+        </RelatedProducts>
+      </div>
     </RouteTransition>
   );
 };
@@ -100,23 +100,35 @@ const StyledProductPage = styled.div`
 `;
 
 const Description = styled.div`
+  ${media.large`
+  height: calc(70vh);
+  `}
   position: sticky;
   top: 5rem;
-  height: calc(70vh);
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
 
   .description {
+    ${media.medium`
+    font-size: 2vh;
+  `}
+    ${media.large`
+  font-size: 3vh;
+  `}
     width: 50%;
-    font-size: calc(10px + 6 * ((100vw - 320px) / 680));
+    font-size: 3vh;
     margin-bottom: 2rem;
     font-weight: lighter !important;
     line-height: em;
   }
   form {
     width: 50%;
+  }
+  .price {
+    font-size: 2vh;
   }
   .size {
     display: flex;
@@ -137,12 +149,13 @@ const Description = styled.div`
 
 const ImageContainer = styled.div`
   flex: 50%;
-  margin: 0 auto;
+  margin: auto 0;
   .images {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin: 0 10%;
+
     img {
       object-fit: cover;
       width: 100%;
@@ -153,8 +166,15 @@ const ImageContainer = styled.div`
 `;
 
 const Title = styled.h1`
+  ${media.medium`
+    font-size: 4vh;
+  `}
+  ${media.large`
+  font-size: 5vh;
+  `}
   text-align: center;
   color: rgba(0, 0, 0, 0.7);
+  font-size: 3vh;
 `;
 
 const RelatedProducts = styled.div`
