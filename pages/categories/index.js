@@ -1,15 +1,13 @@
 import CategoryList from "../../components/category/category-list";
+import { useCategories } from "../../context/CartContext";
 import commerce from "../../utils/commerce";
 
-const Category = ({ categories }) => {
-  return (
-    <div>
-      <h1>Categories</h1>
-      <CategoryList categories={categories} />
-    </div>
-  );
+const Category = () => {
+  const categories = useCategories();
+  return <CategoryList categories={categories} />;
 };
 
+/*
 export async function getStaticProps() {
   const { data: categories } = await commerce.categories.list();
 
@@ -18,6 +16,6 @@ export async function getStaticProps() {
       categories,
     },
   };
-}
+}*/
 
 export default Category;

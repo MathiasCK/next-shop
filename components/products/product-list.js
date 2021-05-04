@@ -3,9 +3,10 @@ import Product from "./product";
 
 import React from "react";
 import styled from "styled-components";
+import Spinner from "../../utils/Spinner";
 
 const ProductList = ({ products }) => {
-  if (products.length === 0) return null;
+  if (products.length === 0) return <Spinner />;
 
   return (
     <StyledProdutList>
@@ -25,9 +26,7 @@ const ProductList = ({ products }) => {
 const StyledProdutList = styled.div`
   padding-inline-start: 0 !important;
   list-style: none;
-  //grid-gap: 1rem;
   width: 100%;
-
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 `;

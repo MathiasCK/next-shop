@@ -1,12 +1,14 @@
 import Link from "next/link";
 import Button from "../components/button/button";
 import CategoryList from "../components/category/category-list";
+import { useCategories } from "../context/CartContext";
 
 import { StyledHome, Content } from "../styles/home/home-styles";
 
 import commerce from "../utils/commerce";
 
-export default function Home({ categories, merchant }) {
+export default function Home({ merchant }) {
+  const categories = useCategories();
   return (
     <div>
       <StyledHome>
@@ -37,11 +39,9 @@ export default function Home({ categories, merchant }) {
 
 export async function getStaticProps() {
   const merchant = await commerce.merchants.about();
-  const { data: categories } = await commerce.categories.list();
 
   return {
     props: {
-      categories,
       merchant,
     },
   };

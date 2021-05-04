@@ -5,9 +5,10 @@ import { motion, useAnimation } from "framer-motion";
 import { sectionAnimation } from "../../utils/animation";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useRef } from "react";
+import Spinner from "../../utils/Spinner";
 
 const CategoryList = ({ categories }) => {
-  if (categories.length === 0) return null;
+  if (!categories) return <Spinner />;
   const controls = useAnimation();
   const { ref, inView } = useInView();
   const animatedRef = useRef(false);

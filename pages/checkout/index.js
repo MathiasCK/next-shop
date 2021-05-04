@@ -19,6 +19,7 @@ import Spinner from "../../utils/Spinner";
 const steps = ["Shipping adress", "Payment details", "Review"];
 
 const Checkout = () => {
+  console.log(cart);
   const cart = useCart();
   const error = useErrorMessage();
   const order = useOrder();

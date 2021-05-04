@@ -5,10 +5,11 @@ const CartContext = createContext({});
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState({});
+  const [products, setProducts] = useState([]);
   const [order, setOrder] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
 
-  const [categories, setCategories] = useState();
+  const [categories, setCategories] = useState([]);
 
   const fetchCart = async () => {
     const cart = await commerce.cart.retrieve();
@@ -17,24 +18,26 @@ export const CartProvider = ({ children }) => {
     //setCart(await commerce.cart.retrieve())
   };
 
+  const fetchProducts = async () => {
+    const { data: products } = await commerce.products.list();
+    setProducts(products);
+  };
+
   useEffect(() => {
     fetchCart();
-    getCategories();
+    fetchCategories();
+    fetchProducts();
   }, []);
 
-  const getCategories = async () => {
+  const fetchCategories = async () => {
     const { data: categories } = await commerce.categories.list();
     setCategories(categories);
   };
 
-  const addToCartHandler = async (productId, quantity, size) => {
-    const { cart } = await commerce.cart.add(
-      productId,
-      quantity,
-      selected_options({
-        size,
-      })
-    );
+  const addToCartHandler = async (productId, quantity) => {
+    const { cart } = await commerce.cart.add(productId, quantity, {
+      options: "hrhgerhreingrei",
+    });
     setCart(cart);
   };
 
@@ -78,11 +81,13 @@ export const CartProvider = ({ children }) => {
     <CartContext.Provider
       value={{
         cart,
+        products,
         categories,
         order,
         errorMessage,
         handleCaptureCheckout,
         fetchCart,
+        fetchProducts,
         addToCartHandler,
         updateCartHandler,
         removeCartHandler,
@@ -97,6 +102,8 @@ export const CartProvider = ({ children }) => {
 export const useCartContext = () => useContext(CartContext);
 
 export const useCart = () => useCartContext().cart;
+
+export const useProducts = () => useCartContext().products;
 
 export const useCategories = () => useCartContext().categories;
 

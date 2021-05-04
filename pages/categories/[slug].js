@@ -2,7 +2,6 @@ import ProductList from "../../components/products/product-list";
 import commerce from "../../utils/commerce";
 
 const CategoryPage = ({ category, products }) => {
-  if (!category || !products) return <div>loading...</div>;
   return (
     <div>
       <h1>{category.name}</h1>
