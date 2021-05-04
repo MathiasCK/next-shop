@@ -1,15 +1,16 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { productAnim } from "../../utils/animation";
+import Spinner from "../../utils/Spinner";
 
 const Product = ({ name, price, assets, description }) => {
-  const image = assets[0].url;
+  const images = assets;
 
   return (
     <StyledProduct variants={productAnim}>
-      <Image>
-        <img src={image} />
-      </Image>
+      {images[1].url && (
+        <Image imageUrl={images[0].url} imageUrl2={images[1].url} />
+      )}
       <Description>
         <h4>{name}</h4>
         <p>{price.formatted_with_symbol}</p>
@@ -29,6 +30,18 @@ const StyledProduct = styled(motion.div)`
 const Image = styled.div`
   width: 100%;
   min-height: 70%;
+  background-size: cover;
+  background-position: center;
+  background-image: ${({ imageUrl }) => `url(${imageUrl})`};
+  will-change: background-image;
+  ${({ imageUrl2 }) =>
+    imageUrl2
+      ? `&:hover {
+				cursor: pointer;
+		background-image: url('${imageUrl2}');
+	}`
+      : ""};
+  /*
   img {
     object-fit: cover;
     width: 100%;
@@ -39,7 +52,7 @@ const Image = styled.div`
     img {
       opacity: 0.7;
     }
-  }
+  }*/
 `;
 
 const Description = styled.div`

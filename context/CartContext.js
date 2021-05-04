@@ -27,8 +27,14 @@ export const CartProvider = ({ children }) => {
     setCategories(categories);
   };
 
-  const addToCartHandler = async (productId, quantity) => {
-    const { cart } = await commerce.cart.add(productId, quantity);
+  const addToCartHandler = async (productId, quantity, size) => {
+    const { cart } = await commerce.cart.add(
+      productId,
+      quantity,
+      selected_options({
+        size,
+      })
+    );
     setCart(cart);
   };
 

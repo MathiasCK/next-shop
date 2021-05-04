@@ -23,8 +23,6 @@ const Navbar = () => {
   const [activeNavbar, setActiveNavbar] = useState(false);
   const [initialBackground, setInitialBackground] = useState(false);
 
-  console.log("NAV", categories);
-
   const sideRef = useRef();
   const controls = useAnimation();
 
@@ -95,14 +93,15 @@ const Navbar = () => {
 
         <Actions>
           {router.asPath !== "/cart" && (
-            <div className="relative">
-              <Link href="/cart">
+            <Link href="/cart">
+              <div className="relative">
                 <AiOutlineShopping
                   style={{ fontSize: "2rem", cursor: "pointer" }}
                 />
-              </Link>
-              <p>{totalItems}</p>
-            </div>
+
+                <p>{totalItems}</p>
+              </div>
+            </Link>
           )}
 
           {/*<p>Number</p>*/}

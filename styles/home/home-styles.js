@@ -19,7 +19,12 @@ export const Hero = styled.div`
     left: 10%;
     text-align: left;
     transform: translate(-10%, -30%);
-    color: white;
+    p {
+      color: white;
+    }
+    svg {
+      color: var(--secondary);
+    }
   }
 `;
 

@@ -6,6 +6,7 @@ import {
 } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import Button from "../button/button";
+import Review from "./Review";
 
 const stripePromise = loadStripe(
   "pk_test_51IHS8SAkxwsxxcnkwLeWPnVkUo18pRARyYpcsm1yPfZ584DsAEUE3VyTWn3j9Frb7Ju8YsfNx3ZSGOpnokpGDEXx00wMVEBCQE"
@@ -36,7 +37,7 @@ const PaymentForm = ({
     } else {
       const orderData = {
         list_items: checkoutToken.live.line_items,
-        cursomer: {
+        customer: {
           firstname: shippingData.firstName,
           lastname: shippingData.lastName,
           email: shippingData.email,
@@ -53,14 +54,13 @@ const PaymentForm = ({
           shipping_method: shippingData.shippingOption,
         },
         payment: {
-          geteway: "stripe",
+          gateway: "stripe",
           stripe: {
             payment_method_id: paymentMethod.id,
           },
         },
       };
 
-      console.log("ORDERDATA", orderData);
       await onCaptureCheckout(checkoutToken.id, orderData);
       timeout();
       nextStep();
@@ -68,6 +68,7 @@ const PaymentForm = ({
   };
   return (
     <div>
+      <Review checkoutToken={checkoutToken} />
       <h1>Payment method</h1>
       <Elements stripe={stripePromise}>
         <ElementsConsumer>

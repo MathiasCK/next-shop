@@ -10,9 +10,10 @@ import Link from "next/link";
 const Cart = () => {
   const emptyCart = useEmptyCartHandler();
   const cart = useCart();
-  console.log("CART", cart);
 
   if (!cart.line_items) return <Spinner />;
+
+  console.log(cart.line_items);
 
   return (
     <RouteTransition>
@@ -22,12 +23,14 @@ const Cart = () => {
             <CartItem cartItem={cartItem} />
           </div>
         ))}
-        <p>Your total is: {cart.subtotal.formatted_with_symbol}</p>
+        <Actions>
+          <p>Your total is: {cart.subtotal.formatted_with_symbol}</p>
+          <Button onClick={emptyCart}>Empty Cart</Button>
+          <Link href="/checkout">
+            <Button>Go To Checkout</Button>
+          </Link>
+        </Actions>
       </StyledCart>
-      <Button onClick={emptyCart}>Empty Cart</Button>
-      <Link href="/checkout">
-        <Button>Go To Checkout</Button>
-      </Link>
     </RouteTransition>
   );
 };
@@ -35,6 +38,13 @@ const Cart = () => {
 const StyledCart = styled.div`
   width: 70vw;
   margin: 0 auto;
+`;
+
+const Actions = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 1rem 0;
 `;
 
 export default Cart;

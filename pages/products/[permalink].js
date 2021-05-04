@@ -4,15 +4,21 @@ import Link from "next/link";
 import RelatedProduct from "../../components/products/related-product";
 import styled from "styled-components";
 import Button from "../../components/button/button";
+import RouteTransition from "../../utils/route-transition";
+import { useState } from "react";
 
 const ProductPage = ({ product }) => {
+  const [productSize, setProductSize] = useState();
   const images = product.assets;
   const addToCart = useAddToCartHandler();
 
   const relatedProducts = product.related_products;
 
+  if (product.variant_groups.length === 0) return;
+  const sizes = product.variant_groups[0].options;
+
   return (
-    <>
+    <RouteTransition>
       <StyledProductPage>
         <ImageContainer>
           {images.map((image) => (
@@ -29,7 +35,32 @@ const ProductPage = ({ product }) => {
             className="description"
             dangerouslySetInnerHTML={{ __html: product.description }}
           ></div>
-          <Button onClick={() => addToCart(product.id, 1)}>Add to cart</Button>
+          <form onSubmit={(e) => e.preventDefault()}>
+            {sizes && (
+              <div className="size">
+                <p>Choose a size: </p>
+                <select
+                  required
+                  onChange={(e) => setProductSize(e.target.value)}
+                >
+                  <option disabled selected>
+                    Size
+                  </option>
+                  {sizes.map((size) => (
+                    <option>{size.name}</option>
+                  ))}
+                </select>
+              </div>
+            )}
+            <center>
+              <Button
+                type="submit"
+                onClick={() => addToCart(product.id, 1, productSize)}
+              >
+                Add to cart
+              </Button>
+            </center>
+          </form>
         </Description>
       </StyledProductPage>
       <Title>You might also like</Title>
@@ -43,7 +74,7 @@ const ProductPage = ({ product }) => {
           </Link>
         ))}
       </RelatedProducts>
-    </>
+    </RouteTransition>
   );
 };
 
@@ -60,7 +91,7 @@ const StyledProductPage = styled.div`
 const Description = styled.div`
   position: sticky;
   top: 5rem;
-  height: 60vh;
+  height: calc(70vh);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -68,9 +99,23 @@ const Description = styled.div`
 
   .description {
     width: 50%;
+    font-size: calc(10px + 6 * ((100vw - 320px) / 680));
     margin-bottom: 2rem;
     font-weight: lighter;
-    line-height: 1em;
+    line-height: em;
+  }
+  form {
+    width: 50%;
+  }
+  .size {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    select {
+      outline: none;
+      border: none;
+    }
   }
   button {
     width: 10%;
@@ -105,8 +150,7 @@ const Title = styled.h1`
 const RelatedProducts = styled.div`
   cursor: pointer;
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  display: flex;
 `;
 
 export default ProductPage;

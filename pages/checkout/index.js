@@ -16,10 +16,9 @@ import {
 import commerce from "../../utils/commerce";
 import Spinner from "../../utils/Spinner";
 
-const steps = ["Shipping adress", "Payment details"];
+const steps = ["Shipping adress", "Payment details", "Review"];
 
 const Checkout = () => {
-  const router = useRouter();
   const cart = useCart();
   const error = useErrorMessage();
   const order = useOrder();
@@ -36,10 +35,10 @@ const Checkout = () => {
         const token = await commerce.checkout.generateToken(cart.id, {
           type: "cart",
         });
-
+        console.log("TOKEN", token);
         setCheckoutToken(token);
       } catch (error) {
-        alert(error.message);
+        console.log("tokenerror", error.message);
       }
     };
     generateToken();
@@ -70,7 +69,9 @@ const Checkout = () => {
           <h2>Order ref: {order.customer_reference}</h2>
         </div>
         <Link href="/">
-          <Button>Back to home</Button>
+          <div>
+            <Button>Back to home</Button>
+          </div>
         </Link>
       </>
     ) : isFinished ? (
@@ -87,14 +88,15 @@ const Checkout = () => {
     );
 
   if (error) {
-    Confirmation = () => {
+    console.log("USER", error);
+    Confirmation = () => (
       <div>
         <h1>Error: {error}</h1>
         <Link href="/">
           <Button>Back to home</Button>
         </Link>
-      </div>;
-    };
+      </div>
+    );
   }
 
   const Form = () =>

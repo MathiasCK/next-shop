@@ -142,7 +142,6 @@ const AddressForm = ({ checkoutToken, next }) => {
             <label>Shipping Country</label>
             <select
               value={shippingCountry}
-              fullWidth
               onChange={(e) => setShippingCountry(e.target.value)}
             >
               {countries.map((country) => (
@@ -157,7 +156,6 @@ const AddressForm = ({ checkoutToken, next }) => {
             <label>Shipping Subdivision</label>
             <select
               value={shippingSubdivsion}
-              fullWidth
               onChange={(e) => setShippingSubdivision(e.target.value)}
             >
               {subdivisions.map((subdivision) => (
@@ -171,7 +169,6 @@ const AddressForm = ({ checkoutToken, next }) => {
             <label>Shipping Option</label>
             <select
               value={shippingOption}
-              fullWidth
               onChange={(e) => {
                 setShippingOption(e.target.value);
               }}
@@ -187,13 +184,28 @@ const AddressForm = ({ checkoutToken, next }) => {
         <Actions>
           <p>Your total is: {cart.subtotal.formatted_with_symbol}</p>
           <Link href="/cart">
-            <Button>Back To Cart</Button>
+            <div>
+              <Button>Back To Cart</Button>
+            </div>
           </Link>
           <Button type="submit">Next</Button>
         </Actions>
       </form>
     </div>
   );
+};
+
+const hello = {
+  status_code: 422,
+  error: {
+    message: "The given data was invalid.",
+    type: "unprocessable_entity",
+    errors: {
+      "payment.gateway": [
+        "The specified payment gateway is not available. Ensure it is configured, and you are using the appropriate API keys (e.g. sandbox or live).",
+      ],
+    },
+  },
 };
 
 export default AddressForm;
