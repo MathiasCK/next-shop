@@ -3,7 +3,12 @@ import { useForm } from "react-hook-form";
 import { useCart } from "../../context/CartContext";
 import commerce from "../../utils/commerce";
 import Button from "../button/button";
-import { Inputs, Selects, Actions } from "./checkout-styles";
+import {
+  Inputs,
+  Selects,
+  Actions,
+} from "../../styles/checkout/checkout-styles";
+
 import Link from "next/link";
 const AddressForm = ({ checkoutToken, next }) => {
   const methods = useForm();
@@ -193,19 +198,6 @@ const AddressForm = ({ checkoutToken, next }) => {
       </form>
     </div>
   );
-};
-
-const hello = {
-  status_code: 422,
-  error: {
-    message: "The given data was invalid.",
-    type: "unprocessable_entity",
-    errors: {
-      "payment.gateway": [
-        "The specified payment gateway is not available. Ensure it is configured, and you are using the appropriate API keys (e.g. sandbox or live).",
-      ],
-    },
-  },
 };
 
 export default AddressForm;
