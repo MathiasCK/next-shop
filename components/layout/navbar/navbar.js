@@ -5,7 +5,7 @@ import {
   Actions,
   StyledSideBar,
   BackDrop,
-} from "./navbar-styles";
+} from "../../../styles/navbar/navbar-styles";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { BiMenuAltRight } from "react-icons/bi";
