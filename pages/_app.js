@@ -1,7 +1,7 @@
 import Cursor from "../utils/Cursor";
 import Layout from "../components/layout/layout";
 import { CartProvider } from "../context/CartContext";
-import "../styles/globals.css";
+import "../styles/css/globals.css";
 
 const MyApp = ({ Component, pageProps }) => {
   return (

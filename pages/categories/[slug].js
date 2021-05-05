@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import ProductList from "../../components/products/product-list";
+import { CategoryName } from "../../styles/categories/category-styles";
 import { textAnim } from "../../utils/animation";
 import commerce from "../../utils/commerce";
 
@@ -7,14 +8,14 @@ const CategoryPage = ({ category, products }) => {
   console.log(products);
   return (
     <div>
-      <motion.h1
+      <CategoryName
         variants={textAnim}
         initial="hidden"
         animate="show"
         className="background-text"
       >
-        {category.name.toUpperCase()}
-      </motion.h1>
+        {category.name}
+      </CategoryName>
       <ProductList products={products} />
     </div>
   );

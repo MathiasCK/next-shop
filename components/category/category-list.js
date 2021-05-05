@@ -1,11 +1,11 @@
 import Link from "next/link";
 import Category from "./Category";
-import styled from "styled-components";
-import { motion, useAnimation } from "framer-motion";
+import { useAnimation } from "framer-motion";
 import { sectionAnimation } from "../../utils/animation";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useRef } from "react";
 import Spinner from "../../utils/Spinner";
+import { StyledCategories } from "../../styles/categories/category-styles";
 
 const CategoryList = ({ categories }) => {
   if (categories.length === 0) return <Spinner />;
@@ -42,14 +42,5 @@ const CategoryList = ({ categories }) => {
     </StyledCategories>
   );
 };
-
-const StyledCategories = styled(motion.ul)`
-  padding-inline-start: 0 !important;
-  width: 100%;
-
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-`;
 
 export default CategoryList;
