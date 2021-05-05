@@ -1,9 +1,14 @@
 import React from "react";
-import styled from "styled-components";
+
 import {
   useRemoveCartHandler,
   useUpdateCartHandler,
 } from "../../context/CartContext";
+import {
+  StyledCartItem,
+  Information,
+  Image,
+} from "../../styles/cart/cart-styles";
 import Button from "../button/button";
 
 const CartItem = ({ cartItem }) => {
@@ -48,49 +53,5 @@ const CartItem = ({ cartItem }) => {
     </StyledCartItem>
   );
 };
-
-const StyledCartItem = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin: 1rem 0;
-  .remove {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-  }
-`;
-
-const Information = styled.div`
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  .info {
-    font-size: 2rem;
-    font-weight: lighter;
-  }
-  .price {
-    display: flex;
-    .qty {
-      margin-left: 0.25rem;
-    }
-  }
-  button {
-    margin-right: 1rem;
-    padding: 0.25rem 0.5rem !important;
-  }
-
-  .buttons {
-    display: flex;
-  }
-`;
-
-const Image = styled.div`
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
 
 export default CartItem;

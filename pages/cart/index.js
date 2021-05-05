@@ -2,10 +2,11 @@ import React from "react";
 import CartItem from "../../components/cart/cart-item";
 import { useCart, useEmptyCartHandler } from "../../context/CartContext";
 import Spinner from "../../utils/Spinner";
-import styled from "styled-components";
+
 import RouteTransition from "../../utils/route-transition";
 import Button from "../../components/button/button";
 import Link from "next/link";
+import { StyledCart, Actions } from "../../styles/cart/cart-styles";
 
 const Cart = () => {
   const emptyCart = useEmptyCartHandler();
@@ -34,17 +35,5 @@ const Cart = () => {
     </RouteTransition>
   );
 };
-
-const StyledCart = styled.div`
-  width: 70vw;
-  margin: 0 auto;
-`;
-
-const Actions = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  padding: 1rem 0;
-`;
 
 export default Cart;
