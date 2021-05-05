@@ -16,23 +16,21 @@ export default function Home() {
         </video>
         <div className="content">
           <h1>Welcome to my Shop!</h1>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <Button className="inverted">Enter Shop</Button>
-            <Button href="#categories" className="inverted">
-              View categories
-            </Button>
-          </div>
+          <center>
+            <Link href="/products">
+              <div>
+                <Button className="inverted">View 2021 Collection</Button>
+              </div>
+            </Link>
+          </center>
         </div>
       </Introduction>
 
       <Content id="categories">
+        <h1 className="background-text">Categories</h1>
         <div className="categories">
           <CategoryList categories={categories} />
         </div>
-
-        <h3>
-          <Link href="/products">View our new collection</Link>
-        </h3>
       </Content>
     </RouteTransition>
   );

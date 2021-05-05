@@ -92,7 +92,7 @@ export const StyledSideBar = styled(motion.div)`
 
       width: 100%;
       li {
-        margin: 2rem;
+        margin: 1rem;
         a {
           text-transform: uppercase;
           text-decoration: none;
@@ -116,4 +116,5 @@ export const BackDrop = styled(motion.div)`
   height: 100vh;
   z-index: 10;
   background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: saturate(180%) blur(1px);
 `;

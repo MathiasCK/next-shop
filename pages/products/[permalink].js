@@ -20,6 +20,13 @@ const ProductPage = ({ product }) => {
 
   const sizes = sizeVariant.options;
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addToCart(product.id, 1, {
+      [sizeVariant.id]: productSize,
+    });
+  };
+
   return (
     <RouteTransition>
       <StyledProductPage>
@@ -38,7 +45,7 @@ const ProductPage = ({ product }) => {
             className="description"
             dangerouslySetInnerHTML={{ __html: product.description }}
           ></div>
-          <form onSubmit={(e) => e.preventDefault()}>
+          <form onSubmit={handleSubmit}>
             {sizes && (
               <div className="size">
                 <p>Choose a size: </p>
@@ -58,16 +65,7 @@ const ProductPage = ({ product }) => {
               </div>
             )}
             <center>
-              <Button
-                type="submit"
-                onClick={() =>
-                  addToCart(product.id, 1, {
-                    [sizeVariant.id]: productSize,
-                  })
-                }
-              >
-                Add to cart
-              </Button>
+              <Button type="submit">Add to cart</Button>
             </center>
           </form>
         </Description>
