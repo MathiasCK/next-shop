@@ -1,5 +1,6 @@
 import React from "react";
-import styled from "styled-components";
+
+import { StyledRelatedProduct } from "../../styles/products/product-styles";
 
 const RelatedProduct = ({ relatedProduct }) => {
   return (
@@ -14,23 +15,5 @@ const RelatedProduct = ({ relatedProduct }) => {
     </StyledRelatedProduct>
   );
 };
-
-const StyledRelatedProduct = styled.div`
-  margin: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 20%;
-  min-height: 100%;
-  .image {
-    width: 100%;
-    height: 80%;
-    img {
-      object-fit: cover;
-      width: 100%;
-      height: 100%;
-    }
-  }
-`;
 
 export default RelatedProduct;

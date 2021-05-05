@@ -2,11 +2,16 @@ import { useAddToCartHandler } from "../../context/CartContext";
 import commerce from "../../utils/commerce";
 import Link from "next/link";
 import RelatedProduct from "../../components/products/related-product";
-import styled from "styled-components";
 import Button from "../../components/button/button";
 import RouteTransition from "../../utils/route-transition";
 import { useState } from "react";
-import { media } from "../../utils/media-query";
+import {
+  Description,
+  StyledProductPage,
+  ImageContainer,
+  Title,
+  RelatedProducts,
+} from "../../styles/products/product-styles";
 
 const ProductPage = ({ product }) => {
   const [productSize, setProductSize] = useState();
@@ -86,101 +91,6 @@ const ProductPage = ({ product }) => {
     </RouteTransition>
   );
 };
-
-const StyledProductPage = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-column-gap: 1rem;
-  grid-row-gap: 2rem;
-  justify-items: center;
-  min-height: 90vh;
-  padding-top: 10px;
-`;
-
-const Description = styled.div`
-  ${media.large`
-  height: calc(70vh);
-  `}
-  position: sticky;
-  top: 5rem;
-  min-height: 70vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-
-  .description {
-    ${media.medium`
-    font-size: 2vh;
-  `}
-    ${media.large`
-  font-size: 3vh;
-  `}
-    width: 50%;
-    font-size: 3vh;
-    margin-bottom: 2rem;
-    font-weight: lighter !important;
-    line-height: em;
-  }
-  form {
-    width: 50%;
-  }
-  .price {
-    font-size: 2vh;
-  }
-  .size {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    border-bottom: 1px solid black;
-    select {
-      outline: none;
-      border: none;
-    }
-  }
-  button {
-    width: 10%;
-    margin-top: 2rem;
-    padding: 1rem !important;
-  }
-`;
-
-const ImageContainer = styled.div`
-  flex: 50%;
-  margin: auto 0;
-  .images {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin: 0 10%;
-
-    img {
-      object-fit: cover;
-      width: 100%;
-      height: 100%;
-      margin-bottom: 0.5rem;
-    }
-  }
-`;
-
-const Title = styled.h1`
-  ${media.medium`
-    font-size: 4vh;
-  `}
-  ${media.large`
-  font-size: 5vh;
-  `}
-  text-align: center;
-  color: rgba(0, 0, 0, 0.7);
-  font-size: 3vh;
-`;
-
-const RelatedProducts = styled.div`
-  cursor: pointer;
-  width: 100%;
-  display: flex;
-  min-height: 30vh;
-`;
 
 export default ProductPage;
 
