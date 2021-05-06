@@ -87,5 +87,6 @@ export const Quantity = styled.div`
   .remove {
     font-weight: lighter;
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    cursor: pointer;
   }
 `;
