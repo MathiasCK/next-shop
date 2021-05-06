@@ -136,7 +136,7 @@ const Navbar = () => {
         variants={container}
       >
         <nav className={sideBar ? "nav-menu active" : "nav-menu"}>
-          <Cart />
+          <Cart sideBarHandler={sideBarHandler} />
         </nav>
       </StyledSideBar>
     </div>

@@ -10,24 +10,17 @@ const Button = ({ children, ...otherProps }) => {
 };
 
 const StyledButton = styled.button`
-  background: transparent;
+  background: rgba(255, 255, 255, 0.4);
   border: 1px solid black;
   cursor: pointer;
   transition: all 0.3s ease;
   color: black;
-  padding: 0.5rem;
+  padding: 1rem;
   width: auto !important;
-  &:hover {
-    color: white;
-    background: black;
-  }
   &.inverted {
-    border: 1px solid white;
+    border: 1px solid black;
+    background: black;
     color: white;
-    &:hover {
-      cursor: pointer;
-      background: transparent;
-    }
   }
 `;
 

@@ -2,15 +2,43 @@ import styled from "styled-components";
 
 // index.js
 export const StyledCart = styled.div`
-  width: 70vw;
-  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  & .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    margin: 0 1rem;
+    border-bottom: 1px solid black;
+    h1 {
+      font-size: 1rem !important;
+    }
+    button {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+  }
 `;
 
 export const Actions = styled.div`
-  display: flex;
   width: 100%;
-  justify-content: space-between;
-  padding: 1rem 0;
+
+  padding: 1rem;
+  background: rgba(173, 216, 230, 0.4);
+  position: absolute;
+  bottom: 0;
+  border-top: 1px solid black;
+  & .price {
+  }
+  & .buttons {
+    display: flex;
+    justify-content: space-between;
+  }
 `;
 
 // cart-item.js

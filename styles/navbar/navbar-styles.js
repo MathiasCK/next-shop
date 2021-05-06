@@ -60,13 +60,13 @@ export const Actions = styled.div`
 export const StyledSideBar = styled(motion.div)`
   nav {
     background: white;
-    z-index: 998;
+    z-index: 1000;
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     position: fixed;
-    top: 67px;
+    top: 0px;
     right: -100%;
     transition: all 0.5s ease;
     will-change: opacity, right;
