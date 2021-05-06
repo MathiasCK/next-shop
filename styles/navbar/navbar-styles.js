@@ -4,6 +4,7 @@ import styled from "styled-components";
 export const StyledNavbar = styled.nav`
   position: fixed;
   height: 70px;
+  width: 100%;
   top: 0;
   left: 0;
   width: 100%;
@@ -25,10 +26,11 @@ export const StyledNavbar = styled.nav`
 `;
 
 export const Title = styled.h6`
-  flex-grow: 1;
   align-items: center;
   display: flex;
   text-decoration: none;
+  cursor: pointer;
+  user-select: none;
   p {
     font-family: "Lobster", cursive;
     margin: 0 1rem;
@@ -41,7 +43,6 @@ export const Actions = styled.div`
   justify-content: space-between;
   align-items: center;
   font-size: 1rem;
-  width: 70px;
   .relative {
     position: relative;
 
@@ -49,9 +50,9 @@ export const Actions = styled.div`
       user-select: none;
       font-size: smaller;
       position: absolute;
-      top: -10%;
-      right: 30%;
-      transform: translate(-30%, 10%);
+      top: -50%;
+      right: -10%;
+      transform: translate(10%, 50%);
     }
   }
 `;
@@ -117,4 +118,11 @@ export const BackDrop = styled(motion.div)`
   z-index: 10;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: saturate(180%) blur(1px);
+`;
+
+export const NavLinks = styled.div`
+  display: flex;
+  h1 {
+    margin: 0 0.5rem;
+  }
 `;

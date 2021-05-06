@@ -8,7 +8,7 @@ import { StyledProdutList } from "../../styles/products/product-styles";
 
 const ProductList = ({ products }) => {
   if (products.length === 0) return <Spinner />;
-
+  console.log(products);
   return (
     <RouteTransition>
       <StyledProdutList>

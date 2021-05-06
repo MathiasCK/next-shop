@@ -44,7 +44,6 @@ const ProductPage = ({ product }) => {
         </ImageContainer>
         <Description>
           <Title className="sub-header">{product.name}</Title>
-          <p className="price">{product.price.formatted_with_symbol}</p>
 
           <div
             className="description"
@@ -70,7 +69,9 @@ const ProductPage = ({ product }) => {
               </div>
             )}
             <center>
-              <Button type="submit">Add to cart</Button>
+              <Button type="submit">
+                Add to cart | {product.price.formatted_with_symbol}
+              </Button>
             </center>
           </form>
         </Description>

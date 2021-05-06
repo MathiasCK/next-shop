@@ -5,6 +5,7 @@ import {
   Actions,
   StyledSideBar,
   BackDrop,
+  NavLinks,
 } from "../../../styles/navbar/navbar-styles";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -14,10 +15,12 @@ import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import { container, navLinkFade, lineAnim } from "../../../utils/animation";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { useCart, useCategories } from "../../../context/CartContext";
+import Cart from "../../cart/cart";
 
 const Navbar = () => {
   const router = useRouter();
   const categories = useCategories();
+
   const [sideBar, setSideBar] = useState();
   const [visibleNavbar, setVisibleNavbar] = useState(false);
   const [activeNavbar, setActiveNavbar] = useState(false);
@@ -79,38 +82,31 @@ const Navbar = () => {
         }
         className={activeNavbar || initialBackground ? "active" : undefined}
       >
+        <NavLinks style={{ display: "flex" }}>
+          <h1 className="sub-heading">Products</h1>
+          <h1 className="sub-heading">About</h1>
+        </NavLinks>
         <Title>
           <Link href="/">
-            <img
-              className="logo"
-              src={"/crown.svg"}
-              alt="Commerce.js"
-              height="30px"
-            />
+            <p>Commerce.js</p>
           </Link>
-          <p>Commerce.js</p>
         </Title>
+        {/*
+        <NavLinks>
+          {categories &&
+            categories.map((category) => (
+              <Link href={`/categories/${category.name}`}>
+                <p>{category.name}</p>
+              </Link>
+            ))}
+        </NavLinks>*/}
+        <Actions onClick={sideBarHandler}>
+          <div className="relative">
+            <AiOutlineShopping
+              style={{ fontSize: "2rem", cursor: "pointer" }}
+            />
 
-        <Actions>
-          {router.asPath !== "/cart" && (
-            <Link href="/cart">
-              <div className="relative">
-                <AiOutlineShopping
-                  style={{ fontSize: "2rem", cursor: "pointer" }}
-                />
-
-                <p>{totalItems}</p>
-              </div>
-            </Link>
-          )}
-
-          {/*<p>Number</p>*/}
-          <div onClick={sideBarHandler}>
-            {sideBar ? (
-              <AiOutlineClose style={{ fontSize: "2rem", cursor: "pointer" }} />
-            ) : (
-              <BiMenuAltRight style={{ fontSize: "2rem", cursor: "pointer" }} />
-            )}
+            <p>{totalItems}</p>
           </div>
         </Actions>
       </StyledNavbar>
@@ -140,24 +136,7 @@ const Navbar = () => {
         variants={container}
       >
         <nav className={sideBar ? "nav-menu active" : "nav-menu"}>
-          <ul>
-            {categories &&
-              categories.map((category) => (
-                <motion.li
-                  variants={navLinkFade}
-                  key={category.id}
-                  onClick={sideBarHandler}
-                >
-                  <Link href={`/categories/${category.name}`}>
-                    <p className="sub-header link">{category.name}</p>
-                  </Link>
-                  <motion.div
-                    variants={lineAnim}
-                    className="border"
-                  ></motion.div>
-                </motion.li>
-              ))}
-          </ul>
+          <Cart />
         </nav>
       </StyledSideBar>
     </div>

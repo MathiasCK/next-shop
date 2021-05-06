@@ -1,10 +1,10 @@
 import React from "react";
-import CartItem from "../../components/cart/cart-item";
+import CartItem from "./cart-item";
 import { useCart, useEmptyCartHandler } from "../../context/CartContext";
 import Spinner from "../../utils/Spinner";
 
 import RouteTransition from "../../utils/route-transition";
-import Button from "../../components/button/button";
+import Button from "../button/button";
 import Link from "next/link";
 import { StyledCart, Actions } from "../../styles/cart/cart-styles";
 
