@@ -91,6 +91,7 @@ export const Description = styled.div`
     }
     p {
       font-weight: lighter;
+      padding: 0 0.5rem;
     }
   }
 `;
