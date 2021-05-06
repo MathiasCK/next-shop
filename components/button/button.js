@@ -22,6 +22,11 @@ const StyledButton = styled.button`
     background: black;
     color: white;
   }
+  &.intro {
+    border: 1px solid black;
+    background: transparent;
+    color: black;
+  }
 `;
 
 export default Button;

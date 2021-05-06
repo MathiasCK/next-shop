@@ -19,7 +19,7 @@ export default function Home() {
           <center>
             <Link href="/products">
               <div>
-                <Button className="inverted">View 2021 Collection</Button>
+                <Button className="intro">View 2021 Collection</Button>
               </div>
             </Link>
           </center>

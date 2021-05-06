@@ -29,26 +29,29 @@ export const Description = styled.div`
   position: sticky;
   top: 5rem;
   min-height: 70vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
-
-  .description {
+  .grow {
     ${media.medium`
-    font-size: 2vh;
+    width: 70%;
   `}
     ${media.large`
-  font-size: 3vh;
+  width: 50%;
   `}
-    width: 50%;
+    width: 90%;
+  }
+
+  .description {
+    width: 100%;
     font-size: 3vh;
     margin-bottom: 2rem;
     font-weight: lighter !important;
     line-height: em;
   }
   form {
-    width: 50%;
+    width: 100%;
   }
   .price {
     font-size: 2vh;
@@ -64,9 +67,31 @@ export const Description = styled.div`
     }
   }
   button {
-    width: 10%;
+    width: 100% !important;
     margin-top: 2rem;
     padding: 1rem !important;
+  }
+  .information {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    padding: 1rem 0;
+    border-bottom: 1px solid black;
+    .info-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    a {
+      cursor: pointer;
+    }
+    h4 {
+      font-weight: 300;
+    }
+    p {
+      font-weight: lighter;
+    }
   }
 `;
 
@@ -74,10 +99,13 @@ export const ImageContainer = styled.div`
   flex: 50%;
   margin: auto 0;
   .images {
+    ${media.large`
+    margin: 0 10%;
+  `}
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin: 0 10%;
+    margin: 1rem 0;
 
     img {
       object-fit: cover;
@@ -132,18 +160,6 @@ export const ProductImage = styled.div`
 		background-image: url('${imageUrl2}');
 	}`
       : ""};
-  /*
-  img {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    transition: all 0.3s ease;
-  }
-  &::hover {
-    img {
-      opacity: 0.7;
-    }
-  }*/
 `;
 
 export const ProductDescription = styled.div`

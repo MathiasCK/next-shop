@@ -8,6 +8,8 @@ import {
   StyledCartItem,
   Information,
   Image,
+  Header,
+  Quantity,
 } from "../../styles/cart/cart-styles";
 import Button from "../button/button";
 
@@ -21,28 +23,16 @@ const CartItem = ({ cartItem }) => {
         <img src={cartItem.media.source} />
       </Image>
       <Information>
-        <div
-          style={{
-            minWidth: "100%",
-
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-        >
+        <Header>
           <p>{cartItem.name}</p>
-          <p>{cartItem.price.formatted_with_symbol} x</p>
+          <p>{cartItem.price.formatted_with_symbol}</p>
+        </Header>
+
+        <div>
+          <p style={{ fontWeight: "lighter" }}>Size: {size}</p>
         </div>
-        <div style={{ display: "flex", fontWeight: "lighter" }}>
-          <p>{size}</p>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <div style={{ display: "flex" }}>
+        <Quantity>
+          <div className="buttons">
             <button
               onClick={() => updateItemQty(cartItem.id, cartItem.quantity - 1)}
             >
@@ -56,11 +46,11 @@ const CartItem = ({ cartItem }) => {
             </button>
           </div>
           <div>
-            <button className="remove" onClick={() => removeItem(cartItem.id)}>
-              X
-            </button>
+            <p className="remove" onClick={() => removeItem(cartItem.id)}>
+              Remove
+            </p>
           </div>
-        </div>
+        </Quantity>
         {/*
         <div className="info">
           <p>
