@@ -42,7 +42,7 @@ const Cart = ({ sideBarHandler }) => {
           <p>Your total is: {cart.subtotal.formatted_with_symbol}</p>
         </div>
         <div className="buttons">
-          <Button>Continue Shopping</Button>
+          <Button onClick={sideBarHandler}>Continue Shopping</Button>
           <Link href="/checkout">
             <Button className="inverted">Go To Checkout</Button>
           </Link>

@@ -29,13 +29,11 @@ const CartItem = ({ cartItem }) => {
             justifyContent: "space-between",
           }}
         >
-          <p>
-            {cartItem.name} ({size})
-          </p>
+          <p>{cartItem.name}</p>
           <p>{cartItem.price.formatted_with_symbol} x</p>
         </div>
         <div style={{ display: "flex", fontWeight: "lighter" }}>
-          <p>lorem</p>
+          <p>{size}</p>
         </div>
         <div
           style={{
