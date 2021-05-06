@@ -45,43 +45,27 @@ export const Actions = styled.div`
 export const StyledCartItem = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
   width: 100%;
-  margin: 1rem 0;
-  .remove {
+  padding: 0.5rem;
+`;
+
+export const Information = styled.div`
+  margin: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  button {
     background: transparent;
     border: none;
     cursor: pointer;
   }
 `;
 
-export const Information = styled.div`
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  .info {
-    font-size: 2rem;
-    font-weight: lighter;
-  }
-  .price {
-    display: flex;
-    .qty {
-      margin-left: 0.25rem;
-    }
-  }
-  button {
-    margin-right: 1rem;
-    padding: 0.25rem 0.5rem !important;
-  }
-
-  .buttons {
-    display: flex;
-  }
-`;
-
 export const Image = styled.div`
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 150px;
+  width: 150px;
+  img {
+    width: 100%;
+    height: 100%;
+  }
 `;

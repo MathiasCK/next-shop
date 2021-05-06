@@ -83,8 +83,8 @@ const Navbar = () => {
         className={activeNavbar || initialBackground ? "active" : undefined}
       >
         <NavLinks style={{ display: "flex" }}>
-          <h1 className="sub-heading">Products</h1>
-          <h1 className="sub-heading">About</h1>
+          <h1 className="sub-header nav-link">Products</h1>
+          <h1 className="sub-header nav-link">About</h1>
         </NavLinks>
         <Title>
           <Link href="/">
@@ -101,6 +101,7 @@ const Navbar = () => {
             ))}
         </NavLinks>*/}
         <Actions onClick={sideBarHandler}>
+          <h1 className="sub-header nav-link">Login</h1>
           <div className="relative">
             <AiOutlineShopping
               style={{ fontSize: "2rem", cursor: "pointer" }}

@@ -18,12 +18,52 @@ const CartItem = ({ cartItem }) => {
   return (
     <StyledCartItem>
       <Image>
-        <img
-          src={cartItem.media.source}
-          style={{ height: "200px", width: "200px" }}
-        />
+        <img src={cartItem.media.source} />
       </Image>
       <Information>
+        <div
+          style={{
+            minWidth: "100%",
+
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <p>
+            {cartItem.name} ({size})
+          </p>
+          <p>{cartItem.price.formatted_with_symbol} x</p>
+        </div>
+        <div style={{ display: "flex", fontWeight: "lighter" }}>
+          <p>lorem</p>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <div style={{ display: "flex" }}>
+            <button
+              onClick={() => updateItemQty(cartItem.id, cartItem.quantity - 1)}
+            >
+              -
+            </button>
+            <p className="qty">{cartItem.quantity}</p>
+            <button
+              onClick={() => updateItemQty(cartItem.id, cartItem.quantity + 1)}
+            >
+              +
+            </button>
+          </div>
+          <div>
+            <button className="remove" onClick={() => removeItem(cartItem.id)}>
+              X
+            </button>
+          </div>
+        </div>
+        {/*
         <div className="info">
           <p>
             {cartItem.name} ({size})
@@ -32,7 +72,6 @@ const CartItem = ({ cartItem }) => {
 
         <div className="price">
           <p>{cartItem.price.formatted_with_symbol} x</p>
-          <p className="qty">{cartItem.quantity}</p>
         </div>
         <div className="buttons">
           <Button
@@ -40,16 +79,17 @@ const CartItem = ({ cartItem }) => {
           >
             -
           </Button>
+          <p className="qty">{cartItem.quantity}</p>
           <Button
             onClick={() => updateItemQty(cartItem.id, cartItem.quantity + 1)}
           >
             +
           </Button>
-        </div>
-      </Information>
-      <button className="remove" onClick={() => removeItem(cartItem.id)}>
+          <button className="remove" onClick={() => removeItem(cartItem.id)}>
         X
       </button>
+        </div>*/}
+      </Information>
     </StyledCartItem>
   );
 };

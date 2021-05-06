@@ -46,6 +46,17 @@ ul {
   font-family: "Open Sans";
 }
 
+.sub-header.nav-link {
+  font-size: 1.5rem;
+  font-weight: lighter;
+  margin: 0 0.5rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+}
+
 .sub-header.link {
   text-transform: uppercase;
   font-size: 2rem;
