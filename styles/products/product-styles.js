@@ -7,8 +7,15 @@ export const StyledProductList = styled.div`
   padding-inline-start: 0 !important;
   list-style: none;
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
+  //display: grid;
+  //grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  .product {
+    ${media.large`
+  min-width: 33%;
+  `}
+    min-width: 50%;
+  }
 `;
 
 // [permalink.js]
@@ -164,6 +171,7 @@ export const ProductImage = styled.div`
 `;
 
 export const ProductDescription = styled.div`
+  text-align: center;
   display: flex;
   flex-direction: column;
   width: 100%;

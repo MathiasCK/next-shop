@@ -17,16 +17,22 @@ const ProductList = () => {
         {products.map((category) => {
           return (
             <>
-              <div>{category.name}</div>
+              <center>
+                <div style={{ padding: "1rem 0" }} className="header">
+                  {category.name.toUpperCase()}
+                </div>
+              </center>
               <StyledProductList>
                 {category.productsData.map((product) => (
-                  <li key={product.permalink}>
-                    <Link href={`/products/${product.permalink}`}>
-                      <a>
-                        <Product {...product} />
-                      </a>
-                    </Link>
-                  </li>
+                  <div className="product">
+                    <li key={product.permalink}>
+                      <Link href={`/products/${product.permalink}`}>
+                        <a>
+                          <Product {...product} />
+                        </a>
+                      </Link>
+                    </li>
+                  </div>
                 ))}
               </StyledProductList>
             </>
