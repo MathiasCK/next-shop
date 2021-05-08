@@ -20,7 +20,7 @@ export const StyledCategory = styled(motion.div)`
   .content {
     position: relative !important;
     height: 500px;
-    width: auto;
+    width: 50vw;
 
     img {
       width: 100%;
@@ -29,6 +29,10 @@ export const StyledCategory = styled(motion.div)`
       transition: all 0.3s ease-in-out;
       background-position: center;
       background-size: cover;
+      &:hover {
+        transform: scale(1.1);
+        transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+      }
     }
     p {
       background: rgba(255, 255, 255, 0.5);
@@ -41,16 +45,6 @@ export const StyledCategory = styled(motion.div)`
       transform: translate(-50%, -50%);
       z-index: 20;
       transition: all 0.3s ease-in-out;
-    }
-    &:hover {
-      img {
-        opacity: 0.9;
-        //transform: scale(1.1);
-        //transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
-      }
-      p {
-        background: rgba(255, 255, 255, 1);
-      }
     }
   }
 `;

@@ -29,7 +29,7 @@ export const StyledCart = styled.div`
 export const Actions = styled.div`
   width: 100%;
   padding: 1rem;
-  background: rgba(173, 216, 230, 0.4);
+  background: var(--secondary);
   border-top: 1px solid black;
   position: fixed;
   bottom: 0;

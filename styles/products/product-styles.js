@@ -8,13 +8,17 @@ export const StyledProductList = styled.div`
   list-style: none;
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   //display: grid;
   //grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   .product {
     ${media.large`
   min-width: 33%;
   `}
-    min-width: 50%;
+    ${media.medium`
+  min-width: 50%;
+  `}
+    min-width: 100%;
   }
 `;
 
@@ -140,6 +144,7 @@ export const RelatedProducts = styled.div`
   cursor: pointer;
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   min-height: 30vh;
 `;
 
@@ -187,8 +192,14 @@ export const StyledRelatedProduct = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 20%;
   min-height: 100%;
+  ${media.large`
+  width: 25%;
+  `}
+  ${media.medium`
+  width: 33%;
+  `}
+    width: 50%;
   .image {
     width: 100%;
     height: 80%;
@@ -197,5 +208,8 @@ export const StyledRelatedProduct = styled.div`
       width: 100%;
       height: 100%;
     }
+  }
+  .title {
+    width: 100%;
   }
 `;

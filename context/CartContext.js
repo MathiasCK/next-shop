@@ -16,6 +16,10 @@ export const CartProvider = ({ children }) => {
     setCart(cart);
     //setCart(await commerce.cart.retrieve())
   };
+  const fetchCategories = async () => {
+    const { data: categories } = await commerce.categories.list();
+    setCategories(categories);
+  };
 
   const fetchProducts = async () => {
     const { data: products } = await commerce.products.list();
@@ -35,14 +39,9 @@ export const CartProvider = ({ children }) => {
     setProducts(productsPerCategory);
   };
 
-  const fetchCategories = async () => {
-    const { data: categories } = await commerce.categories.list();
-    setCategories(categories);
-  };
-
   useEffect(() => {
     fetchCart();
-    fetchCategories();
+    //fetchCategories();
     fetchProducts();
   }, []);
 

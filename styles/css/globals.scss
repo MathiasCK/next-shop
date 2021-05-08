@@ -48,12 +48,8 @@ ul {
 
 :root {
   --primary: white;
-  --secondary: #dc3240;
+  --secondary: rgba(139, 199, 255, 0.2);
   --shadow: 0px 8px 30px rgba(0, 0, 0, 0.12);
-}
-
-.secondary {
-  color: var(--secondary);
 }
 
 .header {
@@ -86,10 +82,14 @@ ul {
 .background-text {
   //transform-origin: center;
   font-size: 15vw;
-  color: rgba(139, 199, 255, 0.2);
+  color: rgba(0, 0, 0, 0.9);
   z-index: -1;
   margin-block-start: 0 !important;
   margin-block-end: 0 !important;
   margin-bottom: -200px;
   height: 100px;
+  user-select: none;
+  &.blue {
+    color: var(--secondary);
+  }
 }

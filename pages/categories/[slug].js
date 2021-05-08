@@ -11,7 +11,7 @@ const CategoryPage = ({ category, products }) => {
         variants={textAnim}
         initial="hidden"
         animate="show"
-        className="background-text"
+        className="background-text blue"
       >
         {category.name}
       </CategoryName>
