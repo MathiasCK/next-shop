@@ -36,12 +36,12 @@ export const CartProvider = ({ children }) => {
         },
       ];
     }, []);
-    setProducts(productsPerCategory);
+    setProducts(products);
   };
 
   useEffect(() => {
     fetchCart();
-    //fetchCategories();
+    fetchCategories();
     fetchProducts();
   }, []);
 

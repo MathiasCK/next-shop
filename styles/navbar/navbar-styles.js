@@ -127,9 +127,10 @@ export const NavLinks = styled.div`
   }
 `;
 
-export const ProductMenu = styled.div`
+export const StyledProductMenu = styled.div`
   height: 30vh;
-  border-bottom: 1px solid black;
   transition: 0.3s all ease-in-out;
-  background: black;
+  background: var(--secondary);
+  margin-top: 70px;
+  text-transform: uppercase;
 `;

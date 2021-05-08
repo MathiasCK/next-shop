@@ -6,17 +6,22 @@ import {
   StyledSideBar,
   BackDrop,
   NavLinks,
-  ProductMenu,
 } from "../../../styles/navbar/navbar-styles";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { BiMenuAltRight } from "react-icons/bi";
-import { AiOutlineClose, AiOutlineShopping } from "react-icons/ai";
-import { AnimatePresence, motion, useAnimation } from "framer-motion";
-import { container, navLinkFade, lineAnim } from "../../../utils/animation";
+
+import { AiOutlineShopping } from "react-icons/ai";
+import { AnimatePresence, useAnimation } from "framer-motion";
+import { container } from "../../../utils/animation";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
-import { useCart, useCategories } from "../../../context/CartContext";
+import {
+  useCart,
+  useCategories,
+  useProducts,
+} from "../../../context/CartContext";
 import Cart from "../../cart/cart";
+
+import ProductMenu from "./product-menu";
 
 const Navbar = () => {
   const router = useRouter();
@@ -30,6 +35,11 @@ const Navbar = () => {
 
   const sideRef = useRef();
   const controls = useAnimation();
+
+  const products = useProducts();
+  const filterProducts = products.filter((product) => {
+    return product.sku;
+  });
 
   const cart = useCart();
   const totalItems = cart.total_items;
@@ -91,11 +101,11 @@ const Navbar = () => {
           className={activeNavbar || initialBackground ? "active" : undefined}
         >
           <NavLinks style={{ display: "flex" }}>
-            <a onMouseOver={showProducts}>
-              <h1 on className="sub-header nav-link">
+            <Link href="/products">
+              <h1 onMouseOver={showProducts} className="sub-header nav-link">
                 Products
               </h1>
-            </a>
+            </Link>
 
             <Link href="/about">
               <div>
@@ -134,6 +144,7 @@ const Navbar = () => {
             </div>
           </Actions>
         </StyledNavbar>
+
         <AnimatePresence>
           {sideBar && (
             <BackDrop
@@ -165,16 +176,11 @@ const Navbar = () => {
         </StyledSideBar>
       </div>
       {productMenu && (
-        <ProductMenu>
-          {categories &&
-            categories.map((category) => (
-              <Link href={`/categories/${category.name}`}>
-                <div>
-                  <p>{category.name}</p>
-                </div>
-              </Link>
-            ))}
-        </ProductMenu>
+        <ProductMenu
+          onMouseLeave={showProducts}
+          filterProducts={filterProducts}
+          categories={categories}
+        />
       )}
     </>
   );
