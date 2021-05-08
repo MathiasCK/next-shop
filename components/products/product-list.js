@@ -4,24 +4,35 @@ import Product from "./product";
 import React from "react";
 import Spinner from "../../utils/Spinner";
 import RouteTransition from "../../utils/route-transition";
-import { StyledProdutList } from "../../styles/products/product-styles";
+import { StyledProductList } from "../../styles/products/product-styles";
+import { useProducts } from "../../context/CartContext";
 
-const ProductList = ({ products }) => {
+const ProductList = () => {
+  const products = useProducts();
   if (products.length === 0) return <Spinner />;
-  console.log(products);
+
   return (
     <RouteTransition>
-      <StyledProdutList>
-        {products.map((product) => (
-          <li key={product.permalink}>
-            <Link href={`/products/${product.permalink}`}>
-              <a>
-                <Product {...product} />
-              </a>
-            </Link>
-          </li>
-        ))}
-      </StyledProdutList>
+      <div>
+        {products.map((category) => {
+          return (
+            <>
+              <div>{category.name}</div>
+              <StyledProductList>
+                {category.productsData.map((product) => (
+                  <li key={product.permalink}>
+                    <Link href={`/products/${product.permalink}`}>
+                      <a>
+                        <Product {...product} />
+                      </a>
+                    </Link>
+                  </li>
+                ))}
+              </StyledProductList>
+            </>
+          );
+        })}
+      </div>
     </RouteTransition>
   );
 };

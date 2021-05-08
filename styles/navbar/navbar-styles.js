@@ -126,3 +126,10 @@ export const NavLinks = styled.div`
     margin: 0 0.5rem;
   }
 `;
+
+export const ProductMenu = styled.div`
+  height: 30vh;
+  border-bottom: 1px solid black;
+  transition: 0.3s all ease-in-out;
+  background: black;
+`;

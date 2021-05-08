@@ -8,7 +8,6 @@ export const CartProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [order, setOrder] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
-
   const [categories, setCategories] = useState([]);
 
   const fetchCart = async () => {
@@ -20,7 +19,25 @@ export const CartProvider = ({ children }) => {
 
   const fetchProducts = async () => {
     const { data: products } = await commerce.products.list();
-    setProducts(products);
+    const { data: categories } = await commerce.categories.list();
+
+    const productsPerCategory = categories.reduce((acc, category) => {
+      return [
+        ...acc,
+        {
+          ...category,
+          productsData: products.filter((product) =>
+            product.categories.find((cat) => cat.id === category.id)
+          ),
+        },
+      ];
+    }, []);
+    setProducts(productsPerCategory);
+  };
+
+  const fetchCategories = async () => {
+    const { data: categories } = await commerce.categories.list();
+    setCategories(categories);
   };
 
   useEffect(() => {
@@ -29,13 +46,7 @@ export const CartProvider = ({ children }) => {
     fetchProducts();
   }, []);
 
-  const fetchCategories = async () => {
-    const { data: categories } = await commerce.categories.list();
-    setCategories(categories);
-  };
-
   const addToCartHandler = async (productId, quantity, variantData) => {
-    console.log(variantData);
     const { cart } = await commerce.cart.add(productId, quantity, variantData);
     setCart(cart);
   };

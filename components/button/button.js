@@ -23,9 +23,9 @@ const StyledButton = styled.button`
     color: white;
   }
   &.intro {
-    border: 1px solid black;
+    border: 1px solid white;
     background: transparent;
-    color: black;
+    color: white;
   }
 `;
 

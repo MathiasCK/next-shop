@@ -5,22 +5,12 @@ import { useProducts } from "../../context/CartContext";
 import commerce from "../../utils/commerce";
 import RouteTransition from "../../utils/route-transition";
 
-const Products = ({ products }) => {
+const Products = () => {
   return (
     <RouteTransition>
-      <ProductList products={products} />
+      <ProductList />
     </RouteTransition>
   );
 };
-
-export async function getStaticProps() {
-  const { data: products } = await commerce.products.list();
-
-  return {
-    props: {
-      products,
-    },
-  };
-}
 
 export default Products;

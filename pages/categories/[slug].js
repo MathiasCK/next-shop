@@ -5,7 +5,6 @@ import { textAnim } from "../../utils/animation";
 import commerce from "../../utils/commerce";
 
 const CategoryPage = ({ category, products }) => {
-  console.log(products);
   return (
     <div>
       <CategoryName

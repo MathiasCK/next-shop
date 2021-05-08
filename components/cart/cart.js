@@ -27,8 +27,6 @@ const Cart = ({ sideBarHandler }) => {
     );
   }
 
-  console.log(cart.line_items);
-
   return (
     <StyledCart>
       <div className="title">

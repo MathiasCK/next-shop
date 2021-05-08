@@ -6,6 +6,7 @@ import {
   StyledSideBar,
   BackDrop,
   NavLinks,
+  ProductMenu,
 } from "../../../styles/navbar/navbar-styles";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -25,6 +26,7 @@ const Navbar = () => {
   const [visibleNavbar, setVisibleNavbar] = useState(false);
   const [activeNavbar, setActiveNavbar] = useState(false);
   const [initialBackground, setInitialBackground] = useState(false);
+  const [productMenu, setProductMenu] = useState(false);
 
   const sideRef = useRef();
   const controls = useAnimation();
@@ -72,87 +74,109 @@ const Navbar = () => {
     };
   }, []);
 
+  const showProducts = () => {
+    console.log("cliked");
+    setProductMenu(!productMenu);
+  };
+
   return (
-    <div>
-      <StyledNavbar
-        style={
-          router.asPath !== "/"
-            ? { color: "black", background: "white" }
-            : undefined
-        }
-        className={activeNavbar || initialBackground ? "active" : undefined}
-      >
-        <NavLinks style={{ display: "flex" }}>
-          <Link href="/products">
-            <div>
-              <h1 className="sub-header nav-link">Products</h1>
+    <>
+      <div>
+        <StyledNavbar
+          style={
+            router.asPath !== "/"
+              ? { color: "black", background: "white" }
+              : undefined
+          }
+          className={activeNavbar || initialBackground ? "active" : undefined}
+        >
+          <NavLinks style={{ display: "flex" }}>
+            <a onMouseOver={showProducts}>
+              <h1 on className="sub-header nav-link">
+                Products
+              </h1>
+            </a>
+
+            <Link href="/about">
+              <div>
+                <h1 className="sub-header nav-link">About</h1>
+              </div>
+            </Link>
+          </NavLinks>
+
+          <Title>
+            <Link href="/">
+              <p>Commerce.js</p>
+            </Link>
+          </Title>
+          {/*
+      <NavLinks>
+        {categories &&
+          categories.map((category) => (
+            <Link href={`/categories/${category.name}`}>
+              <p>{category.name}</p>
+            </Link>
+          ))}
+      </NavLinks>*/}
+
+          <Actions onClick={sideBarHandler}>
+            <Link href="/login">
+              <div>
+                <h1 className="sub-header nav-link">Login</h1>
+              </div>
+            </Link>
+            <div className="relative">
+              <AiOutlineShopping
+                style={{ fontSize: "2rem", cursor: "pointer" }}
+              />
+
+              <p>{totalItems}</p>
             </div>
-          </Link>
-          <Link href="/about">
-            <div>
-              <h1 className="sub-header nav-link">About</h1>
-            </div>
-          </Link>
-        </NavLinks>
-        <Title>
-          <Link href="/">
-            <p>Commerce.js</p>
-          </Link>
-        </Title>
-        {/*
-        <NavLinks>
+          </Actions>
+        </StyledNavbar>
+        <AnimatePresence>
+          {sideBar && (
+            <BackDrop
+              onClick={sideBarHandler}
+              initial={{
+                opacity: 0,
+              }}
+              animate={{
+                opacity: 1,
+                transition: {
+                  duration: 0.75,
+                },
+              }}
+              exit={{
+                opacity: 0,
+              }}
+            />
+          )}
+        </AnimatePresence>
+        <StyledSideBar
+          ref={sideRef}
+          initial="hidden"
+          animate={controls}
+          variants={container}
+        >
+          <nav className={sideBar ? "nav-menu active" : "nav-menu"}>
+            <Cart sideBarHandler={sideBarHandler} />
+          </nav>
+        </StyledSideBar>
+      </div>
+      {productMenu && (
+        <ProductMenu>
           {categories &&
             categories.map((category) => (
               <Link href={`/categories/${category.name}`}>
-                <p>{category.name}</p>
+                <div>
+                  <p>{category.name}</p>
+                </div>
               </Link>
             ))}
-        </NavLinks>*/}
-        <Actions onClick={sideBarHandler}>
-          <Link href="/login">
-            <div>
-              <h1 className="sub-header nav-link">Login</h1>
-            </div>
-          </Link>
-          <div className="relative">
-            <AiOutlineShopping
-              style={{ fontSize: "2rem", cursor: "pointer" }}
-            />
-
-            <p>{totalItems}</p>
-          </div>
-        </Actions>
-      </StyledNavbar>
-      <AnimatePresence>
-        {sideBar && (
-          <BackDrop
-            onClick={sideBarHandler}
-            initial={{
-              opacity: 0,
-            }}
-            animate={{
-              opacity: 1,
-              transition: {
-                duration: 0.75,
-              },
-            }}
-            exit={{
-              opacity: 0,
-            }}
-          />
-        )}
-      </AnimatePresence>
-      <StyledSideBar
-        ref={sideRef}
-        initial="hidden"
-        animate={controls}
-        variants={container}
-      >
-        <nav className={sideBar ? "nav-menu active" : "nav-menu"}>
-          <Cart sideBarHandler={sideBarHandler} />
-        </nav>
-      </StyledSideBar>
-    </div>
+        </ProductMenu>
+      )}
+    </>
   );
 };
 

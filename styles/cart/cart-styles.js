@@ -46,6 +46,7 @@ export const StyledCartItem = styled.div`
   align-items: center;
   width: 100%;
   padding: 0.5rem 1rem;
+  height: 20vh;
 `;
 
 export const Image = styled.div`

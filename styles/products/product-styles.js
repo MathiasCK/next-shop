@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { media } from "../../utils/media-query";
 
 // product-list.js
-export const StyledProdutList = styled.div`
+export const StyledProductList = styled.div`
   padding-inline-start: 0 !important;
   list-style: none;
   width: 100%;
