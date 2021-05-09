@@ -23,6 +23,7 @@ import {
 import Cart from "../../cart/cart";
 
 import ProductMenu from "./product-menu";
+import { useIsMobile } from "../../../utils/is-mobile";
 
 const Navbar = () => {
   const router = useRouter();
@@ -93,10 +94,16 @@ const Navbar = () => {
     setProductMenu(false);
   };
 
+  const productMenuHandler = () => {
+    setProductMenu(!productMenu);
+  };
+  const isMobile = useIsMobile();
+  console.log("ISMOBILE?" + isMobile);
+
   return (
     <>
       <StyledNavbar
-        onMouseLeave={setToFalse}
+        onMouseLeave={isMobile ? null : setToFalse}
         onMouseOver={() => setActiveNavbar(true)}
         style={
           router.asPath !== "/"
@@ -109,15 +116,21 @@ const Navbar = () => {
          */}
         <Content>
           <NavLinks>
-            <Link href="/products">
-              <h1
-                onClick={setToFalse}
-                onMouseOver={setToTrue}
-                className="sub-header nav-link"
-              >
+            {isMobile ? (
+              <h1 onClick={productMenuHandler} className="sub-header nav-link">
                 Products
               </h1>
-            </Link>
+            ) : (
+              <Link href="/products">
+                <h1
+                  onClick={setToFalse}
+                  onMouseOver={setToTrue}
+                  className="sub-header nav-link"
+                >
+                  Products
+                </h1>
+              </Link>
+            )}
 
             <Link href="/about">
               <div>
@@ -147,6 +160,7 @@ const Navbar = () => {
         </Content>
         {productMenu && (
           <ProductMenu
+            setToFalse={setToFalse}
             filterProducts={filterProducts}
             categories={categories}
           />

@@ -4,11 +4,20 @@ import {
   StyledProductMenu,
   ProductImage,
 } from "../../../styles/navbar/navbar-styles";
+import { useIsMobile } from "../../../utils/is-mobile";
 
-const ProductMenu = ({ filterProducts, setToTrue, setToFalse, categories }) => {
+const ProductMenu = ({ filterProducts, setToFalse, categories }) => {
+  const isMobile = useIsMobile();
   return (
     <StyledProductMenu>
       <div className="nav-links">
+        {isMobile && (
+          <Link href="/products">
+            <p style={{ fontWeight: "bold" }} onClick={setToFalse}>
+              View All
+            </p>
+          </Link>
+        )}
         {categories &&
           categories.map((category) => (
             <Link href={`/categories/${category.name}`}>
