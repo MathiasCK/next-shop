@@ -133,23 +133,25 @@ const Navbar = () => {
             )}
 
             <Link href="/about">
-              <div>
+              <div onClick={setToFalse}>
                 <h1 className="sub-header nav-link">About</h1>
               </div>
             </Link>
           </NavLinks>
-          <Title>
-            <Link href="/">
-              <p>Commerce.js</p>
-            </Link>
-          </Title>
-          <Actions onClick={sideBarHandler}>
+          {isMobile ? null : (
+            <Title>
+              <Link href="/">
+                <p onClick={setToFalse}>Commerce.js</p>
+              </Link>
+            </Title>
+          )}
+          <Actions onClick={setToFalse}>
             <Link href="/login">
               <div>
                 <h1 className="sub-header nav-link">Login</h1>
               </div>
             </Link>
-            <div className="relative">
+            <div className="relative" onClick={sideBarHandler}>
               <AiOutlineShopping
                 style={{ fontSize: "2rem", cursor: "pointer" }}
               />

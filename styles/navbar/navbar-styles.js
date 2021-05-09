@@ -81,6 +81,10 @@ export const StyledSideBar = styled(motion.div)`
     @media screen and (min-width: 768px) {
       width: 40vw;
     }
+    &.active {
+      right: 0;
+      opacity: 1;
+    }
   }
 `;
 
