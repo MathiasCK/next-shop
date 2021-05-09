@@ -17,14 +17,9 @@ export const StyledNavbar = styled.nav`
   align-items: center;
   z-index: 999;
   transition: all 0.3s ease;
-  &:hover {
-    backdrop-filter: saturate(180%) blur(5px);
-    opacity: 0.9;
-  }
+
   &.active {
     background: white;
-    backdrop-filter: saturate(180%) blur(5px);
-    opacity: 0.9;
     color: black;
   }
 `;
@@ -45,9 +40,9 @@ export const Title = styled.h6`
 export const Content = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
   align-items: center;
-  padding: 0 1rem;
 `;
 
 export const Actions = styled.div`
@@ -86,38 +81,6 @@ export const StyledSideBar = styled(motion.div)`
     @media screen and (min-width: 768px) {
       width: 40vw;
     }
-
-    .border {
-      background: black;
-      height: 2px;
-      width: 100%;
-      margin: 1rem 0;
-    }
-
-    &.active {
-      right: 0;
-      opacity: 1;
-    }
-    ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-
-      width: 100%;
-      li {
-        margin: 1rem;
-        a {
-          text-transform: uppercase;
-          text-decoration: none;
-          color: black;
-          font-size: 2rem;
-
-          @media screen and (min-width: 768px) {
-            font-size: 3rem;
-          }
-        }
-      }
-    }
   }
 `;
 
@@ -141,19 +104,51 @@ export const NavLinks = styled.div`
 
 export const StyledProductMenu = styled.div`
   display: flex;
-  height: 30vh;
-
-  transition: 0.3s all ease-in-out;
+  justify-content: space-between;
+  height: 40vh;
+  transition: 0.3s all ease;
   text-transform: uppercase;
   background: white;
+  width: 90%;
+  margin: 0 auto;
   & .nav-links {
     width: 20%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     p {
       cursor: pointer;
       text-transform: uppercase;
     }
   }
+  & .featured-products {
+    width: 80%;
+    display: flex;
+    justify-content: space-evenly;
+    & .product {
+      min-width: 20%;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      & .description {
+        height: 20%;
+      }
+    }
+  }
+`;
+
+export const ProductImage = styled.div`
+  width: 100%;
+  height: 80%;
+  background-size: cover;
+  background-position: center;
+  background-image: ${({ imageUrl }) => `url(${imageUrl})`};
+  will-change: background-image;
+  ${({ imageUrl2 }) =>
+    imageUrl2
+      ? `&:hover {
+				cursor: pointer;
+		background-image: url('${imageUrl2}');
+	}`
+      : ""};
 `;

@@ -1,27 +1,32 @@
 import React from "react";
 import Link from "next/link";
-import { StyledProductMenu } from "../../../styles/navbar/navbar-styles";
+import {
+  StyledProductMenu,
+  ProductImage,
+} from "../../../styles/navbar/navbar-styles";
 
-const ProductMenu = ({ filterProducts, categories, showProducts }) => {
+const ProductMenu = ({ filterProducts, setToTrue, setToFalse, categories }) => {
   return (
-    <StyledProductMenu onMouseLeave={showProducts}>
+    <StyledProductMenu>
       <div className="nav-links">
         {categories &&
           categories.map((category) => (
             <Link href={`/categories/${category.name}`}>
-              <p onClick={showProducts}>{category.name}</p>
+              <p onClick={setToFalse}>{category.name}</p>
             </Link>
           ))}
       </div>
-      <div style={{ width: "80%", display: "flex" }}>
+      <div className="featured-products">
         {filterProducts.map((product) => (
           <Link href={`/products/${product.permalink}`}>
-            <div style={{ width: "33%" }}>
-              <p>{product.name}</p>
-              <img
-                style={{ maxWidth: "100%", maxHeight: "100%" }}
-                src={product.assets[0].url}
+            <div className="product">
+              <ProductImage
+                imageUrl={product.assets[0].url}
+                imageUrl2={product.assets[1].url}
               />
+
+              <p>{product.name}</p>
+              <p>{product.price.formatted_with_symbol}</p>
             </div>
           </Link>
         ))}

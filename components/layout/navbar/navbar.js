@@ -85,8 +85,8 @@ const Navbar = () => {
     };
   }, []);
 
-  const showProducts = () => {
-    setProductMenu(!productMenu);
+  const setToTrue = () => {
+    setProductMenu(true);
   };
 
   const setToFalse = () => {
@@ -96,6 +96,7 @@ const Navbar = () => {
   return (
     <>
       <StyledNavbar
+        onMouseLeave={setToFalse}
         onMouseOver={() => setActiveNavbar(true)}
         style={
           router.asPath !== "/"
@@ -111,7 +112,7 @@ const Navbar = () => {
             <Link href="/products">
               <h1
                 onClick={setToFalse}
-                onMouseOver={showProducts}
+                onMouseOver={setToTrue}
                 className="sub-header nav-link"
               >
                 Products
@@ -146,7 +147,6 @@ const Navbar = () => {
         </Content>
         {productMenu && (
           <ProductMenu
-            showProducts={showProducts}
             filterProducts={filterProducts}
             categories={categories}
           />
