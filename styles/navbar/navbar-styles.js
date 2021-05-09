@@ -3,25 +3,23 @@ import styled from "styled-components";
 
 export const StyledNavbar = styled.nav`
   position: fixed;
-  height: 70px;
+  min-height: 70px;
   width: 100%;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 0.5rem 1rem;
   z-index: 10;
   background: transparent;
   color: white;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   z-index: 999;
   transition: all 0.3s ease;
   &:hover {
-    background: white;
     backdrop-filter: saturate(180%) blur(5px);
     opacity: 0.9;
-    color: black;
   }
   &.active {
     background: white;
@@ -42,6 +40,14 @@ export const Title = styled.h6`
     margin: 0 1rem;
     font-size: 1.5rem;
   }
+`;
+
+export const Content = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  padding: 0 1rem;
 `;
 
 export const Actions = styled.div`
@@ -136,10 +142,10 @@ export const NavLinks = styled.div`
 export const StyledProductMenu = styled.div`
   display: flex;
   height: 30vh;
-  width: 100%;
+
   transition: 0.3s all ease-in-out;
-  margin-top: 70px;
   text-transform: uppercase;
+  background: white;
   & .nav-links {
     width: 20%;
     display: flex;

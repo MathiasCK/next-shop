@@ -9,7 +9,7 @@ const ProductMenu = ({ filterProducts, categories, showProducts }) => {
         {categories &&
           categories.map((category) => (
             <Link href={`/categories/${category.name}`}>
-              <p>{category.name}</p>
+              <p onClick={showProducts}>{category.name}</p>
             </Link>
           ))}
       </div>

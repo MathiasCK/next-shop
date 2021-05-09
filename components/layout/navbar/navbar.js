@@ -6,6 +6,7 @@ import {
   StyledSideBar,
   BackDrop,
   NavLinks,
+  Content,
 } from "../../../styles/navbar/navbar-styles";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -88,20 +89,31 @@ const Navbar = () => {
     setProductMenu(!productMenu);
   };
 
+  const setToFalse = () => {
+    setProductMenu(false);
+  };
+
   return (
     <>
-      <div>
-        <StyledNavbar
-          style={
-            router.asPath !== "/"
-              ? { color: "black", background: "white" }
-              : undefined
-          }
-          className={activeNavbar || initialBackground ? "active" : undefined}
-        >
-          <NavLinks style={{ display: "flex" }}>
+      <StyledNavbar
+        onMouseOver={() => setActiveNavbar(true)}
+        style={
+          router.asPath !== "/"
+            ? { color: "black", background: "white" }
+            : undefined
+        }
+        className={activeNavbar || initialBackground ? "active" : undefined}
+      >
+        {/*
+         */}
+        <Content>
+          <NavLinks>
             <Link href="/products">
-              <h1 onMouseOver={showProducts} className="sub-header nav-link">
+              <h1
+                onClick={setToFalse}
+                onMouseOver={showProducts}
+                className="sub-header nav-link"
+              >
                 Products
               </h1>
             </Link>
@@ -112,22 +124,11 @@ const Navbar = () => {
               </div>
             </Link>
           </NavLinks>
-
           <Title>
             <Link href="/">
               <p>Commerce.js</p>
             </Link>
           </Title>
-          {/*
-      <NavLinks>
-        {categories &&
-          categories.map((category) => (
-            <Link href={`/categories/${category.name}`}>
-              <p>{category.name}</p>
-            </Link>
-          ))}
-      </NavLinks>*/}
-
           <Actions onClick={sideBarHandler}>
             <Link href="/login">
               <div>
@@ -142,45 +143,46 @@ const Navbar = () => {
               <p>{totalItems}</p>
             </div>
           </Actions>
-        </StyledNavbar>
+        </Content>
+        {productMenu && (
+          <ProductMenu
+            showProducts={showProducts}
+            filterProducts={filterProducts}
+            categories={categories}
+          />
+        )}
+      </StyledNavbar>
 
-        <AnimatePresence>
-          {sideBar && (
-            <BackDrop
-              onClick={sideBarHandler}
-              initial={{
-                opacity: 0,
-              }}
-              animate={{
-                opacity: 1,
-                transition: {
-                  duration: 0.75,
-                },
-              }}
-              exit={{
-                opacity: 0,
-              }}
-            />
-          )}
-        </AnimatePresence>
-        <StyledSideBar
-          ref={sideRef}
-          initial="hidden"
-          animate={controls}
-          variants={container}
-        >
-          <nav className={sideBar ? "nav-menu active" : "nav-menu"}>
-            <Cart sideBarHandler={sideBarHandler} />
-          </nav>
-        </StyledSideBar>
-      </div>
-      {productMenu && (
-        <ProductMenu
-          showProducts={showProducts}
-          filterProducts={filterProducts}
-          categories={categories}
-        />
-      )}
+      {/* Sidebar */}
+      <AnimatePresence>
+        {sideBar && (
+          <BackDrop
+            onClick={sideBarHandler}
+            initial={{
+              opacity: 0,
+            }}
+            animate={{
+              opacity: 1,
+              transition: {
+                duration: 0.75,
+              },
+            }}
+            exit={{
+              opacity: 0,
+            }}
+          />
+        )}
+      </AnimatePresence>
+      <StyledSideBar
+        ref={sideRef}
+        initial="hidden"
+        animate={controls}
+        variants={container}
+      >
+        <nav className={sideBar ? "nav-menu active" : "nav-menu"}>
+          <Cart sideBarHandler={sideBarHandler} />
+        </nav>
+      </StyledSideBar>
     </>
   );
 };
