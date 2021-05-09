@@ -188,7 +188,7 @@ export const ProductDescription = styled.div`
 
 // related-product.js
 export const StyledRelatedProduct = styled.div`
-  margin: 1rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;

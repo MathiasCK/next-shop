@@ -8,7 +8,6 @@ import { StyledProductList } from "../../styles/products/product-styles";
 import { useRouter } from "next/router";
 
 const ProductList = ({ productsPerCategory, products }) => {
-  console.log(productsPerCategory);
   if (products.length === 0) return <Spinner />;
 
   const router = useRouter();

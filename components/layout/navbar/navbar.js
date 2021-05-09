@@ -98,7 +98,6 @@ const Navbar = () => {
     setProductMenu(!productMenu);
   };
   const isMobile = useIsMobile();
-  console.log("ISMOBILE?" + isMobile);
 
   return (
     <>
