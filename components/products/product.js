@@ -5,7 +5,8 @@ import {
 } from "../../styles/products/product-styles";
 import { productAnim } from "../../utils/animation";
 
-const Product = ({ name, price, assets, description }) => {
+const Product = ({ name, price, assets }) => {
+  if (!name || !price || !assets) return <div>Loading...</div>;
   const images = assets;
 
   return (

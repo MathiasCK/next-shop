@@ -1,14 +1,30 @@
 import React from "react";
-import Layout from "../../components/layout/layout";
 import ProductList from "../../components/products/product-list";
-import { useProducts } from "../../context/CartContext";
-import commerce from "../../utils/commerce";
+import { useCategories, useProducts } from "../../context/CartContext";
+
 import RouteTransition from "../../utils/route-transition";
 
 const Products = () => {
+  const products = useProducts();
+  const categories = useCategories();
+
+  const productsPerCategory = categories.reduce((acc, category) => {
+    return [
+      ...acc,
+      {
+        ...category,
+        productsData: products.filter((product) =>
+          product.categories.find((cat) => cat.id === category.id)
+        ),
+      },
+    ];
+  }, []);
   return (
     <RouteTransition>
-      <ProductList />
+      <ProductList
+        productsPerCategory={productsPerCategory}
+        products={products}
+      />
     </RouteTransition>
   );
 };

@@ -85,7 +85,6 @@ const Navbar = () => {
   }, []);
 
   const showProducts = () => {
-    console.log("cliked");
     setProductMenu(!productMenu);
   };
 
