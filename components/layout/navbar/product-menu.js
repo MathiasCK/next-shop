@@ -2,12 +2,10 @@ import React from "react";
 import Link from "next/link";
 import { StyledProductMenu } from "../../../styles/navbar/navbar-styles";
 
-const ProductMenu = ({ filterProducts, categories }) => {
+const ProductMenu = ({ filterProducts, categories, showProducts }) => {
   return (
-    <StyledProductMenu
-      style={{ display: "flex", justifyContent: "space-between" }}
-    >
-      <div>
+    <StyledProductMenu onMouseLeave={showProducts}>
+      <div className="nav-links">
         {categories &&
           categories.map((category) => (
             <Link href={`/categories/${category.name}`}>
@@ -15,13 +13,13 @@ const ProductMenu = ({ filterProducts, categories }) => {
             </Link>
           ))}
       </div>
-      <div style={{ display: "flex" }}>
+      <div style={{ width: "80%", display: "flex" }}>
         {filterProducts.map((product) => (
           <Link href={`/products/${product.permalink}`}>
-            <div>
+            <div style={{ width: "33%" }}>
               <p>{product.name}</p>
               <img
-                style={{ width: "100px", height: "100px" }}
+                style={{ maxWidth: "100%", maxHeight: "100%" }}
                 src={product.assets[0].url}
               />
             </div>

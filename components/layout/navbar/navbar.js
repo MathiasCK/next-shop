@@ -177,7 +177,7 @@ const Navbar = () => {
       </div>
       {productMenu && (
         <ProductMenu
-          onMouseLeave={showProducts}
+          showProducts={showProducts}
           filterProducts={filterProducts}
           categories={categories}
         />

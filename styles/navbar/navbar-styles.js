@@ -17,6 +17,12 @@ export const StyledNavbar = styled.nav`
   align-items: center;
   z-index: 999;
   transition: all 0.3s ease;
+  &:hover {
+    background: white;
+    backdrop-filter: saturate(180%) blur(5px);
+    opacity: 0.9;
+    color: black;
+  }
   &.active {
     background: white;
     backdrop-filter: saturate(180%) blur(5px);
@@ -128,9 +134,20 @@ export const NavLinks = styled.div`
 `;
 
 export const StyledProductMenu = styled.div`
+  display: flex;
   height: 30vh;
+  width: 100%;
   transition: 0.3s all ease-in-out;
-  background: var(--secondary);
   margin-top: 70px;
   text-transform: uppercase;
+  & .nav-links {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    p {
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+  }
 `;
