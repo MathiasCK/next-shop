@@ -16,14 +16,16 @@ const Cart = ({ sideBarHandler }) => {
 
   if (cartEmpty) {
     return (
-      <div
-        style={{ display: "flex", justifyContent: "center", marginTop: "1rem" }}
-      >
-        <h2 className="sub-header">
-          {" "}
-          Nothing to see here - your cart is empty
-        </h2>
-      </div>
+      <StyledCart>
+        <div className="title">
+          <h1 className="header">Your shopping cart</h1>
+          <button onClick={sideBarHandler}>x</button>
+        </div>
+
+        <Actions>
+          <h2>Nothing to see here your cart is empty!</h2>
+        </Actions>
+      </StyledCart>
     );
   }
 

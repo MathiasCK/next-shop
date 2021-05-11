@@ -1,4 +1,7 @@
-import { useAddToCartHandler } from "../../context/CartContext";
+import {
+  useAddToCartHandler,
+  useSideBarHandler,
+} from "../../context/CartContext";
 import commerce from "../../utils/commerce";
 import Link from "next/link";
 import RelatedProduct from "../../components/products/related-product";
@@ -12,9 +15,11 @@ import {
   Title,
   RelatedProducts,
 } from "../../styles/products/product-styles";
+import Sidebar from "../../components/layout/navbar/sidebar";
 
 const ProductPage = ({ product }) => {
   const [productSize, setProductSize] = useState();
+  const sideBarHandler = useSideBarHandler();
   const images = product.assets;
   const addToCart = useAddToCartHandler();
 
@@ -80,7 +85,11 @@ const ProductPage = ({ product }) => {
                 </div>
               )}
               <center>
-                <Button className="inverted" type="submit">
+                <Button
+                  className="inverted"
+                  type="submit"
+                  onClick={sideBarHandler}
+                >
                   Add to cart | {product.price.formatted_with_symbol}
                 </Button>
               </center>
@@ -135,6 +144,7 @@ const ProductPage = ({ product }) => {
           </Link>
         ))}
       </RelatedProducts>
+      <Sidebar />
     </RouteTransition>
   );
 };

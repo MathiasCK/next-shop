@@ -4,7 +4,6 @@ import styled from "styled-components";
 export const StyledNavbar = styled.nav`
   position: fixed;
   min-height: 70px;
-  width: 100%;
   top: 0;
   left: 0;
   width: 100%;

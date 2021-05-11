@@ -3,7 +3,6 @@ import {
   StyledNavbar,
   Title,
   Actions,
-  StyledSideBar,
   BackDrop,
   NavLinks,
   Content,
@@ -14,95 +13,57 @@ import Link from "next/link";
 import { AiOutlineShopping } from "react-icons/ai";
 import { AnimatePresence, useAnimation } from "framer-motion";
 import { container } from "../../../utils/animation";
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+
 import {
+  useActiveNavbar,
+  useActiveNavbarHandler,
   useCart,
   useCategories,
   useProducts,
+  useInitialBackground,
+  useProductMenuHandler,
+  useSetToFalse,
+  useSideBarHandler,
+  useProductMenu,
+  useSidebar,
+  useSideRef,
+  useSetToTrue,
 } from "../../../context/CartContext";
-import Cart from "../../cart/cart";
 
 import ProductMenu from "./product-menu";
 import { useIsMobile } from "../../../utils/is-mobile";
+import Sidebar from "./sidebar";
 
 const Navbar = () => {
   const router = useRouter();
   const categories = useCategories();
-  const [activeNavbar, setActiveNavbar] = useState(false);
-  const [sideBar, setSideBar] = useState();
-  const [visibleNavbar, setVisibleNavbar] = useState(false);
-  const [initialBackground, setInitialBackground] = useState(false);
-  const [productMenu, setProductMenu] = useState(false);
 
-  const sideRef = useRef();
   const controls = useAnimation();
-
   const products = useProducts();
+  const cart = useCart();
+  const isMobile = useIsMobile();
+
+  const activeNavbarHandler = useActiveNavbarHandler();
+  const activeNavbar = useActiveNavbar();
+  const initialBackground = useInitialBackground();
+  const productMenuHandler = useProductMenuHandler();
+  const setToFalse = useSetToFalse();
+  const sideBarHandler = useSideBarHandler();
+  const productMenu = useProductMenu();
+  const sideBar = useSidebar();
+  const sideRef = useSideRef();
+  const setToTrue = useSetToTrue();
+
   const filterProducts = products.filter((product) => {
     return product.sku;
   });
-
-  const cart = useCart();
   const totalItems = cart.total_items;
-
-  useEffect(() => {
-    if (visibleNavbar) {
-      controls.start("show");
-    }
-    if (!visibleNavbar) {
-      controls.start("hidden");
-    }
-  }, [controls, visibleNavbar]);
-
-  useEffect(() => {
-    if (sideBar) disableBodyScroll(sideRef.current);
-    else enableBodyScroll(sideRef.current);
-
-    return () => {
-      enableBodyScroll(sideRef.current);
-    };
-  }, [sideBar]);
-
-  useEffect(() => {
-    const changeBackground = () => {
-      if (window.scrollY >= 735) {
-        setActiveNavbar(true);
-      } else {
-        setActiveNavbar(false);
-      }
-    };
-
-    window.addEventListener("scroll", changeBackground);
-
-    return () => {
-      window.removeEventListener("scroll", changeBackground);
-    };
-  }, []);
-
-  const sideBarHandler = () => {
-    setSideBar(!sideBar);
-    setVisibleNavbar(!visibleNavbar);
-    setInitialBackground(!initialBackground);
-  };
-
-  const setToTrue = () => {
-    setProductMenu(true);
-  };
-
-  const setToFalse = () => {
-    setProductMenu(false);
-  };
-
-  const productMenuHandler = () => {
-    setProductMenu(!productMenu);
-  };
-  const isMobile = useIsMobile();
 
   return (
     <div>
       <StyledNavbar
         onMouseLeave={isMobile ? null : setToFalse}
-        onMouseOver={() => setActiveNavbar(true)}
+        onMouseOver={activeNavbarHandler}
         style={
           router.asPath !== "/"
             ? { color: "black", background: "white" }
@@ -189,16 +150,14 @@ const Navbar = () => {
           />
         )}
       </AnimatePresence>
-      <StyledSideBar
+      <Sidebar
         ref={sideRef}
         initial="hidden"
         animate={controls}
         variants={container}
-      >
-        <nav className={sideBar ? "nav-menu active" : "nav-menu"}>
-          <Cart sideBarHandler={sideBarHandler} />
-        </nav>
-      </StyledSideBar>
+        sideBar={sideBar}
+        sideBarHandler={sideBarHandler}
+      />
     </div>
   );
 };

@@ -1,5 +1,7 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { useAnimation } from "framer-motion";
+import { createContext, useContext, useState, useEffect, useRef } from "react";
 import commerce from "../utils/commerce";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 const CartContext = createContext({});
 
@@ -9,12 +11,74 @@ export const CartProvider = ({ children }) => {
   const [order, setOrder] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
   const [categories, setCategories] = useState([]);
-  //const [sideBar, setSideBar] = useState();
+
   //
-  //const sideBarHandler = () => {
+
+  const controls = useAnimation();
+  const sideRef = useRef();
+  const [activeNavbar, setActiveNavbar] = useState(false);
+  const [sideBar, setSideBar] = useState();
+  const [visibleNavbar, setVisibleNavbar] = useState(false);
+  const [initialBackground, setInitialBackground] = useState(false);
+  const [productMenu, setProductMenu] = useState(false);
+
+  const sideBarHandler = () => {
+    setSideBar(!sideBar);
+    setVisibleNavbar(!visibleNavbar);
+    setInitialBackground(!initialBackground);
+  };
+
+  const setToTrue = () => {
+    setProductMenu(true);
+  };
+
+  const setToFalse = () => {
+    setProductMenu(false);
+  };
+
+  const productMenuHandler = () => {
+    setProductMenu(!productMenu);
+  };
+
+  const activeNavbarHandler = () => {
+    setActiveNavbar(true);
+  };
+
+  useEffect(() => {
+    if (visibleNavbar) {
+      controls.start("show");
+    }
+    if (!visibleNavbar) {
+      controls.start("hidden");
+    }
+  }, [controls, visibleNavbar]);
+
+  useEffect(() => {
+    if (sideBar) disableBodyScroll(sideRef.current);
+    else enableBodyScroll(sideRef.current);
+
+    return () => {
+      enableBodyScroll(sideRef.current);
+    };
+  }, [sideBar]);
+
+  useEffect(() => {
+    const changeBackground = () => {
+      if (window.scrollY >= 735) {
+        setActiveNavbar(true);
+      } else {
+        setActiveNavbar(false);
+      }
+    };
+
+    window.addEventListener("scroll", changeBackground);
+
+    return () => {
+      window.removeEventListener("scroll", changeBackground);
+    };
+  }, []);
+
   //
-  //  setSideBar(!sideBar);
-  //};
 
   const fetchCart = async () => {
     const cart = await commerce.cart.retrieve();
@@ -101,7 +165,16 @@ export const CartProvider = ({ children }) => {
         categories,
         order,
         errorMessage,
-        //sideBarHandler,
+        sideBarHandler,
+        productMenuHandler,
+        activeNavbarHandler,
+        sideBar,
+        productMenu,
+        sideRef,
+        setToFalse,
+        setToTrue,
+        activeNavbar,
+        initialBackground,
         handleCaptureCheckout,
         fetchCart,
         fetchProducts,
@@ -120,7 +193,26 @@ export const useCartContext = () => useContext(CartContext);
 
 export const useCart = () => useCartContext().cart;
 
-// export const useSideBarHandler = () => useCartContext().sideBarHandler;
+export const useSideBarHandler = () => useCartContext().sideBarHandler;
+
+export const useActiveNavbarHandler = () =>
+  useCartContext().activeNavbarHandler;
+
+export const useActiveNavbar = () => useCartContext().activeNavbar;
+
+export const useInitialBackground = () => useCartContext().initialBackground;
+
+export const useProductMenuHandler = () => useCartContext().productMenuHandler;
+
+export const useSetToFalse = () => useCartContext().setToFalse;
+
+export const useSetToTrue = () => useCartContext().setToTrue;
+
+export const useProductMenu = () => useCartContext().productMenu;
+
+export const useSideRef = () => useCartContext().sideRef;
+
+export const useSidebar = () => useCartContext().sideBar;
 
 export const useProducts = () => useCartContext().products;
 
