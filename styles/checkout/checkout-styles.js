@@ -42,3 +42,24 @@ export const Actions = styled.div`
   justify-content: space-between;
   margin: 1rem 0;
 `;
+
+export const StyledReview = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  .product {
+    width: 25%;
+    height: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      padding: 1rem 0;
+    }
+  }
+  .information {
+    display: flex;
+    justify-content: space-between;
+    font-weight: lighter;
+  }
+`;

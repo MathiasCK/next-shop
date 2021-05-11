@@ -74,9 +74,9 @@ const PaymentForm = ({
   console.log(shippingData);
 
   return (
-    <div>
+    <div style={{ margin: "2rem 0" }}>
       <Review totalPrice={totalPrice} checkoutToken={checkoutToken} />
-      <h1>Payment method</h1>
+      <h1 className="header">Payment method</h1>
       <Elements stripe={stripePromise}>
         <ElementsConsumer>
           {({ elements, stripe }) => (

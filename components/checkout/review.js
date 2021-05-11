@@ -1,27 +1,27 @@
 import React from "react";
-
+import { StyledReview } from "../../styles/checkout/checkout-styles";
 const Review = ({ checkoutToken, totalPrice }) => {
   return (
     <div>
       <center>
         <h1 className="header">Order summary</h1>
       </center>
-      <div>
+      <StyledReview>
         {checkoutToken.live.line_items.map((product) => (
-          <div key={product.name}>
-            <div>
+          <div className="product" key={product.name}>
+            <center>
               <h2 className="sub-header">{product.name}</h2>
+            </center>
+            <div className="information">
               <p>{`Quantity : ${product.quantity}`}</p>
+              <p>{product.line_total.formatted_with_symbol}</p>
             </div>
-            <div>{product.line_total.formatted_with_symbol}</div>
-            <img
-              style={{ height: "100px", width: "100px" }}
-              src={product.media.source}
-            />
+
+            <img src={product.media.source} />
           </div>
         ))}
-        <div>{`Total : ${totalPrice} NOK`}</div>
-      </div>
+      </StyledReview>
+      <div style={{ fontWeight: "300" }}>{`Total : ${totalPrice} NOK`}</div>
     </div>
   );
 };
