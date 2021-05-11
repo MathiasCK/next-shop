@@ -113,8 +113,12 @@ export const StyledProductMenu = styled.div`
   transition: 0.3s all ease;
   text-transform: uppercase;
   background: white;
-  width: 90%;
-  margin: 0 auto;
+  width: 100%;
+  -moz-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
+  -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
+  padding: 0 1rem;
+
   & .nav-links {
     width: 20%;
     display: flex;
