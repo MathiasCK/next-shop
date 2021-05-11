@@ -10,10 +10,13 @@ import {
 } from "../../styles/checkout/checkout-styles";
 
 import Link from "next/link";
+import Spinner from "../../utils/Spinner";
 const AddressForm = ({ checkoutToken, next }) => {
   const methods = useForm();
   const { register } = methods;
   const cart = useCart();
+
+  const [totalPayment, setTotalPayment] = useState();
 
   const [shippingCountries, setShippingCountries] = useState([]);
   const [shippingCountry, setShippingCountry] = useState("");
@@ -95,14 +98,16 @@ const AddressForm = ({ checkoutToken, next }) => {
     <div>
       <div>Adress form</div>
       <form
-        onSubmit={methods.handleSubmit((data) =>
+        onSubmit={methods.handleSubmit((data) => {
+          console.log(shippingOptions);
           next({
             ...data,
             shippingCountry,
             shippingSubdivsion,
             shippingOption,
-          })
-        )}
+            shippingOptions,
+          });
+        })}
       >
         <Inputs>
           <input
@@ -187,7 +192,17 @@ const AddressForm = ({ checkoutToken, next }) => {
           </div>
         </Selects>
         <Actions>
-          <p>Your total is: {cart.subtotal.formatted_with_symbol}</p>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            {shippingOptions.length ? (
+              <p>{cart.subtotal.raw + shippingOptions[0].price.raw}</p>
+            ) : null}
+          </div>
           <Link href="/cart">
             <div>
               <Button>Back To Cart</Button>

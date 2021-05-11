@@ -9,6 +9,12 @@ export const CartProvider = ({ children }) => {
   const [order, setOrder] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
   const [categories, setCategories] = useState([]);
+  //const [sideBar, setSideBar] = useState();
+  //
+  //const sideBarHandler = () => {
+  //
+  //  setSideBar(!sideBar);
+  //};
 
   const fetchCart = async () => {
     const cart = await commerce.cart.retrieve();
@@ -95,6 +101,7 @@ export const CartProvider = ({ children }) => {
         categories,
         order,
         errorMessage,
+        //sideBarHandler,
         handleCaptureCheckout,
         fetchCart,
         fetchProducts,
@@ -112,6 +119,8 @@ export const CartProvider = ({ children }) => {
 export const useCartContext = () => useContext(CartContext);
 
 export const useCart = () => useCartContext().cart;
+
+// export const useSideBarHandler = () => useCartContext().sideBarHandler;
 
 export const useProducts = () => useCartContext().products;
 

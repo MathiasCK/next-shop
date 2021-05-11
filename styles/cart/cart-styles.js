@@ -7,6 +7,9 @@ export const StyledCart = styled.div`
   flex-direction: column;
   overflow-y: scroll;
   margin-bottom: 17vh;
+  -moz-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
+  -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
   & .title {
     display: flex;
     justify-content: space-between;

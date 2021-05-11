@@ -20,7 +20,10 @@ const PaymentForm = ({
   nextStep,
   timeout,
 }) => {
-  const [stripe, setStripe] = useState();
+  const shippingPrice = shippingData.shippingOptions[0].price.raw;
+  const itemPrice = checkoutToken.live.subtotal.raw;
+  const totalPrice = shippingPrice + itemPrice;
+
   const handleSubmit = async (e, elements, stripe) => {
     e.preventDefault();
 
@@ -68,9 +71,11 @@ const PaymentForm = ({
     }
   };
 
+  console.log(shippingData);
+
   return (
     <div>
-      <Review checkoutToken={checkoutToken} />
+      <Review totalPrice={totalPrice} checkoutToken={checkoutToken} />
       <h1>Payment method</h1>
       <Elements stripe={stripePromise}>
         <ElementsConsumer>
@@ -81,7 +86,7 @@ const PaymentForm = ({
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <Button onClick={backStep}>Back</Button>
                 <Button type="submit" disabled={!stripe}>
-                  Pay {checkoutToken.live.subtotal.formatted_with_symbol}
+                  Pay {totalPrice} ,-
                 </Button>
               </div>
             </form>

@@ -17,10 +17,12 @@ export const StyledNavbar = styled.nav`
   align-items: center;
   z-index: 999;
   transition: all 0.3s ease;
-
   &.active {
     background: white;
     color: black;
+    -moz-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
+    -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
   }
 `;
 
@@ -114,11 +116,8 @@ export const StyledProductMenu = styled.div`
   text-transform: uppercase;
   background: white;
   width: 100%;
-  -moz-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
-  -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
-  padding: 0 1rem;
 
+  padding: 0 1rem;
   & .nav-links {
     width: 20%;
     display: flex;

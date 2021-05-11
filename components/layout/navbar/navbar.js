@@ -28,10 +28,9 @@ import { useIsMobile } from "../../../utils/is-mobile";
 const Navbar = () => {
   const router = useRouter();
   const categories = useCategories();
-
+  const [activeNavbar, setActiveNavbar] = useState(false);
   const [sideBar, setSideBar] = useState();
   const [visibleNavbar, setVisibleNavbar] = useState(false);
-  const [activeNavbar, setActiveNavbar] = useState(false);
   const [initialBackground, setInitialBackground] = useState(false);
   const [productMenu, setProductMenu] = useState(false);
 
@@ -64,12 +63,6 @@ const Navbar = () => {
     };
   }, [sideBar]);
 
-  const sideBarHandler = () => {
-    setSideBar(!sideBar);
-    setVisibleNavbar(!visibleNavbar);
-    setInitialBackground(!initialBackground);
-  };
-
   useEffect(() => {
     const changeBackground = () => {
       if (window.scrollY >= 735) {
@@ -86,6 +79,12 @@ const Navbar = () => {
     };
   }, []);
 
+  const sideBarHandler = () => {
+    setSideBar(!sideBar);
+    setVisibleNavbar(!visibleNavbar);
+    setInitialBackground(!initialBackground);
+  };
+
   const setToTrue = () => {
     setProductMenu(true);
   };
@@ -100,7 +99,7 @@ const Navbar = () => {
   const isMobile = useIsMobile();
 
   return (
-    <>
+    <div>
       <StyledNavbar
         onMouseLeave={isMobile ? null : setToFalse}
         onMouseOver={() => setActiveNavbar(true)}
@@ -198,7 +197,7 @@ const Navbar = () => {
           <Cart sideBarHandler={sideBarHandler} />
         </nav>
       </StyledSideBar>
-    </>
+    </div>
   );
 };
 

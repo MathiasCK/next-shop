@@ -3,7 +3,7 @@ import React from "react";
 import { StyledRelatedProduct } from "../../styles/products/product-styles";
 
 const RelatedProduct = ({ relatedProduct }) => {
-  console.log(relatedProduct);
+  console.log("REL", relatedProduct);
   return (
     <StyledRelatedProduct>
       <div className="image">

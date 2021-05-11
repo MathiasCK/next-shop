@@ -5,9 +5,12 @@ import {
   ProductImage,
 } from "../../../styles/navbar/navbar-styles";
 import { useIsMobile } from "../../../utils/is-mobile";
+import Spinner from "../../../utils/Spinner";
 
 const ProductMenu = ({ filterProducts, setToFalse, categories }) => {
   const isMobile = useIsMobile();
+
+  if (!filterProducts) console.log("loading");
   return (
     <StyledProductMenu>
       <div className="nav-links">
