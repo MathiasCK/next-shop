@@ -16,13 +16,17 @@ export const StyledNavbar = styled.nav`
   justify-content: space-between;
   align-items: center;
   z-index: 999;
-  transition: all 0.3s ease;
-  &.active {
-    background: white;
-    color: black;
+  &.shadow {
     -moz-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
     -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
+  }
+
+  &.active {
+    background: white;
+    color: black;
+
+    transition: all 0.3s ease;
   }
 `;
 

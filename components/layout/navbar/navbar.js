@@ -108,7 +108,9 @@ const Navbar = () => {
             ? { color: "black", background: "white" }
             : undefined
         }
-        className={activeNavbar || initialBackground ? "active" : undefined}
+        className={
+          activeNavbar || initialBackground ? "active shadow" : undefined
+        }
       >
         {/*
          */}
