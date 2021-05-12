@@ -12,7 +12,7 @@ const NavLinks = ({ isMobile, productMenuHandler, setToFalse, setToTrue }) => {
       ) : (
         <Link href="/products">
           <h1
-            onClick={setToFalse}
+            onClick={setToFalse()}
             onMouseOver={setToTrue}
             className="sub-header nav-link"
           >

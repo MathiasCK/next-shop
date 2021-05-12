@@ -23,14 +23,14 @@ const ProductMenu = ({ filterProducts, setToFalse, categories }) => {
         )}
         {categories &&
           categories.map((category) => (
-            <Link href={`/categories/${category.name}`}>
+            <Link key={category.name} href={`/categories/${category.name}`}>
               <p onClick={setToFalse}>{category.name}</p>
             </Link>
           ))}
       </div>
       <div className="featured-products">
         {filterProducts.map((product) => (
-          <Link href={`/products/${product.permalink}`}>
+          <Link key={product.permalink} href={`/products/${product.permalink}`}>
             <div className="product">
               <ProductImage
                 imageUrl={product.assets[0].url}

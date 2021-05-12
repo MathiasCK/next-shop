@@ -70,9 +70,15 @@ const Navbar = () => {
       className={
         activeNavbar || initialBackground ? "active shadow" : undefined
       }
+      onClick={isMobile ? activeNavbarHandler : null}
     >
-      {/*
-       */}
+      {isMobile ? (
+        <Title>
+          <Link href="/">
+            <p onClick={setToFalse}>Commerce.js</p>
+          </Link>
+        </Title>
+      ) : null}
       <Content>
         <NavLinks
           setToFalse={setToFalse}
@@ -81,11 +87,13 @@ const Navbar = () => {
           isMobile={isMobile}
         />
 
-        <Title>
-          <Link href="/">
-            <p onClick={setToFalse}>Commerce.js</p>
-          </Link>
-        </Title>
+        {isMobile ? null : (
+          <Title>
+            <Link href="/">
+              <p onClick={setToFalse}>Commerce.js</p>
+            </Link>
+          </Title>
+        )}
 
         <Actions onClick={setToFalse}>
           <Link href="/login">
@@ -93,6 +101,7 @@ const Navbar = () => {
               <h1 className="sub-header nav-link">Login</h1>
             </div>
           </Link>
+
           <div className="relative" onClick={sideBarHandler}>
             <AiOutlineShopping
               style={{ fontSize: "2rem", cursor: "pointer" }}
