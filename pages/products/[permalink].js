@@ -73,9 +73,7 @@ const ProductPage = ({ product }) => {
                     required
                     onChange={(e) => setProductSize(e.target.value)}
                   >
-                    <option disabled selected>
-                      Size
-                    </option>
+                    <option defaultValue>Size</option>
                     {sizes.map((size) => (
                       <option key={size.id} value={size.id}>
                         {size.name}
@@ -136,11 +134,10 @@ const ProductPage = ({ product }) => {
       </div>
       <RelatedProducts>
         {relatedProducts.map((relatedProduct) => (
-          <Link href={relatedProduct.permalink}>
-            <RelatedProduct
-              key={relatedProduct.id}
-              relatedProduct={relatedProduct}
-            />
+          <Link key={relatedProduct.id} href={relatedProduct.permalink}>
+            <div>
+              <RelatedProduct relatedProduct={relatedProduct} />
+            </div>
           </Link>
         ))}
       </RelatedProducts>

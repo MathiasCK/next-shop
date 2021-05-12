@@ -82,13 +82,13 @@ const Navbar = () => {
             productMenuHandler={productMenuHandler}
             isMobile={isMobile}
           />
-          {isMobile ? null : (
-            <Title>
-              <Link href="/">
-                <p onClick={setToFalse}>Commerce.js</p>
-              </Link>
-            </Title>
-          )}
+
+          <Title>
+            <Link href="/">
+              <p onClick={setToFalse}>Commerce.js</p>
+            </Link>
+          </Title>
+
           <Actions onClick={setToFalse}>
             <Link href="/login">
               <div>

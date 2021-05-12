@@ -55,9 +55,11 @@ const ProductList = ({ productsPerCategory, products }) => {
             <div className="product">
               <li key={product.permalink}>
                 <Link href={`/products/${product.permalink}`}>
-                  <a>
-                    <Product {...product} />
-                  </a>
+                  <div>
+                    <a>
+                      <Product {...product} />
+                    </a>
+                  </div>
                 </Link>
               </li>
             </div>

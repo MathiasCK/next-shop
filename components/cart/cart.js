@@ -47,9 +47,11 @@ const Cart = ({ sideBarHandler }) => {
         <div className="buttons">
           <Button onClick={sideBarHandler}>Continue Shopping</Button>
           <Link href="/checkout">
-            <Button onClick={sideBarHandler} className="inverted">
-              Go To Checkout
-            </Button>
+            <div>
+              <Button onClick={sideBarHandler} className="inverted">
+                Go To Checkout
+              </Button>
+            </div>
           </Link>
         </div>
       </Actions>
