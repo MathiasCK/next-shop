@@ -31,13 +31,9 @@ const CategoryList = ({ categories }) => {
       animate={controls}
     >
       {categories.map((category) => (
-        <li key={category.slug}>
-          <Link href={`/categories/${category.slug}`}>
-            <a>
-              <Category {...category} />
-            </a>
-          </Link>
-        </li>
+        <Link key={category.slug} href={`/categories/${category.slug}`}>
+          <Category {...category} />
+        </Link>
       ))}
     </StyledCategories>
   );

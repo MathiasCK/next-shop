@@ -1,3 +1,4 @@
+import { faCrown } from "@fortawesome/free-solid-svg-icons";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 // Import styled components ServerStyleSheet
 import { ServerStyleSheet } from "styled-components";
@@ -23,7 +24,8 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <title>My page</title>
+          <link rel="shortcut icon" href="/crown.svg" />
+          <title>Next Commerce</title>
           {/* Step 5: Output the styles in the head  */}
           {this.props.styleTags}
         </Head>

@@ -7,32 +7,33 @@ export const CategoryName = styled(motion.h1)`
 `;
 
 // category-list.js
-export const StyledCategories = styled(motion.ul)`
-  padding-inline-start: 0 !important;
-  width: 100%;
+export const StyledCategories = styled(motion.div)`
+  width: 100% !important;
   list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  margin-block-start: 0em !important;
+  margin-block-end: 0em !important;
+
+  padding-inline-start: 0px !important;
+  display: flex;
+  flex-wrap: wrap;
 `;
 
 // category.js
 export const StyledCategory = styled(motion.div)`
+  width: 50%;
+  background: white;
+
   .content {
     position: relative !important;
     height: 500px;
-    min-width: 50vw;
-
+    min-width: 100%;
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: all 0.3s ease-in-out;
       background-position: center;
       background-size: cover;
-      //&:hover {
-      //  transform: scale(1.1);
-      //  transition: transform 6s //cubic-bezier(0.25, 0.45, //0.45, 0.95);
-      //}
+      transition: 0.3s ease-in-out;
     }
     p {
       background: rgba(255, 255, 255, 0.5);
@@ -45,6 +46,16 @@ export const StyledCategory = styled(motion.div)`
       transform: translate(-50%, -50%);
       z-index: 20;
       transition: all 0.3s ease-in-out;
+    }
+  }
+  &:hover {
+    img {
+      opacity: 0.7;
+      cursor: pointer;
+    }
+    p {
+      background: rgba(255, 255, 255, 1);
+      cursor: pointer;
     }
   }
 `;
