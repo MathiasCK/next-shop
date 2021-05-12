@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import { media } from "../../utils/media-query";
 
 export const StyledNavbar = styled.nav`
   position: fixed;
@@ -112,9 +113,13 @@ export const StyledNavLinks = styled.div`
 `;
 
 export const StyledProductMenu = styled.div`
+  ${media.large`
+  flex-direction: row;
+`}
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  height: 40vh;
+  min-height: 30vh;
   transition: 0.3s all ease;
   text-transform: uppercase;
   background: white;
@@ -122,9 +127,14 @@ export const StyledProductMenu = styled.div`
 
   padding: 0 1rem;
   & .nav-links {
-    width: 20%;
+    ${media.large`
+  
+  width: 20%;
+`}
+    width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
     p {
       cursor: pointer;
       text-transform: uppercase;

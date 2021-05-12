@@ -5,7 +5,6 @@ import {
   ProductImage,
 } from "../../../styles/navbar/navbar-styles";
 import { useIsMobile } from "../../../utils/is-mobile";
-import Spinner from "../../../utils/Spinner";
 
 const ProductMenu = ({ filterProducts, setToFalse, categories }) => {
   const isMobile = useIsMobile();
@@ -28,21 +27,26 @@ const ProductMenu = ({ filterProducts, setToFalse, categories }) => {
             </Link>
           ))}
       </div>
-      <div className="featured-products">
-        {filterProducts.map((product) => (
-          <Link key={product.permalink} href={`/products/${product.permalink}`}>
-            <div className="product">
-              <ProductImage
-                imageUrl={product.assets[0].url}
-                imageUrl2={product.assets[1].url}
-              />
+      {isMobile ? null : (
+        <div className="featured-products">
+          {filterProducts.map((product) => (
+            <Link
+              key={product.permalink}
+              href={`/products/${product.permalink}`}
+            >
+              <div className="product">
+                <ProductImage
+                  imageUrl={product.assets[0].url}
+                  imageUrl2={product.assets[1].url}
+                />
 
-              <p>{product.name}</p>
-              <p>{product.price.formatted_with_symbol}</p>
-            </div>
-          </Link>
-        ))}
-      </div>
+                <p>{product.name}</p>
+                <p>{product.price.formatted_with_symbol}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      )}
     </StyledProductMenu>
   );
 };

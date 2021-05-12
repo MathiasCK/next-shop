@@ -32,6 +32,7 @@ import ProductMenu from "./product-menu";
 import NavLinks from "./nav-links";
 import { useIsMobile } from "../../../utils/is-mobile";
 import Sidebar from "./sidebar";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 const Navbar = () => {
   //const controls = useAnimation();
@@ -57,6 +58,12 @@ const Navbar = () => {
     return product.sku;
   });
   const totalItems = cart.total_items;
+
+  if (isMobile && productMenu) {
+    disableBodyScroll(sideRef.current);
+  } else {
+    enableBodyScroll(sideRef.current);
+  }
 
   return (
     <StyledNavbar
