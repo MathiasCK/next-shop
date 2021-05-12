@@ -12,8 +12,7 @@ export const AppProvider = ({ children }) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [categories, setCategories] = useState([]);
 
-  //
-
+  // Sidebar trigger
   const controls = useAnimation();
   const sideRef = useRef();
   const [activeNavbar, setActiveNavbar] = useState(false);

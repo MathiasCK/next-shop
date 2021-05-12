@@ -104,7 +104,7 @@ export const BackDrop = styled(motion.div)`
   backdrop-filter: saturate(180%) blur(1px);
 `;
 
-export const NavLinks = styled.div`
+export const StyledNavLinks = styled.div`
   display: flex;
   h1 {
     margin: 0 0.5rem;

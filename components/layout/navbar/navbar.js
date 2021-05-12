@@ -1,10 +1,9 @@
-import React, { useRef, useState, useEffect } from "react";
+import React from "react";
 import {
   StyledNavbar,
   Title,
   Actions,
   BackDrop,
-  NavLinks,
   Content,
 } from "../../../styles/navbar/navbar-styles";
 import { useRouter } from "next/router";
@@ -28,9 +27,10 @@ import {
   useSidebar,
   useSideRef,
   useSetToTrue,
-} from "../../../context/CartContext";
+} from "../../../context/AppContext";
 
 import ProductMenu from "./product-menu";
+import NavLinks from "./nav-links";
 import { useIsMobile } from "../../../utils/is-mobile";
 import Sidebar from "./sidebar";
 
@@ -76,29 +76,12 @@ const Navbar = () => {
         {/*
          */}
         <Content>
-          <NavLinks>
-            {isMobile ? (
-              <h1 onClick={productMenuHandler} className="sub-header nav-link">
-                Products
-              </h1>
-            ) : (
-              <Link href="/products">
-                <h1
-                  onClick={setToFalse}
-                  onMouseOver={setToTrue}
-                  className="sub-header nav-link"
-                >
-                  Products
-                </h1>
-              </Link>
-            )}
-
-            <Link href="/about">
-              <div onClick={setToFalse}>
-                <h1 className="sub-header nav-link">About</h1>
-              </div>
-            </Link>
-          </NavLinks>
+          <NavLinks
+            setToFalse={setToFalse}
+            setToTrue={setToTrue}
+            productMenuHandler={productMenuHandler}
+            isMobile={isMobile}
+          />
           {isMobile ? null : (
             <Title>
               <Link href="/">
@@ -129,27 +112,6 @@ const Navbar = () => {
           />
         )}
       </StyledNavbar>
-
-      {/* Sidebar */}
-      <AnimatePresence>
-        {sideBar && (
-          <BackDrop
-            onClick={sideBarHandler}
-            initial={{
-              opacity: 0,
-            }}
-            animate={{
-              opacity: 1,
-              transition: {
-                duration: 0.75,
-              },
-            }}
-            exit={{
-              opacity: 0,
-            }}
-          />
-        )}
-      </AnimatePresence>
       <Sidebar
         ref={sideRef}
         initial="hidden"

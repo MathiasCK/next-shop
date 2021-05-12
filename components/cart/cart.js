@@ -1,6 +1,6 @@
 import React from "react";
 import CartItem from "./cart-item";
-import { useCart } from "../../context/CartContext";
+import { useCart } from "../../context/AppContext";
 import Spinner from "../../utils/Spinner";
 
 import Button from "../button/button";

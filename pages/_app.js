@@ -1,5 +1,6 @@
 import Cursor from "../utils/Cursor";
 import Layout from "../components/layout/layout";
+import { AppProvider } from "../context/AppContext";
 
 import "../styles/css/globals.css";
 

@@ -1,7 +1,7 @@
 import {
   useAddToCartHandler,
   useSideBarHandler,
-} from "../../context/CartContext";
+} from "../../context/AppContext";
 import commerce from "../../utils/commerce";
 import Link from "next/link";
 import RelatedProduct from "../../components/products/related-product";

@@ -3,7 +3,7 @@ import React from "react";
 import {
   useRemoveCartHandler,
   useUpdateCartHandler,
-} from "../../context/CartContext";
+} from "../../context/AppContext";
 import {
   StyledCartItem,
   Information,
