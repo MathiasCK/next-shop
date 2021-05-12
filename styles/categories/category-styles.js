@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import { media } from "../../utils/media-query";
 
 // [slug].js
 export const CategoryName = styled(motion.h1)`
@@ -8,19 +9,21 @@ export const CategoryName = styled(motion.h1)`
 
 // category-list.js
 export const StyledCategories = styled(motion.div)`
-  width: 100% !important;
-  list-style: none;
-  margin-block-start: 0em !important;
-  margin-block-end: 0em !important;
+  min-width: 100% !important;
 
-  padding-inline-start: 0px !important;
   display: flex;
   flex-wrap: wrap;
 `;
 
 // category.js
 export const StyledCategory = styled(motion.div)`
-  width: 50%;
+  ${media.large`
+width: 50%;
+`}
+  ${media.medium`
+width: 50%;
+`}
+  width: 100%;
   background: white;
 
   .content {

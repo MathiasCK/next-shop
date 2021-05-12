@@ -32,9 +32,9 @@ const CategoryList = ({ categories }) => {
     >
       {categories.map((category) => (
         <Link key={category.slug} href={`/categories/${category.slug}`}>
-          <div>
+          <>
             <Category {...category} />
-          </div>
+          </>
         </Link>
       ))}
     </StyledCategories>
