@@ -115,6 +115,7 @@ export const StyledNavLinks = styled.div`
 export const StyledProductMenu = styled.div`
   ${media.large`
   flex-direction: row;
+  min-height: 40vh;
 `}
   display: flex;
   flex-direction: column;
