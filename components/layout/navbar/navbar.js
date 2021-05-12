@@ -3,14 +3,13 @@ import {
   StyledNavbar,
   Title,
   Actions,
-  BackDrop,
   Content,
 } from "../../../styles/navbar/navbar-styles";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
 import { AiOutlineShopping } from "react-icons/ai";
-import { AnimatePresence, useAnimation } from "framer-motion";
+
 import { container } from "../../../utils/animation";
 
 import {
@@ -60,67 +59,66 @@ const Navbar = () => {
   const totalItems = cart.total_items;
 
   return (
-    <>
-      <StyledNavbar
-        onMouseLeave={isMobile ? null : setToFalse}
-        onMouseOver={activeNavbarHandler}
-        style={
-          router.asPath !== "/"
-            ? { color: "black", background: "white" }
-            : undefined
-        }
-        className={
-          activeNavbar || initialBackground ? "active shadow" : undefined
-        }
-      >
-        {/*
-         */}
-        <Content>
-          <NavLinks
-            setToFalse={setToFalse}
-            setToTrue={setToTrue}
-            productMenuHandler={productMenuHandler}
-            isMobile={isMobile}
-          />
+    <StyledNavbar
+      onMouseLeave={isMobile ? null : setToFalse}
+      onMouseOver={activeNavbarHandler}
+      style={
+        router.asPath !== "/"
+          ? { color: "black", background: "white" }
+          : undefined
+      }
+      className={
+        activeNavbar || initialBackground ? "active shadow" : undefined
+      }
+    >
+      {/*
+       */}
+      <Content>
+        <NavLinks
+          setToFalse={setToFalse}
+          setToTrue={setToTrue}
+          productMenuHandler={productMenuHandler}
+          isMobile={isMobile}
+        />
 
-          <Title>
-            <Link href="/">
-              <p onClick={setToFalse}>Commerce.js</p>
-            </Link>
-          </Title>
+        <Title>
+          <Link href="/">
+            <p onClick={setToFalse}>Commerce.js</p>
+          </Link>
+        </Title>
 
-          <Actions onClick={setToFalse}>
-            <Link href="/login">
-              <div>
-                <h1 className="sub-header nav-link">Login</h1>
-              </div>
-            </Link>
-            <div className="relative" onClick={sideBarHandler}>
-              <AiOutlineShopping
-                style={{ fontSize: "2rem", cursor: "pointer" }}
-              />
-
-              <p>{totalItems}</p>
+        <Actions onClick={setToFalse}>
+          <Link href="/login">
+            <div>
+              <h1 className="sub-header nav-link">Login</h1>
             </div>
-          </Actions>
-        </Content>
-        {productMenu && (
-          <ProductMenu
-            setToFalse={setToFalse}
-            filterProducts={filterProducts}
-            categories={categories}
-          />
-        )}
-      </StyledNavbar>
-      <Sidebar
-        ref={sideRef}
-        initial="hidden"
-        //animate={controls}
-        variants={container}
-        sideBar={sideBar}
-        sideBarHandler={sideBarHandler}
-      />
-    </>
+          </Link>
+          <div className="relative" onClick={sideBarHandler}>
+            <AiOutlineShopping
+              style={{ fontSize: "2rem", cursor: "pointer" }}
+            />
+
+            <p>{totalItems}</p>
+          </div>
+        </Actions>
+      </Content>
+      {productMenu && (
+        <ProductMenu
+          setToFalse={setToFalse}
+          filterProducts={filterProducts}
+          categories={categories}
+        />
+      )}
+      <div ref={sideRef}>
+        <Sidebar
+          initial="hidden"
+          //animate={controls}
+          variants={container}
+          sideBar={sideBar}
+          sideBarHandler={sideBarHandler}
+        />
+      </div>
+    </StyledNavbar>
   );
 };
 
