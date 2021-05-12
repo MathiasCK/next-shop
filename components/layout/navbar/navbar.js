@@ -35,14 +35,14 @@ import { useIsMobile } from "../../../utils/is-mobile";
 import Sidebar from "./sidebar";
 
 const Navbar = () => {
+  //const controls = useAnimation();
+
+  // Hooks
   const router = useRouter();
   const categories = useCategories();
-
-  const controls = useAnimation();
   const products = useProducts();
   const cart = useCart();
   const isMobile = useIsMobile();
-
   const activeNavbarHandler = useActiveNavbarHandler();
   const activeNavbar = useActiveNavbar();
   const initialBackground = useInitialBackground();
@@ -115,7 +115,7 @@ const Navbar = () => {
       <Sidebar
         ref={sideRef}
         initial="hidden"
-        animate={controls}
+        //animate={controls}
         variants={container}
         sideBar={sideBar}
         sideBarHandler={sideBarHandler}

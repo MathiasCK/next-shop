@@ -12,7 +12,7 @@ export const StyledCategories = styled(motion.ul)`
   width: 100%;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 `;
 
 // category.js
@@ -20,7 +20,7 @@ export const StyledCategory = styled(motion.div)`
   .content {
     position: relative !important;
     height: 500px;
-    width: 50vw;
+    min-width: 50vw;
 
     img {
       width: 100%;

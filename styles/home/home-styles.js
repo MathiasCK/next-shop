@@ -35,6 +35,14 @@ export const Content = styled.div`
 export const Introduction = styled.div`
   //background-image: url("https://images.unsplash.com/photo-1500907789384-0c3b4c3bdce4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
   position: relative;
+  height: 100vh;
+  width: 100vw;
+
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
   .content {
     background: rgba(255, 255, 255, 0.3);
@@ -45,10 +53,5 @@ export const Introduction = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-  }
-
-  video {
-    width: 100%;
-    height: auto;
   }
 `;
