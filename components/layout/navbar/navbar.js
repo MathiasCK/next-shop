@@ -60,7 +60,7 @@ const Navbar = () => {
   const totalItems = cart.total_items;
 
   return (
-    <div>
+    <>
       <StyledNavbar
         onMouseLeave={isMobile ? null : setToFalse}
         onMouseOver={activeNavbarHandler}
@@ -120,7 +120,7 @@ const Navbar = () => {
         sideBar={sideBar}
         sideBarHandler={sideBarHandler}
       />
-    </div>
+    </>
   );
 };
 

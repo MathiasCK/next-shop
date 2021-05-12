@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { media } from "../../utils/media-query";
 
 export const Introduction = styled.div`
   position: relative;
@@ -12,9 +13,15 @@ export const Introduction = styled.div`
   }
 
   .content {
+    ${media.large`
+    padding: 5rem;
+  `}
+    ${media.medium`
+    padding: 3rem;
+  `}
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: saturate(180%) blur(5px);
-    padding: 5rem;
+    padding: 3rem;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -24,7 +31,7 @@ export const Introduction = styled.div`
 `;
 
 export const About = styled.div`
-  height: 40vh;
+  min-height: 40vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -32,13 +39,29 @@ export const About = styled.div`
   justify-content: center;
   text-align: center;
   h1 {
+    ${media.large`
     padding: 2rem 5rem;
+  `}
+    ${media.medium`
+    padding: 1rem 2.5rem;
+  `}
+    padding: 1rem;
   }
   & .button {
-    display: flex;
+    ${media.large`
     width: 10%;
+
+  `}
+    ${media.medium`
+    width: 30%;
+
+  `}
+
+    display: flex;
+    width: 50%;
     align-items: center;
     justify-content: space-between;
+    margin: 1rem;
     padding: 0 0.5rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.9);
   }
