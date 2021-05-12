@@ -1,6 +1,6 @@
 import React from "react";
 import ProductList from "../../components/products/product-list";
-import { useCategories, useProducts } from "../../context/CartContext";
+import { useCategories, useProducts } from "../../context/AppContext";
 
 import RouteTransition from "../../utils/route-transition";
 

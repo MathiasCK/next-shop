@@ -12,7 +12,7 @@ import {
   useErrorMessage,
   useHandleCaptureCheckout,
   useOrder,
-} from "../../context/CartContext";
+} from "../../context/AppContext";
 import commerce from "../../utils/commerce";
 import Spinner from "../../utils/Spinner";
 

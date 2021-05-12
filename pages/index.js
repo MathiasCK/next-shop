@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Button from "../components/button/button";
 import CategoryList from "../components/category/category-list";
-import { useCategories } from "../context/CartContext";
+import { useCategories } from "../context/AppContext";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
 import { Content, Introduction, About } from "../styles/home/home-styles";

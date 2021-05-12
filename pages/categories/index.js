@@ -1,5 +1,5 @@
 import CategoryList from "../../components/category/category-list";
-import { useCategories } from "../../context/CartContext";
+import { useCategories } from "../../context/AppContext";
 import commerce from "../../utils/commerce";
 
 const Category = ({ categories }) => {

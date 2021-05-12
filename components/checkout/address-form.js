@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useCart } from "../../context/CartContext";
+import { useCart } from "../../context/AppContext";
 import commerce from "../../utils/commerce";
 import Button from "../button/button";
 import {

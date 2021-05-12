@@ -3,9 +3,9 @@ import { createContext, useContext, useState, useEffect, useRef } from "react";
 import commerce from "../utils/commerce";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
-const CartContext = createContext({});
+const AppContext = createContext({});
 
-export const CartProvider = ({ children }) => {
+export const AppProvider = ({ children }) => {
   const [cart, setCart] = useState({});
   const [products, setProducts] = useState([]);
   const [order, setOrder] = useState({});
@@ -158,7 +158,7 @@ export const CartProvider = ({ children }) => {
   };
 
   return (
-    <CartContext.Provider
+    <AppContext.Provider
       value={{
         cart,
         products,
@@ -185,52 +185,51 @@ export const CartProvider = ({ children }) => {
       }}
     >
       {children}
-    </CartContext.Provider>
+    </AppContext.Provider>
   );
 };
 
-export const useCartContext = () => useContext(CartContext);
+export const useAppContext = () => useContext(AppContext);
 
-export const useCart = () => useCartContext().cart;
+export const useCart = () => useAppContext().cart;
 
-export const useSideBarHandler = () => useCartContext().sideBarHandler;
+export const useSideBarHandler = () => useAppContext().sideBarHandler;
 
-export const useActiveNavbarHandler = () =>
-  useCartContext().activeNavbarHandler;
+export const useActiveNavbarHandler = () => useAppContext().activeNavbarHandler;
 
-export const useActiveNavbar = () => useCartContext().activeNavbar;
+export const useActiveNavbar = () => useAppContext().activeNavbar;
 
-export const useInitialBackground = () => useCartContext().initialBackground;
+export const useInitialBackground = () => useAppContext().initialBackground;
 
-export const useProductMenuHandler = () => useCartContext().productMenuHandler;
+export const useProductMenuHandler = () => useAppContext().productMenuHandler;
 
-export const useSetToFalse = () => useCartContext().setToFalse;
+export const useSetToFalse = () => useAppContext().setToFalse;
 
-export const useSetToTrue = () => useCartContext().setToTrue;
+export const useSetToTrue = () => useAppContext().setToTrue;
 
-export const useProductMenu = () => useCartContext().productMenu;
+export const useProductMenu = () => useAppContext().productMenu;
 
-export const useSideRef = () => useCartContext().sideRef;
+export const useSideRef = () => useAppContext().sideRef;
 
-export const useSidebar = () => useCartContext().sideBar;
+export const useSidebar = () => useAppContext().sideBar;
 
-export const useProducts = () => useCartContext().products;
+export const useProducts = () => useAppContext().products;
 
-export const useCategories = () => useCartContext().categories;
+export const useCategories = () => useAppContext().categories;
 
-export const useOrder = () => useCartContext().order;
+export const useOrder = () => useAppContext().order;
 
-export const useErrorMessage = () => useCartContext().errorMessage;
+export const useErrorMessage = () => useAppContext().errorMessage;
 
 export const useHandleCaptureCheckout = () =>
-  useCartContext().handleCaptureCheckout;
+  useAppContext().handleCaptureCheckout;
 
-export const useFetchCart = () => useCartContext().fetchCart;
+export const useFetchCart = () => useAppContext().fetchCart;
 
-export const useAddToCartHandler = () => useCartContext().addToCartHandler;
+export const useAddToCartHandler = () => useAppContext().addToCartHandler;
 
-export const useUpdateCartHandler = () => useCartContext().updateCartHandler;
+export const useUpdateCartHandler = () => useAppContext().updateCartHandler;
 
-export const useRemoveCartHandler = () => useCartContext().removeCartHandler;
+export const useRemoveCartHandler = () => useAppContext().removeCartHandler;
 
-export const useEmptyCartHandler = () => useCartContext().emptyCartHandler;
+export const useEmptyCartHandler = () => useAppContext().emptyCartHandler;
