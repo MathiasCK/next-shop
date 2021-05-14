@@ -35,8 +35,6 @@ import Sidebar from "./sidebar";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 const Navbar = () => {
-  //const controls = useAnimation();
-
   // Hooks
   const router = useRouter();
   const categories = useCategories();
@@ -79,13 +77,6 @@ const Navbar = () => {
       }
       onClick={isMobile ? activeNavbarHandler : null}
     >
-      {isMobile ? (
-        <Title>
-          <Link href="/">
-            <p onClick={setToFalse}>Commerce.js</p>
-          </Link>
-        </Title>
-      ) : null}
       <Content>
         <NavLinks
           setToFalse={setToFalse}
@@ -113,7 +104,6 @@ const Navbar = () => {
             <AiOutlineShopping
               style={{ fontSize: "2rem", cursor: "pointer" }}
             />
-
             <p>{totalItems}</p>
           </div>
         </Actions>
@@ -128,7 +118,6 @@ const Navbar = () => {
       <div ref={sideRef}>
         <Sidebar
           initial="hidden"
-          //animate={controls}
           variants={container}
           sideBar={sideBar}
           sideBarHandler={sideBarHandler}

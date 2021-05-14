@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { media } from "../../utils/media-query";
+import { media } from "./media-query";
 
 export const Introduction = styled.div`
   position: relative;

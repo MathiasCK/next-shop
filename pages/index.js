@@ -4,8 +4,9 @@ import CategoryList from "../components/category/category-list";
 import { useCategories } from "../context/AppContext";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
-import { Content, Introduction, About } from "../styles/home/home-styles";
+About;
 import RouteTransition from "../utils/route-transition";
+import { About, Content, Introduction } from "../utils/home-styles";
 
 export default function Home() {
   const categories = useCategories();
@@ -35,7 +36,7 @@ export default function Home() {
         </h1>
         <Link href="/about">
           <div className="button">
-            <p>Find out more</p>
+            <p style={{ cursor: "pointer" }}>Find out more</p>
             <AiOutlineArrowRight />
           </div>
         </Link>

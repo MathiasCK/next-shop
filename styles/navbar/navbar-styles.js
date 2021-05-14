@@ -3,8 +3,11 @@ import styled from "styled-components";
 import { media } from "../../utils/media-query";
 
 export const StyledNavbar = styled.nav`
+  ${media.large`
+  margin-bottom: 0;
+  `}
   position: fixed;
-  min-height: 70px;
+  height: 70px;
   top: 0;
   left: 0;
   width: 100%;
@@ -16,16 +19,15 @@ export const StyledNavbar = styled.nav`
   justify-content: space-between;
   align-items: center;
   z-index: 999;
+  margin-bottom: 1rem;
   &.shadow {
     -moz-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
     -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
   }
-
   &.active {
     background: white;
     color: black;
-
     transition: all 0.3s ease;
   }
 `;
@@ -47,6 +49,7 @@ export const Content = styled.div`
   display: flex;
   justify-content: space-between;
   width: 90%;
+  height: 100%;
   margin: 0 auto;
   align-items: center;
 `;
