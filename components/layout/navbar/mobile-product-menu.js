@@ -4,33 +4,45 @@ import React from "react";
 import { StyledMobileProductMenu } from "../../../styles/navbar/navbar-styles";
 
 const MobileProductMenu = ({
+  filterProducts,
   mobileMenu,
   mobileMenuHandler,
   categories,
-  setToFalse,
 }) => {
   return (
-    <>
-      <StyledMobileProductMenu className={mobileMenu ? "active" : null}>
+    <StyledMobileProductMenu className={mobileMenu ? "active" : null}>
+      <div style={{ display: "flex", flexDirection: "column" }}>
         <div className="link">
           <p>Home</p>
-          <div className="border" />
         </div>
         <div className="link">
-          <p>Home</p>
-          <div className="border" />
+          <p>View All Products</p>
         </div>
         {categories &&
           categories.map((category) => (
             <Link key={category.name} href={`/categories/${category.name}`}>
               <div className="link">
-                <p onClick={setToFalse}>{category.name}</p>
-                <div className="border" />
+                <p onClick={mobileMenuHandler}>{category.name}</p>
               </div>
             </Link>
           ))}
-      </StyledMobileProductMenu>
-    </>
+      </div>
+      <div>
+        {filterProducts.map((product) => (
+          <Link key={product.permalink} href={`/products/${product.permalink}`}>
+            <div onClick={mobileMenuHandler}>
+              <img
+                style={{ height: "25px", width: "25px" }}
+                src={product.assets[0].url}
+              />
+
+              <p>{product.name}</p>
+              <p>{product.price.formatted_with_symbol}</p>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </StyledMobileProductMenu>
   );
 };
 

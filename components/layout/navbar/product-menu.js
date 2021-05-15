@@ -4,15 +4,8 @@ import {
   StyledProductMenu,
   ProductImage,
 } from "../../../styles/navbar/navbar-styles";
-import { useIsMobile } from "../../../utils/is-mobile";
-import MobileProductMenu from "./mobile-product-menu";
 
-const ProductMenu = ({
-  mobileMenu,
-  filterProducts,
-  setToFalse,
-  categories,
-}) => {
+const ProductMenu = ({ filterProducts, setToFalse, categories }) => {
   return (
     <StyledProductMenu>
       <div className="nav-links">

@@ -134,8 +134,8 @@ const Navbar = () => {
         variants={container}
         mobileMenu={mobileMenu}
         mobileMenuHandler={mobileMenuHandler}
-        setToFalse={setToFalse}
         categories={categories}
+        filterProducts={filterProducts}
       />
 
       <div ref={sideRef}>

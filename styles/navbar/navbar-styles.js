@@ -190,9 +190,7 @@ export const StyledMobileProductMenu = styled(motion.div)`
   transition: all 0.5s ease;
   will-change: opacity, right;
   opacity: 0;
-  @media screen and (min-width: 768px) {
-    width: 40vw;
-  }
+
   &.active {
     left: 0;
     opacity: 0.9;
