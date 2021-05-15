@@ -13,10 +13,14 @@ const MobileProductMenu = ({
     <StyledMobileProductMenu className={mobileMenu ? "active" : null}>
       <div style={{ display: "flex", flexDirection: "column" }}>
         <div className="link">
-          <p>Home</p>
+          <Link href="/">
+            <p onClick={mobileMenuHandler}>Home</p>
+          </Link>
         </div>
         <div className="link">
-          <p>View All Products</p>
+          <Link href="/products">
+            <p onClick={mobileMenuHandler}>View All Products</p>
+          </Link>
         </div>
         {categories &&
           categories.map((category) => (
