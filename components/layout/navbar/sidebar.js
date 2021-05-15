@@ -1,10 +1,12 @@
 import { AnimatePresence } from "framer-motion";
 import React from "react";
-import { useSideBarHandler } from "../../../context/AppContext";
+
 import { BackDrop, StyledSideBar } from "../../../styles/navbar/navbar-styles";
+import { useIsMobile } from "../../../utils/is-mobile";
 import Cart from "../../cart/cart";
 
 const Sidebar = ({ sideBar, sideBarHandler }) => {
+  const isMobile = useIsMobile();
   return (
     <>
       <AnimatePresence>

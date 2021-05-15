@@ -1,17 +1,11 @@
 import Link from "next/link";
 import React from "react";
 import { StyledNavLinks } from "../../../styles/navbar/navbar-styles";
-import { BiMenuAltLeft } from "react-icons/bi";
 
-const NavLinks = ({ isMobile, productMenuHandler, setToFalse, setToTrue }) => {
+const NavLinks = ({ isMobile, setToFalse, setToTrue }) => {
   return (
     <StyledNavLinks>
-      {isMobile ? (
-        <BiMenuAltLeft
-          onClick={productMenuHandler}
-          style={{ fontSize: "2rem" }}
-        />
-      ) : (
+      {isMobile ? null : (
         <div style={{ display: "flex" }}>
           <Link href="/products">
             <h1

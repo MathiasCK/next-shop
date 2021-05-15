@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyledNavbar,
   Title,
@@ -11,7 +11,7 @@ import Link from "next/link";
 import { AiOutlineShopping } from "react-icons/ai";
 
 import { container } from "../../../utils/animation";
-
+import { BiMenuAltLeft } from "react-icons/bi";
 import {
   useActiveNavbar,
   useActiveNavbarHandler,
@@ -33,8 +33,14 @@ import NavLinks from "./nav-links";
 import { useIsMobile } from "../../../utils/is-mobile";
 import Sidebar from "./sidebar";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import MobileProductMenu from "./mobile-product-menu";
 
 const Navbar = () => {
+  const [mobileMenu, setMobileMenu] = useState(false);
+  const mobileMenuHandler = () => {
+    setMobileMenu(!mobileMenu);
+    console.log(mobileMenu);
+  };
   // Hooks
   const router = useRouter();
   const categories = useCategories();
@@ -78,6 +84,12 @@ const Navbar = () => {
       onClick={isMobile ? activeNavbarHandler : null}
     >
       <Content>
+        {isMobile ? (
+          <BiMenuAltLeft
+            onClick={mobileMenuHandler}
+            style={{ fontSize: "2rem" }}
+          />
+        ) : null}
         <NavLinks
           setToFalse={setToFalse}
           setToTrue={setToTrue}
@@ -110,11 +122,22 @@ const Navbar = () => {
       </Content>
       {productMenu && (
         <ProductMenu
+          mobileMenu={mobileMenu}
           setToFalse={setToFalse}
           filterProducts={filterProducts}
           categories={categories}
         />
       )}
+
+      <MobileProductMenu
+        initial="hidden"
+        variants={container}
+        mobileMenu={mobileMenu}
+        mobileMenuHandler={mobileMenuHandler}
+        setToFalse={setToFalse}
+        categories={categories}
+      />
+
       <div ref={sideRef}>
         <Sidebar
           initial="hidden"

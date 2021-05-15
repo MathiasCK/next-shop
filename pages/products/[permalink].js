@@ -16,6 +16,7 @@ import {
   RelatedProducts,
 } from "../../styles/products/product-styles";
 import Sidebar from "../../components/layout/navbar/sidebar";
+import { red } from "@material-ui/core/colors";
 
 const ProductPage = ({ product }) => {
   const [productSize, setProductSize] = useState();
@@ -95,7 +96,9 @@ const ProductPage = ({ product }) => {
             <div className="information">
               <div className="info-header">
                 <h4>Shipping and returns</h4>
-                <a onClick={shippingHandler}>+</a>
+                <a style={{ fontSize: "larger" }} onClick={shippingHandler}>
+                  {shippingInfo ? "-" : "+"}
+                </a>
               </div>
               {shippingInfo && (
                 <div>
@@ -110,7 +113,9 @@ const ProductPage = ({ product }) => {
             <div className="information">
               <div className="info-header">
                 <h4>Details</h4>
-                <a onClick={deliveryHandler}>+</a>
+                <a style={{ fontSize: "larger" }} onClick={deliveryHandler}>
+                  {deliveryInfo ? "-" : "+"}
+                </a>
               </div>
               {deliveryInfo && (
                 <div>

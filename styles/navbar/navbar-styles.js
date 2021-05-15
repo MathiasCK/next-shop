@@ -7,7 +7,7 @@ export const StyledNavbar = styled.nav`
   margin-bottom: 0;
   `}
   position: fixed;
-  height: 70px;
+  min-height: 70px;
   top: 0;
   left: 0;
   width: 100%;
@@ -17,7 +17,7 @@ export const StyledNavbar = styled.nav`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: center !important;
   z-index: 999;
   margin-bottom: 1rem;
   &.shadow {
@@ -49,7 +49,7 @@ export const Content = styled.div`
   display: flex;
   justify-content: space-between;
   width: 90%;
-  height: 100%;
+  min-height: 70px;
   margin: 0 auto;
   align-items: center;
 `;
@@ -128,7 +128,7 @@ export const StyledProductMenu = styled.div`
   text-transform: uppercase;
   background: white;
   width: 100%;
-
+  z-index: 1000;
   padding: 0 1rem;
   & .nav-links {
     ${media.large`
@@ -175,4 +175,37 @@ export const ProductImage = styled.div`
 		background-image: url('${imageUrl2}');
 	}`
       : ""};
+`;
+
+export const StyledMobileProductMenu = styled(motion.div)`
+  background: white;
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 70px;
+  left: -100%;
+  transition: all 0.5s ease;
+  will-change: opacity, right;
+  opacity: 0;
+  @media screen and (min-width: 768px) {
+    width: 40vw;
+  }
+  &.active {
+    left: 0;
+    opacity: 0.9;
+  }
+  .link {
+    padding: 0.5rem 1rem;
+    p {
+      padding: 0 0.5rem;
+    }
+    .border {
+      width: 100%;
+      height: 1px;
+      background: black;
+    }
+  }
 `;

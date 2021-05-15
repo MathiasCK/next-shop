@@ -15,6 +15,7 @@ export const AppProvider = ({ children }) => {
   // Sidebar trigger
   const controls = useAnimation();
   const sideRef = useRef();
+
   const [activeNavbar, setActiveNavbar] = useState(false);
   const [sideBar, setSideBar] = useState();
   const [visibleNavbar, setVisibleNavbar] = useState(false);
