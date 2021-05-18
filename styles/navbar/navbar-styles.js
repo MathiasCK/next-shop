@@ -105,7 +105,7 @@ export const BackDrop = styled(motion.div)`
   height: 100vh;
   z-index: 10;
   background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: saturate(180%) blur(1px);
+  //backdrop-filter: saturate(180%) blur(1px);
 `;
 
 export const StyledNavLinks = styled.div`

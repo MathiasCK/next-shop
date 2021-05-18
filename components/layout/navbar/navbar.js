@@ -75,7 +75,11 @@ const Navbar = () => {
       onMouseOver={activeNavbarHandler}
       style={
         router.asPath !== "/"
-          ? { color: "black", background: "white" }
+          ? {
+              color: "black",
+              background: "white",
+              boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.12)",
+            }
           : undefined
       }
       className={
