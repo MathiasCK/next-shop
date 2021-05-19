@@ -181,10 +181,12 @@ export const StyledMobileProductMenu = styled(motion.div)`
   background: white;
   z-index: 1000;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   position: fixed;
+  text-transform: uppercase;
+  overflow-y: scroll;
   top: 70px;
   left: -100%;
   transition: all 0.5s ease;
@@ -200,10 +202,35 @@ export const StyledMobileProductMenu = styled(motion.div)`
     p {
       padding: 0 0.5rem;
     }
-    .border {
-      width: 100%;
-      height: 1px;
-      background: black;
+  }
+`;
+
+export const MobileLinks = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  padding: 1rem;
+`;
+
+export const MobileProducts = styled(MobileLinks)`
+  width: 670% !important;
+  .product {
+    display: flex;
+    height: 20vh;
+    margin: 1rem 0;
+
+    .image {
+      width: 50%;
+      height: 100%;
+      padding: 0.25rem;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .information {
+      width: 50%;
     }
   }
 `;

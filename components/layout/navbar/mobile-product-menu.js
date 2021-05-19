@@ -1,7 +1,11 @@
-import { AnimatePresence } from "framer-motion";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import Link from "next/link";
-import React from "react";
-import { StyledMobileProductMenu } from "../../../styles/navbar/navbar-styles";
+import React, { useRef } from "react";
+import {
+  StyledMobileProductMenu,
+  MobileLinks,
+  MobileProducts,
+} from "../../../styles/navbar/navbar-styles";
 
 const MobileProductMenu = ({
   filterProducts,
@@ -9,44 +13,56 @@ const MobileProductMenu = ({
   mobileMenuHandler,
   categories,
 }) => {
+  const menuRef = useRef();
+  if (mobileMenu) {
+    disableBodyScroll(menuRef.current);
+  } else {
+    enableBodyScroll(menuRef.current);
+  }
   return (
-    <StyledMobileProductMenu className={mobileMenu ? "active" : null}>
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <div className="link">
-          <Link href="/">
-            <p onClick={mobileMenuHandler}>Home</p>
-          </Link>
-        </div>
-        <div className="link">
-          <Link href="/products">
-            <p onClick={mobileMenuHandler}>View All Products</p>
-          </Link>
-        </div>
-        {categories &&
-          categories.map((category) => (
-            <Link key={category.name} href={`/categories/${category.name}`}>
-              <div className="link">
-                <p onClick={mobileMenuHandler}>{category.name}</p>
+    <div ref={menuRef}>
+      <StyledMobileProductMenu className={mobileMenu ? "active" : null}>
+        <MobileLinks>
+          <div className="link">
+            <Link href="/">
+              <p onClick={mobileMenuHandler}>Home</p>
+            </Link>
+          </div>
+          <div className="link">
+            <Link href="/products">
+              <p onClick={mobileMenuHandler}>View All Products</p>
+            </Link>
+          </div>
+          {categories &&
+            categories.map((category) => (
+              <Link key={category.name} href={`/categories/${category.name}`}>
+                <div className="link">
+                  <p onClick={mobileMenuHandler}>{category.name}</p>
+                </div>
+              </Link>
+            ))}
+        </MobileLinks>
+        <MobileProducts>
+          {filterProducts.map((product) => (
+            <Link
+              key={product.permalink}
+              href={`/products/${product.permalink}`}
+            >
+              <div className="product" onClick={mobileMenuHandler}>
+                <div className="image">
+                  <img src={product.assets[0].url} />
+                </div>
+
+                <div className="information">
+                  <p>{product.name}</p>
+                  <p>{product.price.formatted_with_symbol}</p>
+                </div>
               </div>
             </Link>
           ))}
-      </div>
-      <div>
-        {filterProducts.map((product) => (
-          <Link key={product.permalink} href={`/products/${product.permalink}`}>
-            <div onClick={mobileMenuHandler}>
-              <img
-                style={{ height: "25px", width: "25px" }}
-                src={product.assets[0].url}
-              />
-
-              <p>{product.name}</p>
-              <p>{product.price.formatted_with_symbol}</p>
-            </div>
-          </Link>
-        ))}
-      </div>
-    </StyledMobileProductMenu>
+        </MobileProducts>
+      </StyledMobileProductMenu>
+    </div>
   );
 };
 
