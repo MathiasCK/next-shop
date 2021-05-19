@@ -141,7 +141,6 @@ export const Title = styled.h1`
 `;
 
 export const RelatedProducts = styled.div`
-  cursor: pointer;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -153,6 +152,7 @@ export const StyledProduct = styled(motion.div)`
   @media (min-width: 450px) {
     margin: 1rem;
   }
+  width: 25%;
   margin: 0.5rem 0;
   display: flex;
   flex-direction: column;
@@ -188,21 +188,26 @@ export const ProductDescription = styled.div`
 
 // related-product.js
 export const StyledRelatedProduct = styled.div`
-  padding: 1rem;
+  padding: 0rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100%;
+  cursor: pointer;
+
   ${media.large`
-  width: 25%;
+  max-width: 33%;
+  padding: 1rem;
   `}
   ${media.medium`
-  width: 33%;
+  max-width: 50%;
+  padding: 1rem;
   `}
-    width: 50%;
+    max-width: 100%;
   .image {
     width: 100%;
     height: 80%;
+
     img {
       object-fit: cover;
       width: 100%;

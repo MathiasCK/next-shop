@@ -140,9 +140,9 @@ const ProductPage = ({ product }) => {
       <RelatedProducts>
         {relatedProducts.map((relatedProduct) => (
           <Link key={relatedProduct.id} href={relatedProduct.permalink}>
-            <div>
+            <>
               <RelatedProduct relatedProduct={relatedProduct} />
-            </div>
+            </>
           </Link>
         ))}
       </RelatedProducts>
