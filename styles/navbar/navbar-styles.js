@@ -180,10 +180,11 @@ export const ProductImage = styled.div`
 export const StyledMobileProductMenu = styled(motion.div)`
   background: white;
   z-index: 1000;
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+
   position: fixed;
   text-transform: uppercase;
   overflow-y: scroll;
@@ -195,7 +196,7 @@ export const StyledMobileProductMenu = styled(motion.div)`
 
   &.active {
     left: 0;
-    opacity: 0.9;
+    opacity: 0.95;
   }
   .link {
     padding: 0.5rem 1rem;
@@ -208,21 +209,21 @@ export const StyledMobileProductMenu = styled(motion.div)`
 export const MobileLinks = styled.div`
   display: flex;
   flex-direction: column;
-  width: 40%;
   padding: 1rem;
 `;
 
 export const MobileProducts = styled(MobileLinks)`
-  width: 670% !important;
   .product {
     display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     height: 20vh;
-    margin: 1rem 0;
+    margin: 1.5rem 0;
 
     .image {
       width: 50%;
       height: 100%;
-      padding: 0.25rem;
+
       img {
         width: 100%;
         height: 100%;
@@ -231,6 +232,7 @@ export const MobileProducts = styled(MobileLinks)`
     }
     .information {
       width: 50%;
+      font-weight: lighter;
     }
   }
 `;

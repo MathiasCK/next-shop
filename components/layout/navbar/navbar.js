@@ -39,7 +39,6 @@ const Navbar = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const mobileMenuHandler = () => {
     setMobileMenu(!mobileMenu);
-    console.log(mobileMenu);
   };
   // Hooks
   const router = useRouter();

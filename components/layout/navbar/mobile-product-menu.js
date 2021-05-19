@@ -43,7 +43,7 @@ const MobileProductMenu = ({
             ))}
         </MobileLinks>
         <MobileProducts>
-          {filterProducts.map((product) => (
+          {filterProducts.slice(0, 3).map((product) => (
             <Link
               key={product.permalink}
               href={`/products/${product.permalink}`}
@@ -55,7 +55,6 @@ const MobileProductMenu = ({
 
                 <div className="information">
                   <p>{product.name}</p>
-                  <p>{product.price.formatted_with_symbol}</p>
                 </div>
               </div>
             </Link>
