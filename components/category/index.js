@@ -1,8 +1,11 @@
 import { StyledCategory } from '../../styles/categories/category-styles';
 import { fadeIn } from '../../utils/animation';
-import Link from 'next/link';
+import Spinner from '../../utils/Spinner';
 
 const Category = ({ name, description, slug }) => {
+  if (!name || !description || !slug) {
+    return <Spinner />;
+  }
   return (
     <StyledCategory variants={fadeIn}>
       <a href={`/categories/${slug}`}>
