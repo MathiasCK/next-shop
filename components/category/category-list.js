@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Category from './Category';
+import Category from './index';
 import { useAnimation } from 'framer-motion';
 import { sectionAnimation } from '../../utils/animation';
 import { useInView } from 'react-intersection-observer';
