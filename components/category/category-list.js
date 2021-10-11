@@ -1,5 +1,4 @@
-import Link from 'next/link';
-import Category from './index';
+import Category from './category';
 import { useAnimation } from 'framer-motion';
 import { sectionAnimation } from '../../utils/animation';
 import { useInView } from 'react-intersection-observer';

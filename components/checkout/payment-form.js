@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   CardElement,
   Elements,
   ElementsConsumer,
-} from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
-import Button from "../button/button";
-import Review from "./Review";
+} from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import Button from '../button/button';
+import Review from './review';
 
 const stripePromise = loadStripe(
-  "pk_test_51IHS8SAkxwsxxcnkwLeWPnVkUo18pRARyYpcsm1yPfZ584DsAEUE3VyTWn3j9Frb7Ju8YsfNx3ZSGOpnokpGDEXx00wMVEBCQE"
+  'pk_test_51IHS8SAkxwsxxcnkwLeWPnVkUo18pRARyYpcsm1yPfZ584DsAEUE3VyTWn3j9Frb7Ju8YsfNx3ZSGOpnokpGDEXx00wMVEBCQE'
 );
 
 const PaymentForm = ({
@@ -32,7 +32,7 @@ const PaymentForm = ({
     const cardElement = elements.getElement(CardElement);
 
     const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: "card",
+      type: 'card',
       card: cardElement,
     });
 
@@ -47,7 +47,7 @@ const PaymentForm = ({
           email: shippingData.email,
         },
         shipping: {
-          name: "Primary shipping",
+          name: 'Primary shipping',
           street: shippingData.address1,
           town_city: shippingData.city,
           county_state: shippingData.shippingSubdivision,
@@ -58,7 +58,7 @@ const PaymentForm = ({
           shipping_method: shippingData.shippingOption,
         },
         payment: {
-          gateway: "stripe",
+          gateway: 'stripe',
           stripe: {
             payment_method_id: paymentMethod.id,
           },
@@ -74,18 +74,18 @@ const PaymentForm = ({
   console.log(shippingData);
 
   return (
-    <div style={{ margin: "2rem 0" }}>
+    <div style={{ margin: '2rem 0' }}>
       <Review totalPrice={totalPrice} checkoutToken={checkoutToken} />
-      <h1 className="header">Payment method</h1>
+      <h1 className='header'>Payment method</h1>
       <Elements stripe={stripePromise}>
         <ElementsConsumer>
           {({ elements, stripe }) => (
-            <form onSubmit={(e) => handleSubmit(e, elements, stripe)}>
+            <form onSubmit={e => handleSubmit(e, elements, stripe)}>
               <CardElement />
               <br />
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Button onClick={backStep}>Back</Button>
-                <Button type="submit" disabled={!stripe}>
+                <Button type='submit' disabled={!stripe}>
                   Pay {totalPrice} ,-
                 </Button>
               </div>
