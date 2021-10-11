@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
-import styled from "styled-components";
-import { media } from "../../utils/media-query";
+import { motion } from 'framer-motion';
+import styled from 'styled-components';
+import { media } from '../../utils/media-query';
 
 // product-list.js
 export const StyledProductList = styled.div`
@@ -152,11 +152,12 @@ export const StyledProduct = styled(motion.div)`
   @media (min-width: 450px) {
     margin: 1rem;
   }
-  width: 25%;
   margin: 0.5rem 0;
+  padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
   height: 70vh;
+  width: 100%;
 `;
 
 export const ProductImage = styled.div`
@@ -172,7 +173,7 @@ export const ProductImage = styled.div`
 				cursor: pointer;
 		background-image: url('${imageUrl2}');
 	}`
-      : ""};
+      : ''};
 `;
 
 export const ProductDescription = styled.div`

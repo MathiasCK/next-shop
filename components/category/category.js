@@ -1,13 +1,16 @@
-import { StyledCategory } from "../../styles/categories/category-styles";
-import { fadeIn } from "../../utils/animation";
+import { StyledCategory } from '../../styles/categories/category-styles';
+import { fadeIn } from '../../utils/animation';
+import Link from 'next/link';
 
-const Category = ({ name, description }) => {
+const Category = ({ name, description, slug }) => {
   return (
     <StyledCategory variants={fadeIn}>
-      <div className="content">
-        <img src={description} />
-        <p>{name}</p>
-      </div>
+      <a href={`/categories/${slug}`}>
+        <div className='content'>
+          <img src={description} />
+          <p>{name}</p>
+        </div>
+      </a>
     </StyledCategory>
   );
 };

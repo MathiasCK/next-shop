@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
-import styled from "styled-components";
-import { media } from "../../utils/media-query";
+import { motion } from 'framer-motion';
+import styled from 'styled-components';
+import { media } from '../../utils/media-query';
 
 // [slug].js
 export const CategoryName = styled(motion.h1)`
@@ -9,27 +9,26 @@ export const CategoryName = styled(motion.h1)`
 
 // category-list.js
 export const StyledCategories = styled(motion.div)`
-  min-width: 100% !important;
-
+  width: 100% !important;
   display: flex;
   flex-wrap: wrap;
 `;
 
 // category.js
 export const StyledCategory = styled(motion.div)`
-  ${media.large`
-width: 50%;
-`}
-  ${media.medium`
-width: 50%;
-`}
   width: 100%;
-  background: white;
+  ${media.medium`
+  width: 50%;
+  `}
+  ${media.large`
+  width: 50%;
+  `}
 
   .content {
     position: relative !important;
     height: 500px;
-    min-width: 100%;
+    width: 100%;
+
     img {
       width: 100%;
       height: 100%;
