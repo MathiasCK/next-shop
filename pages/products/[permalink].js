@@ -1,25 +1,25 @@
 import {
   useAddToCartHandler,
   useSideBarHandler,
-} from "../../context/AppContext";
-import commerce from "../../utils/commerce";
-import Link from "next/link";
-import RelatedProduct from "../../components/products/related-product";
-import Button from "../../components/button/button";
-import RouteTransition from "../../utils/route-transition";
-import { useState } from "react";
+} from '../../context/AppContext';
+import commerce from '../../utils/commerce';
+import Link from 'next/link';
+import RelatedProduct from '../../components/products/related-product';
+import Button from '../../components/button/button';
+import RouteTransition from '../../utils/route-transition';
+import { useState } from 'react';
 import {
   Description,
   StyledProductPage,
   ImageContainer,
   Title,
   RelatedProducts,
-} from "../../styles/products/product-styles";
-import Sidebar from "../../components/layout/navbar/sidebar";
-import { red } from "@material-ui/core/colors";
+} from '../../styles/products/product-styles';
+import Sidebar from '../../components/layout/navbar/sidebar';
 
 const ProductPage = ({ product }) => {
   const [productSize, setProductSize] = useState();
+  const [hasChosenSize, setHasChosenSize] = useState(false);
   const sideBarHandler = useSideBarHandler();
   const images = product.assets;
   const addToCart = useAddToCartHandler();
@@ -42,7 +42,12 @@ const ProductPage = ({ product }) => {
 
   const sizes = sizeVariant.options;
 
-  const handleSubmit = (e) => {
+  const badRequest = e => {
+    e.preventDefault();
+    alert('Please select your preffered size');
+  };
+
+  const handleSubmit = e => {
     e.preventDefault();
     addToCart(product.id, 1, {
       [sizeVariant.id]: productSize,
@@ -53,29 +58,34 @@ const ProductPage = ({ product }) => {
     <RouteTransition>
       <StyledProductPage>
         <ImageContainer>
-          <div className="images">
-            {images.map((image) => (
+          <div className='images'>
+            {images.map(image => (
               <img src={image.url} key={image.url} />
             ))}
           </div>
         </ImageContainer>
         <Description>
-          <Title className="header">{product.name}</Title>
-          <div className="grow">
+          <Title className='header'>{product.name}</Title>
+          <div className='grow'>
             <div
-              className="description"
+              className='description'
               dangerouslySetInnerHTML={{ __html: product.description }}
             ></div>
             <form onSubmit={handleSubmit}>
               {sizes && (
-                <div className="size">
+                <div className='size'>
                   <p>Choose a size: </p>
                   <select
                     required
-                    onChange={(e) => setProductSize(e.target.value)}
+                    onChange={e => {
+                      setProductSize(e.target.value);
+                      setHasChosenSize(true);
+                    }}
                   >
-                    <option defaultValue>Size</option>
-                    {sizes.map((size) => (
+                    <option disabled selected>
+                      Size
+                    </option>
+                    {sizes.map(size => (
                       <option key={size.id} value={size.id}>
                         {size.name}
                       </option>
@@ -85,19 +95,19 @@ const ProductPage = ({ product }) => {
               )}
               <center>
                 <Button
-                  className="inverted"
-                  type="submit"
-                  onClick={sideBarHandler}
+                  className='inverted'
+                  type='submit'
+                  onClick={hasChosenSize ? sideBarHandler : badRequest}
                 >
                   Add to cart | {product.price.formatted_with_symbol}
                 </Button>
               </center>
             </form>
-            <div className="information">
-              <div className="info-header">
+            <div className='information'>
+              <div className='info-header'>
                 <h4>Shipping and returns</h4>
-                <a style={{ fontSize: "larger" }} onClick={shippingHandler}>
-                  {shippingInfo ? "-" : "+"}
+                <a style={{ fontSize: 'larger' }} onClick={shippingHandler}>
+                  {shippingInfo ? '-' : '+'}
                 </a>
               </div>
               {shippingInfo && (
@@ -110,11 +120,11 @@ const ProductPage = ({ product }) => {
               )}
             </div>
 
-            <div className="information">
-              <div className="info-header">
+            <div className='information'>
+              <div className='info-header'>
                 <h4>Details</h4>
-                <a style={{ fontSize: "larger" }} onClick={deliveryHandler}>
-                  {deliveryInfo ? "-" : "+"}
+                <a style={{ fontSize: 'larger' }} onClick={deliveryHandler}>
+                  {deliveryInfo ? '-' : '+'}
                 </a>
               </div>
               {deliveryInfo && (
@@ -129,20 +139,18 @@ const ProductPage = ({ product }) => {
           </div>
         </Description>
       </StyledProductPage>
-      <div style={{ paddingTop: "10rem" }}>
+      <div style={{ paddingTop: '10rem' }}>
         <center>
-          <p style={{ fontWeight: "lighter" }}>Suggested products</p>
-          <Title style={{ maxWidth: "500px" }}>
+          <p style={{ fontWeight: 'lighter' }}>Suggested products</p>
+          <Title style={{ maxWidth: '500px' }}>
             You may also like to check out these products.
           </Title>
         </center>
       </div>
       <RelatedProducts>
-        {relatedProducts.map((relatedProduct) => (
+        {relatedProducts.map(relatedProduct => (
           <Link key={relatedProduct.id} href={relatedProduct.permalink}>
-            <>
-              <RelatedProduct relatedProduct={relatedProduct} />
-            </>
+            <RelatedProduct relatedProduct={relatedProduct} />
           </Link>
         ))}
       </RelatedProducts>
@@ -157,7 +165,7 @@ export async function getStaticProps({ params }) {
   const { permalink } = params;
 
   const product = await commerce.products.retrieve(permalink, {
-    type: "permalink",
+    type: 'permalink',
   });
 
   return {
@@ -170,7 +178,7 @@ export async function getStaticPaths() {
   const { data: products } = await commerce.products.list();
 
   return {
-    paths: products.map((product) => ({
+    paths: products.map(product => ({
       params: {
         permalink: product.permalink,
       },

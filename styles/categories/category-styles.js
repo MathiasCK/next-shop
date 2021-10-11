@@ -16,6 +16,7 @@ export const StyledCategories = styled(motion.div)`
 
 // category.js
 export const StyledCategory = styled(motion.div)`
+  background: white;
   width: 100%;
   ${media.medium`
   width: 50%;
@@ -26,7 +27,7 @@ export const StyledCategory = styled(motion.div)`
 
   .content {
     position: relative !important;
-    height: 500px;
+    height: 70vh;
     width: 100%;
 
     img {

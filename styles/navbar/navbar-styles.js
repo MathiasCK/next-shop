@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
-import styled from "styled-components";
-import { media } from "../../utils/media-query";
+import { motion } from 'framer-motion';
+import styled from 'styled-components';
+import { media } from '../../utils/media-query';
 
 export const StyledNavbar = styled.nav`
   ${media.large`
@@ -39,9 +39,9 @@ export const Title = styled.h6`
   cursor: pointer;
   user-select: none;
   p {
-    font-family: "Lobster", cursive;
+    font-family: 'Lobster', cursive;
     margin: 0 1rem;
-    font-size: 1.5rem;
+    font-size: 2vh;
   }
 `;
 
@@ -174,7 +174,7 @@ export const ProductImage = styled.div`
 				cursor: pointer;
 		background-image: url('${imageUrl2}');
 	}`
-      : ""};
+      : ''};
 `;
 
 export const StyledMobileProductMenu = styled(motion.div)`
